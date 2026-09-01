@@ -1,0 +1,851 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#24110f">
+  <meta name="description" content="Aslan Kebab – frisch gegrillt, ehrlich gewürzt und mit Liebe serviert.">
+  <title>Aslan Kebab | Frisch. Ehrlich. Unvergesslich.</title>
+  <style>
+    :root {
+      --ink: #24110f;
+      --wine: #7c1f1d;
+      --wine-dark: #4d1212;
+      --gold: #d99a39;
+      --cream: #fff8eb;
+      --paper: #f4ead8;
+      --white: #fffdf8;
+      --muted: #755f59;
+      --shadow: 0 24px 70px rgba(49, 17, 13, .16);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .16;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+      z-index: 20;
+      mix-blend-mode: multiply;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+
+    .topbar {
+      background: var(--ink);
+      color: rgba(255,255,255,.74);
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: .15em;
+      padding: 8px 20px;
+      text-transform: uppercase;
+    }
+    header {
+      position: absolute;
+      top: 32px;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      color: white;
+    }
+    nav { height: 92px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 12px; font-weight: 850; letter-spacing: .04em; }
+    .logo-mark {
+      width: 48px; height: 48px; border: 1px solid rgba(255,255,255,.36); border-radius: 50%;
+      display: grid; place-items: center; font-family: Georgia, serif; font-size: 27px; color: var(--gold);
+      overflow: hidden; background: rgba(33,12,10,.3); backdrop-filter: blur(10px);
+    }
+    .logo-mark img { width: 100%; height: 100%; object-fit: cover; }
+    .logo span small { display: block; margin-top: -2px; font-size: 9px; font-weight: 600; letter-spacing: .28em; opacity: .7; }
+    .navlinks { display: flex; gap: 34px; align-items: center; font-size: 14px; font-weight: 650; }
+    .navlinks > a:not(.nav-cta) { opacity: .85; }
+    .navlinks > a:hover { opacity: 1; }
+    .nav-cta { padding: 13px 20px; border-radius: 99px; background: var(--gold); color: var(--ink); }
+    .cart-button { border: 1px solid rgba(255,255,255,.32); background: rgba(28,8,7,.28); color: white; border-radius: 99px; padding: 11px 15px; font: inherit; font-size: 12px; font-weight: 800; cursor: pointer; }
+    .cart-count { display: inline-grid; place-items: center; min-width: 22px; height: 22px; margin-left: 7px; padding: 0 5px; border-radius: 99px; background: var(--gold); color: var(--ink); }
+    .menu-toggle { display: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); background: rgba(0,0,0,.18); color: white; font-size: 21px; }
+
+    .hero {
+      min-height: 820px;
+      color: white;
+      display: grid;
+      align-items: center;
+      position: relative;
+      background:
+        linear-gradient(90deg, rgba(28,8,7,.94) 0%, rgba(44,11,9,.78) 46%, rgba(44,11,9,.18) 100%),
+        url("assets/story-kebab.webp") center 57%/cover no-repeat;
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: auto 0 0; height: 130px;
+      background: linear-gradient(transparent, rgba(36,17,15,.3));
+    }
+    .hero-content { position: relative; z-index: 2; padding-top: 90px; max-width: 680px; }
+    .hero-brand { width: 215px; margin: 0 0 24px; border-radius: 18px; box-shadow: 0 16px 45px rgba(0,0,0,.3); border: 1px solid rgba(255,255,255,.18); }
+    .eyebrow { display: flex; align-items: center; gap: 14px; text-transform: uppercase; letter-spacing: .25em; font-size: 12px; font-weight: 750; color: var(--gold); }
+    .eyebrow::before { content: ""; width: 48px; height: 1px; background: currentColor; }
+    h1, h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; line-height: .98; margin: 0; }
+    h1 { font-size: clamp(66px, 8vw, 118px); letter-spacing: -.05em; margin-top: 25px; }
+    h1 em { display: block; color: var(--gold); font-weight: 400; }
+    .hero-copy { max-width: 530px; font-size: 19px; color: rgba(255,255,255,.77); margin: 28px 0 34px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .btn { min-height: 54px; padding: 0 25px; border-radius: 99px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-weight: 800; font-size: 14px; transition: transform .2s, background .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--gold); color: var(--ink); }
+    .btn-secondary { border: 1px solid rgba(255,255,255,.35); color: white; backdrop-filter: blur(8px); }
+    .hero-note { display: flex; gap: 20px; align-items: center; margin-top: 44px; font-size: 12px; color: rgba(255,255,255,.63); }
+    .hero-note strong { display: block; color: white; font-size: 15px; }
+    .rating { color: var(--gold); letter-spacing: .08em; }
+
+    .quick-info { position: relative; z-index: 4; margin-top: -45px; }
+    .quick-grid { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--white); border-radius: 22px; box-shadow: var(--shadow); overflow: hidden; }
+    .quick-item { padding: 28px 32px; display: flex; gap: 17px; align-items: center; }
+    .quick-item + .quick-item { border-left: 1px solid #eadfcf; }
+    .icon { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; color: var(--wine); background: #f8e8cf; font-size: 20px; flex: 0 0 auto; }
+    .quick-item span { color: var(--muted); font-size: 12px; display: block; }
+    .quick-item strong { font-size: 15px; }
+
+    section { padding: 120px 0; }
+    .section-head { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 40px; margin-bottom: 55px; }
+    .section-head h2 { font-size: clamp(47px, 6vw, 78px); letter-spacing: -.04em; margin-top: 16px; }
+    .section-head p { color: var(--muted); max-width: 530px; margin: 0 0 4px auto; }
+    .accent { color: var(--wine); }
+
+    .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .dish { position: relative; overflow: hidden; border-radius: var(--radius); min-height: 470px; background: #321512; box-shadow: 0 12px 35px rgba(50,18,13,.12); }
+    .dish:nth-child(2) { transform: translateY(28px); }
+    .dish img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; transition: transform .5s; }
+    .dish:hover img { transform: scale(1.04); }
+    .dish::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 38%, rgba(24,7,5,.93)); }
+    .dish-copy { position: absolute; z-index: 2; left: 28px; right: 28px; bottom: 25px; color: white; }
+    .dish-tag { display: inline-block; color: var(--gold); text-transform: uppercase; font-size: 10px; font-weight: 850; letter-spacing: .16em; margin-bottom: 8px; }
+    .dish-code { display: inline-block; margin-right: 8px; padding: 5px 8px; border-radius: 99px; background: var(--gold); color: var(--ink); font: 850 10px/1 Inter, sans-serif; vertical-align: middle; }
+    .dish h3 { font-family: Georgia, serif; font-size: 31px; line-height: 1; margin: 0 0 9px; font-weight: 500; }
+    .dish p { margin: 0; color: rgba(255,255,255,.67); font-size: 13px; }
+    .price { position: absolute; z-index: 3; top: 20px; right: 20px; width: 65px; height: 65px; border-radius: 50%; display: grid; place-items: center; background: var(--gold); color: var(--ink); font-weight: 900; font-size: 14px; }
+    .menu-foot { margin-top: 65px; text-align: center; color: var(--muted); font-size: 13px; }
+    .menu-foot .btn { margin-top: 18px; color: white; background: var(--wine); }
+
+    .full-menu { padding-top: 45px; background: var(--paper); }
+    .full-menu-layout { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .product-card { overflow: hidden; border-radius: 27px; background: var(--white); border: 1px solid #eadfcf; box-shadow: 0 14px 42px rgba(49,17,13,.1); display: flex; flex-direction: column; }
+    .product-card img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+    .product-card-copy { padding: 23px; display: flex; flex: 1; flex-direction: column; }
+    .product-card h3 { margin: 9px 0; font: 500 27px/1 Georgia, serif; }
+    .product-card p { min-height: 42px; margin: 0; color: var(--muted); font-size: 12px; }
+    .product-card-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 20px; }
+    .durum-feature { min-height: 650px; border-radius: 34px; position: relative; overflow: hidden; color: white; box-shadow: var(--shadow); }
+    .durum-feature img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .durum-feature::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 38%, rgba(29,8,7,.94)); }
+    .durum-feature-copy { position: absolute; z-index: 2; left: 38px; right: 38px; bottom: 36px; }
+    .durum-feature h3 { font: 500 45px/1 Georgia, serif; margin: 8px 0 12px; }
+    .durum-feature p { max-width: 540px; margin: 0; color: rgba(255,255,255,.7); }
+    .menu-list { background: var(--white); border-radius: 34px; padding: 18px 36px; box-shadow: var(--shadow); }
+    .menu-line { display: grid; grid-template-columns: 1fr auto; gap: 25px; padding: 24px 0; border-bottom: 1px solid #eadfcf; }
+    .menu-line:last-child { border-bottom: 0; }
+    .menu-line h3 { margin: 0 0 5px; font: 500 23px/1.1 Georgia, serif; }
+    .menu-line p { margin: 0; color: var(--muted); font-size: 12px; }
+    .menu-price { color: var(--wine); font-size: 12px; font-weight: 850; white-space: nowrap; padding-top: 4px; }
+    .menu-action { display: flex; flex-direction: column; align-items: flex-end; gap: 9px; }
+    .add-btn { border: 0; border-radius: 99px; padding: 10px 15px; background: var(--wine); color: white; font-size: 11px; font-weight: 850; cursor: pointer; transition: transform .2s, background .2s; }
+    .add-btn:hover { transform: translateY(-2px); background: var(--wine-dark); }
+    .add-btn.light { background: var(--gold); color: var(--ink); margin-top: 18px; align-self: flex-start; }
+    .choice-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+    .choice-pill { padding: 7px 12px; border-radius: 99px; background: rgba(217,154,57,.14); border: 1px solid rgba(217,154,57,.38); color: var(--gold); font-size: 11px; font-weight: 850; letter-spacing: .04em; }
+    .meat-choice { display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: center; margin: 26px 0; padding: 25px 30px; border-radius: 25px; background: var(--wine); color: white; }
+    .meat-choice-icon { width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; background: var(--gold); color: var(--ink); font-size: 25px; }
+    .meat-choice h3 { margin: 0 0 5px; font: 500 25px Georgia, serif; }
+    .meat-choice p { margin: 0; color: rgba(255,255,255,.66); font-size: 13px; }
+    .vegetarian-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .vegetarian-card { display: grid; grid-template-columns: 1.1fr .9fr; min-height: 300px; overflow: hidden; border-radius: 28px; background: var(--white); box-shadow: 0 14px 42px rgba(49,17,13,.11); }
+    .vegetarian-card img { width: 100%; height: 100%; object-fit: cover; }
+    .vegetarian-card-copy { padding: 30px 27px; display: flex; flex-direction: column; justify-content: center; }
+    .vegetarian-card h3 { margin: 7px 0 10px; font: 500 29px/1 Georgia, serif; }
+    .vegetarian-card p { color: var(--muted); font-size: 12px; margin: 0; }
+    .veg-label { color: #54743a; font-size: 10px; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+
+    .sauces { background: var(--cream); }
+    .sauce-hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 46px; align-items: center; margin-bottom: 52px; }
+    .sauce-hero img { border-radius: 34px; box-shadow: var(--shadow); }
+    .sauce-hero h2 { font-size: clamp(50px, 6vw, 78px); letter-spacing: -.04em; margin: 18px 0 22px; }
+    .sauce-hero p { color: var(--muted); }
+    .sauce-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .sauce-card { overflow: hidden; border-radius: 23px; background: var(--white); border: 1px solid #eadfcf; box-shadow: 0 12px 32px rgba(49,17,13,.08); }
+    .sauce-card img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+    .sauce-card-body { padding: 22px 24px 24px; }
+    .sauce-number { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: var(--paper); color: var(--wine); font: 600 18px Georgia, serif; }
+    .sauce-card h3 { font: 500 25px Georgia, serif; margin: 16px 0 9px; }
+    .sauce-card .add-btn { margin-top: 17px; }
+    .placeholder-copy { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+    .seasonings { margin-top: 70px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .seasoning-card { border-radius: 30px; overflow: hidden; background: var(--white); box-shadow: 0 15px 45px rgba(49,17,13,.11); }
+    .seasoning-card img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+    .seasoning-copy { padding: 28px; }
+    .seasoning-copy h3 { font: 500 28px Georgia, serif; margin: 0 0 10px; }
+
+    .toppings { background: var(--white); }
+    .topping-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; }
+    .topping-card { overflow: hidden; border-radius: 22px; background: var(--cream); border: 1px solid #eadfcf; }
+    .topping-card img { width: 100%; aspect-ratio: 1 / .82; object-fit: cover; }
+    .topping-copy { padding: 18px; }
+    .topping-copy span { color: #54743a; font-size: 9px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    .topping-copy h3 { margin: 5px 0 6px; font: 500 21px/1.05 Georgia, serif; }
+    .topping-copy p { margin: 0; color: var(--muted); font-size: 11px; }
+
+    .pizza-menu { background: var(--ink); color: white; }
+    .pizza-menu .section-head p { color: rgba(255,255,255,.58); }
+    .pizza-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .pizza-card { overflow: hidden; border-radius: 27px; background: #321714; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 18px 50px rgba(0,0,0,.18); }
+    .pizza-card img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+    .pizza-copy { padding: 24px; }
+    .pizza-copy h3 { margin: 8px 0 9px; font: 500 28px/1 Georgia, serif; }
+    .pizza-copy p { min-height: 40px; margin: 0; color: rgba(255,255,255,.58); font-size: 12px; }
+    .pizza-bottom { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-top: 20px; }
+    .pizza-bottom .menu-price { color: var(--gold); }
+    .pizza-bottom .add-btn { background: var(--gold); color: var(--ink); }
+
+    .phone-order-box { display: flex; align-items: center; justify-content: space-between; gap: 35px; margin-top: 34px; padding: 27px 30px; border-radius: 24px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16); }
+    .phone-order-box strong { display: block; font: 500 25px Georgia, serif; }
+    .phone-order-box span { color: rgba(255,255,255,.6); font-size: 12px; }
+    .phone-order-box .btn { margin: 0; white-space: nowrap; }
+    .floating-phone { position: fixed; z-index: 18; right: 22px; bottom: 22px; display: flex; align-items: center; gap: 11px; padding: 13px 19px; border-radius: 99px; background: var(--gold); color: var(--ink); font-size: 13px; font-weight: 900; box-shadow: 0 12px 35px rgba(36,17,15,.28); }
+    .floating-phone b { font-size: 19px; }
+
+    .cart-overlay { position: fixed; inset: 0; z-index: 40; background: rgba(23,7,6,.58); opacity: 0; pointer-events: none; transition: opacity .25s; backdrop-filter: blur(3px); }
+    .cart-overlay.open { opacity: 1; pointer-events: auto; }
+    .cart-drawer { position: fixed; z-index: 41; top: 0; right: 0; bottom: 0; width: min(470px, 100%); padding: 27px; background: var(--cream); transform: translateX(102%); transition: transform .3s ease; overflow-y: auto; box-shadow: -25px 0 80px rgba(35,9,7,.26); }
+    .cart-drawer.open { transform: none; }
+    .cart-head { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-bottom: 20px; border-bottom: 1px solid #e4d5c2; }
+    .cart-head h2 { font-size: 38px; }
+    .close-btn { width: 42px; height: 42px; border-radius: 50%; border: 1px solid #dfcfba; background: white; font-size: 22px; cursor: pointer; }
+    .cart-empty { padding: 35px 0; text-align: center; color: var(--muted); }
+    .cart-item { display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; padding: 19px 0; border-bottom: 1px solid #e4d5c2; }
+    .cart-product { display: grid; grid-template-columns: 68px 1fr; gap: 13px; align-items: center; min-width: 0; }
+    .cart-thumb { width: 68px; height: 68px; border-radius: 13px; object-fit: cover; background: white; }
+    .cart-item strong { display: block; font: 500 20px Georgia, serif; }
+    .cart-meta { color: var(--muted); font-size: 11px; margin-top: 5px; }
+    .cart-controls { display: flex; align-items: center; gap: 8px; }
+    .qty-btn, .remove-btn { border: 1px solid #dfcfba; background: white; border-radius: 50%; width: 29px; height: 29px; cursor: pointer; }
+    .remove-btn { color: var(--wine); margin-left: 4px; }
+    .checkout { margin-top: 30px; padding-top: 25px; border-top: 2px solid var(--ink); }
+    .checkout h3 { font: 500 28px Georgia, serif; margin: 0 0 18px; }
+    .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .field { margin-bottom: 12px; }
+    .field label { display: block; margin: 0 0 6px; color: var(--muted); font-size: 11px; font-weight: 750; }
+    .field input, .field select, .field textarea { width: 100%; border: 1px solid #dbcbb7; border-radius: 13px; padding: 12px 13px; background: white; color: var(--ink); font: inherit; font-size: 13px; }
+    .field textarea { min-height: 76px; resize: vertical; }
+    .payment-placeholder { margin: 16px 0; padding: 16px; border-radius: 15px; background: var(--paper); border: 1px dashed #ccb89e; }
+    .payment-placeholder strong { display: block; font-size: 13px; }
+    .payment-placeholder span { color: var(--muted); font-size: 11px; }
+    .checkout-submit { width: 100%; border: 0; border-radius: 99px; padding: 16px; background: var(--wine); color: white; font-weight: 900; cursor: pointer; }
+    .order-result { display: none; margin-top: 14px; padding: 15px; border-radius: 14px; background: #e8f0df; color: #365024; font-size: 12px; }
+    .order-result.show { display: block; }
+    .order-summary { margin: 12px 0; padding: 13px; border-radius: 11px; background: white; color: var(--ink); font: 12px/1.55 Inter, sans-serif; white-space: pre-wrap; }
+    .copy-order { width: 100%; border: 1px solid #9eb086; border-radius: 99px; padding: 11px; background: transparent; color: #365024; font-weight: 850; cursor: pointer; }
+
+    .product-dialog { width: min(520px, calc(100% - 28px)); border: 0; border-radius: 28px; padding: 0; background: var(--cream); color: var(--ink); box-shadow: var(--shadow); }
+    .product-dialog::backdrop { background: rgba(23,7,6,.64); backdrop-filter: blur(4px); }
+    .dialog-inner { padding: 30px; }
+    .dialog-head { display: flex; justify-content: space-between; gap: 20px; align-items: start; }
+    .dialog-head h2 { font-size: 38px; }
+    .option-group { margin-top: 23px; }
+    .option-group h3 { margin: 0 0 11px; font-size: 12px; text-transform: uppercase; letter-spacing: .12em; }
+    .option-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .option-pill input { position: absolute; opacity: 0; }
+    .option-pill span { display: inline-block; padding: 10px 14px; border: 1px solid #dbcbb7; border-radius: 99px; background: white; font-size: 12px; cursor: pointer; }
+    .option-pill input:checked + span { background: var(--wine); border-color: var(--wine); color: white; }
+    .dialog-footer { display: flex; gap: 12px; align-items: center; margin-top: 27px; }
+    .dialog-footer input { width: 72px; padding: 13px; border: 1px solid #dbcbb7; border-radius: 13px; background: white; }
+    .dialog-footer .add-btn { flex: 1; padding: 15px; }
+
+    .story { background: var(--ink); color: white; position: relative; overflow: hidden; }
+    .story::before { content: "ASLAN"; position: absolute; top: -25px; right: -20px; color: rgba(255,255,255,.025); font-family: Georgia, serif; font-size: 230px; letter-spacing: -.06em; }
+    .story-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 80px; align-items: center; }
+    .story-art { position: relative; min-height: 560px; }
+    .story-art img { width: 82%; height: 520px; object-fit: cover; border-radius: 180px 180px 28px 28px; }
+    .seal { position: absolute; right: 0; bottom: 15px; width: 155px; height: 155px; border-radius: 50%; background: var(--gold); color: var(--ink); display: grid; place-items: center; text-align: center; padding: 25px; font-family: Georgia, serif; font-size: 20px; line-height: 1.08; transform: rotate(8deg); border: 7px solid var(--ink); outline: 1px solid var(--gold); }
+    .story h2 { font-size: clamp(52px, 6vw, 82px); letter-spacing: -.04em; margin: 20px 0 28px; }
+    .story p { color: rgba(255,255,255,.65); max-width: 570px; }
+    .features { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 35px; margin-top: 32px; }
+    .feature { display: flex; gap: 10px; align-items: center; font-size: 14px; font-weight: 700; }
+    .check { width: 25px; height: 25px; display: grid; place-items: center; border-radius: 50%; color: var(--gold); border: 1px solid rgba(217,154,57,.4); }
+
+    .order { background: var(--paper); }
+    .order-card { border-radius: 36px; overflow: hidden; display: grid; grid-template-columns: 1.2fr .8fr; background: var(--wine); color: white; box-shadow: var(--shadow); }
+    .order-copy { padding: 70px; position: relative; }
+    .order-copy h2 { font-size: clamp(48px, 6vw, 78px); letter-spacing: -.04em; margin: 18px 0 22px; }
+    .order-copy p { color: rgba(255,255,255,.7); max-width: 580px; }
+    .order-copy .btn { margin-top: 20px; background: var(--gold); color: var(--ink); }
+    .order-side { min-height: 440px; background:
+      linear-gradient(rgba(30,8,6,.08), rgba(30,8,6,.32)),
+      url("assets/kebab-plate.webp") center/cover; }
+
+    footer { background: #180b0a; color: white; padding: 70px 0 28px; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 70px; padding-bottom: 60px; }
+    .footer-brand p { color: rgba(255,255,255,.54); max-width: 390px; margin-top: 22px; }
+    footer h4 { font-size: 12px; text-transform: uppercase; color: var(--gold); letter-spacing: .18em; margin: 8px 0 20px; }
+    footer ul { list-style: none; padding: 0; margin: 0; color: rgba(255,255,255,.65); font-size: 14px; }
+    footer li { margin: 10px 0; }
+    .copyright { border-top: 1px solid rgba(255,255,255,.1); padding-top: 24px; display: flex; justify-content: space-between; gap: 20px; color: rgba(255,255,255,.38); font-size: 12px; }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 850px) {
+      header { top: 32px; }
+      .menu-toggle { display: block; }
+      .navlinks { display: none; position: absolute; top: 82px; left: 20px; right: 20px; padding: 24px; border-radius: 22px; background: rgba(36,17,15,.97); flex-direction: column; align-items: stretch; gap: 18px; box-shadow: var(--shadow); }
+      .navlinks.open { display: flex; }
+      .nav-cta { text-align: center; }
+      .cart-button { width: 100%; }
+      .hero { min-height: 760px; background-position: 64% center; }
+      .hero-content { padding-top: 100px; }
+      .quick-grid { grid-template-columns: 1fr; }
+      .quick-item + .quick-item { border-left: 0; border-top: 1px solid #eadfcf; }
+      .section-head, .story-grid, .order-card { grid-template-columns: 1fr; }
+      .section-head p { margin-left: 0; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .full-menu-layout { grid-template-columns: repeat(2, 1fr); }
+      .sauce-hero { grid-template-columns: 1fr; }
+      .vegetarian-grid { grid-template-columns: 1fr; }
+      .durum-feature { min-height: 540px; }
+      .sauce-grid { grid-template-columns: 1fr 1fr; }
+      .topping-grid { grid-template-columns: repeat(3, 1fr); }
+      .pizza-grid { grid-template-columns: 1fr 1fr; }
+      .dish:nth-child(2) { transform: none; }
+      .dish { min-height: 430px; }
+      .story-grid { gap: 55px; }
+      .story-art { min-height: 480px; }
+      .story-art img { height: 450px; }
+      .order-side { min-height: 320px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+      .floating-phone { width: 56px; height: 56px; right: 14px; bottom: 14px; justify-content: center; padding: 0; font-size: 0; }
+      .floating-phone b { font-size: 22px; }
+    }
+    @media (max-width: 560px) {
+      .container { width: min(100% - 28px, 1180px); }
+      .topbar { font-size: 9px; letter-spacing: .12em; }
+      nav { height: 78px; }
+      .logo-mark { width: 42px; height: 42px; }
+      .hero-brand { width: 175px; }
+      h1 { font-size: 61px; }
+      .hero-copy { font-size: 16px; }
+      .hero-actions .btn { width: 100%; }
+      .hero-note { gap: 13px; }
+      .quick-info { margin-top: -25px; }
+      .quick-item { padding: 22px; }
+      section { padding: 85px 0; }
+      .section-head { margin-bottom: 35px; }
+      .dish { min-height: 390px; }
+      .story-art { min-height: 410px; }
+      .story-art img { height: 390px; width: 90%; }
+      .seal { width: 125px; height: 125px; font-size: 16px; }
+      .features { grid-template-columns: 1fr; }
+      .sauce-grid, .seasonings { grid-template-columns: 1fr; }
+      .full-menu-layout { grid-template-columns: 1fr; }
+      .topping-grid { grid-template-columns: 1fr 1fr; }
+      .pizza-grid { grid-template-columns: 1fr; }
+      .durum-feature { min-height: 450px; }
+      .durum-feature-copy { left: 24px; right: 24px; bottom: 24px; }
+      .menu-list { padding: 10px 24px; }
+      .vegetarian-card { grid-template-columns: 1fr; }
+      .vegetarian-card img { aspect-ratio: 3 / 2; }
+      .meat-choice { grid-template-columns: 1fr; }
+      .phone-order-box { align-items: stretch; flex-direction: column; }
+      .phone-order-box .btn { width: 100%; }
+      .floating-phone { right: 14px; bottom: 14px; }
+      .cart-item { grid-template-columns: 1fr; }
+      .cart-controls { margin-left: 81px; }
+      .field-grid { grid-template-columns: 1fr; }
+      .order-copy { padding: 45px 28px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 35px; }
+      .footer-brand { grid-column: auto; }
+      .copyright { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">Täglich frisch zubereitet · 100 % Geschmack · Direkt vom Grill</div>
+  <header>
+    <div class="container">
+      <nav aria-label="Hauptnavigation">
+        <a class="logo" href="#start" aria-label="Aslan Kebab Startseite">
+          <span class="logo-mark"><img src="assets/aslan-avatar.webp" alt=""></span>
+          <span>ASLAN KEBAB<small>GRILL &amp; GENUSS</small></span>
+        </a>
+        <button class="menu-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+        <div class="navlinks">
+          <a href="#speisekarte">Speisekarte</a>
+          <a href="#pizza">Pizza</a>
+          <a href="#saucen">Saucen</a>
+          <a href="#story">Unser Anspruch</a>
+          <a href="#kontakt">Kontakt</a>
+          <a href="#bestellen" class="nav-cta">Jetzt bestellen</a>
+          <button class="cart-button" id="cartOpen" type="button">Warenkorb <span class="cart-count" id="cartCount">0</span></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="start">
+      <div class="container">
+        <div class="hero-content">
+          <img class="hero-brand" src="assets/aslan-brand.webp" alt="Aslan Kebab Logo mit orangefarbenem Löwen">
+          <div class="eyebrow">Kebab neu gedacht</div>
+          <h1>Feuer.<em>Frische.</em>Geschmack.</h1>
+          <p class="hero-copy">Saftiges Fleisch vom Grill, knackiges Gemüse und hausgemachte Saucen – jeden Tag frisch, ehrlich und mit Leidenschaft zubereitet.</p>
+          <div class="hero-actions">
+            <a href="#speisekarte" class="btn btn-primary">Speisekarte entdecken <span>→</span></a>
+            <a href="#kontakt" class="btn btn-secondary">Standort &amp; Öffnungszeiten</a>
+          </div>
+          <div class="hero-note">
+            <div class="rating">★★★★★</div>
+            <div><strong>Frisch vom Grill</strong>Dein Lieblingskebab wartet.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="quick-info">
+      <div class="container quick-grid">
+        <div class="quick-item"><div class="icon">◷</div><div><span>Öffnungszeiten</span><strong>Täglich · 11:00–23:00 Uhr</strong></div></div>
+        <div class="quick-item"><div class="icon">⌖</div><div><span>Vor Ort genießen</span><strong>Zentral · schnell erreichbar</strong></div></div>
+        <div class="quick-item"><div class="icon">✦</div><div><span>Unser Versprechen</span><strong>Frisch · herzhaft · hausgemacht</strong></div></div>
+      </div>
+    </div>
+
+    <section id="highlights">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="eyebrow accent">Unsere Favoriten</div><h2>Einfach gut.<br>Einfach <span class="accent">Aslan.</span></h2></div>
+          <p>Unsere Klassiker verbinden kräftige Röstaromen mit frischen Zutaten. Wähle deinen Favoriten – klassisch im Brot, als Dürüm oder als Bowl.</p>
+        </div>
+        <div class="menu-grid">
+          <article class="dish reveal">
+            <img src="assets/kebab-bread.webp" alt="Frisch zubereiteter Kebab" loading="lazy">
+            <span class="price">Preis folgt</span>
+            <div class="dish-copy"><span class="dish-tag">Der Klassiker</span><h3><span class="dish-code">Nr. 01</span>Aslan Kebab</h3><p>Grillfleisch, knackiger Salat, Tomate, Zwiebel und Sauce nach Wahl.</p></div>
+          </article>
+          <article class="dish reveal">
+            <img src="assets/durum-kebab-light.webp" alt="Frisch gegrillter Signature Dürüm auf heller Keramikteller" loading="lazy">
+            <span class="price">Preis folgt</span>
+            <div class="dish-copy"><span class="dish-tag">Gerollter Genuss</span><h3><span class="dish-code">Nr. 02</span>Signature Dürüm</h3><p>Dünnes Fladenbrot, saftige Füllung und unsere würzige Haussauce.</p></div>
+          </article>
+          <article class="dish reveal">
+            <img src="assets/aslan-bowl.webp" alt="Frische Kebab Bowl" loading="lazy">
+            <span class="price">Preis folgt</span>
+            <div class="dish-copy"><span class="dish-tag">Frisch &amp; leicht</span><h3><span class="dish-code">Nr. 06</span>Aslan Bowl</h3><p>Salat, Grillgemüse, Fleisch oder Falafel und cremiges Dressing.</p></div>
+          </article>
+        </div>
+        <div class="menu-foot reveal">Auch vegetarisch erhältlich · Allergene bitte vor Ort erfragen<br><a class="btn" href="#speisekarte">Komplette Speisekarte ansehen</a></div>
+      </div>
+    </section>
+
+    <section class="full-menu" id="speisekarte">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="eyebrow accent">Unsere Speisekarte</div><h2>Was darf es<br><span class="accent">heute sein?</span></h2></div>
+          <p>Das vollständige Angebot steht hier übersichtlich bereit. Namen, Zutaten und endgültige Preise ergänzen wir gemeinsam, sobald die Angaben feststehen.</p>
+        </div>
+        <div class="full-menu-layout">
+          <article class="product-card reveal"><img src="assets/kebab-bread.webp" alt="Kebab im gerösteten Brot mit Fleisch, Salat und Sauce" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 01</span><h3>Kebab im Brot</h3><p>Wahlweise mit Hähnchen oder Rind und frischen Zutaten.</p><div class="product-card-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Kebab im Brot" data-number="01" data-kind="meat">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/durum-kebab-light.webp" alt="Signature Dürüm mit gegrilltem Fleisch und frischem Gemüse" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 02</span><h3>Signature Dürüm</h3><p>Frisch gerollt, herzhaft gefüllt, wahlweise mit Hähnchen oder Rind.</p><div class="product-card-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Signature Dürüm" data-number="02" data-kind="meat">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/kebab-plate.webp" alt="Kebab-Teller mit Fleisch, Pommes, Salat und Sauce" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 03</span><h3>Kebab-Teller</h3><p>Gegrilltes Fleisch mit Pommes, knackigem Salat und Sauce.</p><div class="product-card-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Kebab-Teller" data-number="03" data-kind="meat">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/vegetarian-kebab.webp" alt="Vegetarischer Kebab mit Falafel, Gemüse und Salat" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 04</span><h3>Vegetarischer Kebab</h3><p>Mit Falafel, Grillgemüse, frischem Salat und Kräutern.</p><div class="product-card-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Vegetarischer Kebab" data-number="04" data-kind="veg">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/vegetarian-durum.webp" alt="Vegetarischer Dürüm mit Falafel, Gemüse und Kräutern" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 05</span><h3>Vegetarischer Dürüm</h3><p>Frisch gerollt mit Falafel, Grillgemüse und frischen Kräutern.</p><div class="product-card-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Vegetarischer Dürüm" data-number="05" data-kind="veg">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/aslan-bowl.webp" alt="Aslan Bowl mit Fleisch, Reis, Salat und Gemüse" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 06</span><h3>Aslan Bowl</h3><p>Mit Hähnchen, Rind oder Falafel, Reis und knackigem Gemüse.</p><div class="product-card-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Aslan Bowl" data-number="06" data-kind="meat">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/side-dishes.webp" alt="Goldene Pommes und frischer gemischter Salat als Beilage" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 07</span><h3>Beilagen</h3><p>Pommes, frischer Salat und weitere Beilagen nach Wahl.</p><div class="product-card-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Beilage" data-number="07" data-kind="simple">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/drinks.webp" alt="Wasser, Cola und Ayran auf einem hellen Tablett" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 08</span><h3>Getränke</h3><p>Erfrischende Getränke; das genaue Angebot wird noch ergänzt.</p><div class="product-card-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Getränk" data-number="08" data-kind="simple">Auswählen</button></div></div></article>
+        </div>
+        <div class="meat-choice reveal">
+          <div class="meat-choice-icon">✦</div>
+          <div><h3>Zwei Fleischsorten zur Wahl</h3><p>Unsere Kebab- und Dürüm-Gerichte sind wahlweise mit saftigem Hähnchenfleisch oder herzhaftem Rindfleisch erhältlich.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pizza-menu" id="pizza">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="eyebrow">Frisch aus dem Ofen</div><h2>Unsere<br><span style="color:var(--gold)">Pizza.</span></h2></div>
+          <p>Knuspriger Boden, aromatische Tomatensauce und sorgfältig ausgewählte Zutaten. Jede Pizza kann direkt in den Warenkorb gelegt werden.</p>
+        </div>
+        <div class="pizza-grid">
+          <article class="pizza-card reveal"><img src="assets/pizza-margherita.webp" alt="Pizza Margherita mit Tomatensauce, Mozzarella und Basilikum" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 09</span><h3>Pizza Margherita</h3><p>Tomatensauce, Mozzarella und frisches Basilikum.</p><div class="pizza-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Pizza Margherita" data-number="09" data-kind="pizza">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-salami.webp" alt="Pizza Salami mit Tomatensauce und Mozzarella" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 10</span><h3>Pizza Salami</h3><p>Tomatensauce, Mozzarella und Rindersalami.</p><div class="pizza-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Pizza Salami" data-number="10" data-kind="pizza">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-funghi.webp" alt="Pizza Funghi mit frischen Champignons" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 11</span><h3>Pizza Funghi</h3><p>Tomatensauce, Mozzarella und frische Champignons.</p><div class="pizza-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Pizza Funghi" data-number="11" data-kind="pizza">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-tonno.webp" alt="Pizza Tonno mit Thunfisch und roten Zwiebeln" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 12</span><h3>Pizza Tonno</h3><p>Tomatensauce, Mozzarella, Thunfisch und rote Zwiebeln.</p><div class="pizza-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Pizza Tonno" data-number="12" data-kind="pizza">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-sucuk.webp" alt="Pizza Sucuk mit würziger türkischer Wurst" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 13</span><h3>Pizza Sucuk</h3><p>Tomatensauce, Mozzarella und würzige Sucuk.</p><div class="pizza-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Pizza Sucuk" data-number="13" data-kind="pizza">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-kebab.webp" alt="Pizza Kebab mit gegrilltem Fleisch und roten Zwiebeln" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 14</span><h3>Pizza Kebab</h3><p>Tomatensauce, Mozzarella, Kebabfleisch und rote Zwiebeln.</p><div class="pizza-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Pizza Kebab" data-number="14" data-kind="pizza-meat">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-vegetaria.webp" alt="Pizza Vegetaria mit Gemüse, Pilzen und Oliven" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 15</span><h3>Pizza Vegetaria</h3><p>Tomatensauce, Mozzarella, Gemüse, Pilze und Oliven.</p><div class="pizza-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Pizza Vegetaria" data-number="15" data-kind="pizza">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-quattro-formaggi.webp" alt="Pizza Quattro Formaggi mit vier Käsesorten" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 16</span><h3>Quattro Formaggi</h3><p>Eine cremige Kombination aus vier Käsesorten.</p><div class="pizza-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Pizza Quattro Formaggi" data-number="16" data-kind="pizza">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-pepperoni.webp" alt="Pizza Pepperoni mit Tomatensauce, Mozzarella und Chili" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 17</span><h3>Pizza Pepperoni</h3><p>Tomatensauce, Mozzarella, würzige Pepperoni und Chili.</p><div class="pizza-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Pizza Pepperoni" data-number="17" data-kind="pizza">Auswählen</button></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="toppings" id="zutaten">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="eyebrow accent">Frische Zutaten</div><h2>Du entscheidest,<br>was <span class="accent">hineinkommt.</span></h2></div>
+          <p>Alle frischen Zutaten können beim Kebab und Dürüm einzeln ausgewählt oder abgewählt werden.</p>
+        </div>
+        <div class="topping-grid">
+          <article class="topping-card reveal"><img src="assets/topping-cucumber.webp" alt="Gurke in langen dünnen Streifen" loading="lazy"><div class="topping-copy"><span>Frisch</span><h3>Gurkenstreifen</h3><p>Lang und dünn geschnitten.</p></div></article>
+          <article class="topping-card reveal"><img src="assets/topping-tomato.webp" alt="Tomaten in runden Scheiben" loading="lazy"><div class="topping-copy"><span>Saftig</span><h3>Tomatenscheiben</h3><p>Rund und frisch geschnitten.</p></div></article>
+          <article class="topping-card reveal"><img src="assets/topping-onion.webp" alt="Fein geschnittene Zwiebelringe" loading="lazy"><div class="topping-copy"><span>Knackig</span><h3>Zwiebelringe</h3><p>Fein und aromatisch.</p></div></article>
+          <article class="topping-card reveal"><img src="assets/topping-iceberg.webp" alt="Fein geschnittener Eisbergsalat" loading="lazy"><div class="topping-copy"><span>Knackig</span><h3>Eisbergsalat</h3><p>Fein geschnitten.</p></div></article>
+          <article class="topping-card reveal"><img src="assets/topping-red-cabbage.webp" alt="Fein geschnittener Rotkohl" loading="lazy"><div class="topping-copy"><span>Frisch</span><h3>Rotkohl</h3><p>Fein und knackig.</p></div></article>
+          <article class="topping-card reveal"><img src="assets/topping-parsley.webp" alt="Frisch gehackte Petersilie" loading="lazy"><div class="topping-copy"><span>Kräuter</span><h3>Petersilie</h3><p>Frisch und aromatisch.</p></div></article>
+          <article class="topping-card reveal"><img src="assets/topping-dill.webp" alt="Frisch gehackter Dill" loading="lazy"><div class="topping-copy"><span>Kräuter</span><h3>Dill</h3><p>Fein und duftend.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="story" id="story">
+      <div class="container story-grid">
+        <div class="story-art reveal">
+          <img src="assets/story-kebab.webp" alt="Appetitliches gegrilltes Hähnchen- und Rindfleisch mit frischem Gemüse" loading="lazy">
+          <div class="seal">Mit Herz<br>&amp; Feuer</div>
+        </div>
+        <div class="reveal">
+          <div class="eyebrow">Unser Anspruch</div>
+          <h2>Geschmack beginnt bei den Zutaten.</h2>
+          <p>Bei Aslan Kebab geht es nicht um irgendeinen schnellen Imbiss. Es geht um ehrliches Essen: gutes Fleisch, frisches Gemüse, aromatische Gewürze und Saucen, die wir selbst abstimmen.</p>
+          <p>Vom ersten Schnitt bis zum letzten Bissen achten wir auf Qualität – damit du den Unterschied schmeckst.</p>
+          <div class="features">
+            <div class="feature"><span class="check">✓</span> Täglich frisch</div>
+            <div class="feature"><span class="check">✓</span> Direkt vom Grill</div>
+            <div class="feature"><span class="check">✓</span> Hausgemachte Saucen</div>
+            <div class="feature"><span class="check">✓</span> Vegetarische Auswahl</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sauces" id="saucen">
+      <div class="container">
+        <div class="sauce-hero reveal">
+          <img src="assets/six-sauces.webp" alt="Sechs verschiedene hausgemachte Saucen in kleinen Schalen" loading="lazy">
+          <div><div class="eyebrow accent">Sechs besondere Saucen</div><h2>Dein Geschmack.<br>Deine <span class="accent">Wahl.</span></h2><p>Von mild und cremig bis kräftig und würzig. Die endgültigen Namen und Rezeptbeschreibungen ergänzen wir später.</p></div>
+        </div>
+        <div class="sauce-grid">
+          <article class="sauce-card reveal"><img src="assets/sauce-1.webp" alt="Cremige orange Sauce 1 in einer hellen Keramikschale" loading="lazy"><div class="sauce-card-body"><span class="sauce-number">S1</span><h3>Sauce 1</h3><p class="placeholder-copy">Beschreibung folgt.<br>Geschmack wird ergänzt.<br>Schärfegrad wird ergänzt.</p><button class="add-btn" type="button" data-product="Sauce 1" data-number="S1" data-kind="sauce">Auswählen</button></div></article>
+          <article class="sauce-card reveal"><img src="assets/sauce-2.webp" alt="Dunkelorange würzige Sauce 2 in einer hellen Keramikschale" loading="lazy"><div class="sauce-card-body"><span class="sauce-number">S2</span><h3>Sauce 2</h3><p class="placeholder-copy">Beschreibung folgt.<br>Geschmack wird ergänzt.<br>Schärfegrad wird ergänzt.</p><button class="add-btn" type="button" data-product="Sauce 2" data-number="S2" data-kind="sauce">Auswählen</button></div></article>
+          <article class="sauce-card reveal"><img src="assets/sauce-3.webp" alt="Weiße cremige Sauce 3 in einer hellen Keramikschale" loading="lazy"><div class="sauce-card-body"><span class="sauce-number">S3</span><h3>Sauce 3</h3><p class="placeholder-copy">Beschreibung folgt.<br>Geschmack wird ergänzt.<br>Schärfegrad wird ergänzt.</p><button class="add-btn" type="button" data-product="Sauce 3" data-number="S3" data-kind="sauce">Auswählen</button></div></article>
+          <article class="sauce-card reveal"><img src="assets/sauce-4.webp" alt="Hellgrüne Kräutersauce 4 in einer hellen Keramikschale" loading="lazy"><div class="sauce-card-body"><span class="sauce-number">S4</span><h3>Sauce 4</h3><p class="placeholder-copy">Beschreibung folgt.<br>Geschmack wird ergänzt.<br>Schärfegrad wird ergänzt.</p><button class="add-btn" type="button" data-product="Sauce 4" data-number="S4" data-kind="sauce">Auswählen</button></div></article>
+          <article class="sauce-card reveal"><img src="assets/sauce-5.webp" alt="Kräftige rote Sauce 5 in einer hellen Keramikschale" loading="lazy"><div class="sauce-card-body"><span class="sauce-number">S5</span><h3>Sauce 5</h3><p class="placeholder-copy">Beschreibung folgt.<br>Geschmack wird ergänzt.<br>Schärfegrad wird ergänzt.</p><button class="add-btn" type="button" data-product="Sauce 5" data-number="S5" data-kind="sauce">Auswählen</button></div></article>
+          <article class="sauce-card reveal"><img src="assets/sauce-6.webp" alt="Dunkelrote Sauce 6 in einer hellen Keramikschale" loading="lazy"><div class="sauce-card-body"><span class="sauce-number">S6</span><h3>Sauce 6</h3><p class="placeholder-copy">Beschreibung folgt.<br>Geschmack wird ergänzt.<br>Schärfegrad wird ergänzt.</p><button class="add-btn" type="button" data-product="Sauce 6" data-number="S6" data-kind="sauce">Auswählen</button></div></article>
+        </div>
+        <div class="seasonings">
+          <article class="seasoning-card reveal"><img src="assets/red-seasoning.webp" alt="Bordeauxrote, trockene Gewürzmischung" loading="lazy"><div class="seasoning-copy"><h3>Rote Gewürzmischung</h3><p class="placeholder-copy">Beschreibung folgt.<br>Zutaten werden ergänzt.<br>Geschmacksprofil wird ergänzt.</p></div></article>
+          <article class="seasoning-card reveal"><img src="assets/green-seasoning.webp" alt="Grüne Kräuter-Gewürzmischung" loading="lazy"><div class="seasoning-copy"><h3>Grüne Kräutermischung</h3><p class="placeholder-copy">Beschreibung folgt.<br>Zutaten werden ergänzt.<br>Geschmacksprofil wird ergänzt.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="order" id="bestellen">
+      <div class="container">
+        <div class="order-card reveal">
+          <div class="order-copy">
+            <div class="eyebrow">Hungrig geworden?</div>
+            <h2>Heute ist ein guter Tag für Kebab.</h2>
+            <p>Bestelle direkt bei uns oder komm vorbei. Schnell zubereitet, heiß serviert und genau so, wie du ihn liebst.</p>
+            <div class="phone-order-box" id="telefon-bestellen">
+              <div><strong>Direkt telefonisch bestellen</strong><span>Die Bestellnummer wird hier ergänzt.</span></div>
+              <a href="#kontakt" class="btn">☎ Nummer folgt</a>
+            </div>
+          </div>
+          <div class="order-side" role="img" aria-label="Gemeinsames Essen bei Aslan Kebab"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="kontakt">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo"><span class="logo-mark"><img src="assets/aslan-avatar.webp" alt=""></span><span>ASLAN KEBAB<small>GRILL &amp; GENUSS</small></span></div>
+          <p>Frisch gegrillt, ehrlich gewürzt und mit Liebe serviert. Dein Kebab-Moment – mitten in der Stadt.</p>
+        </div>
+        <div><h4>Besuche uns</h4><ul><li>Adresse wird ergänzt</li><li>Telefon wird ergänzt</li><li>E-Mail wird ergänzt</li></ul></div>
+        <div><h4>Öffnungszeiten</h4><ul><li>Montag–Donnerstag: 11–23 Uhr</li><li>Freitag–Samstag: 11–24 Uhr</li><li>Sonntag: 12–22 Uhr</li></ul></div>
+      </div>
+      <div class="copyright"><span>© <span id="year"></span> Aslan Kebab. Alle Rechte vorbehalten.</span><span>Impressum · Datenschutz</span></div>
+    </div>
+  </footer>
+
+  <a class="floating-phone" href="#telefon-bestellen" aria-label="Telefonisch bestellen"><b>☎</b> Telefonisch bestellen</a>
+
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Warenkorb" aria-hidden="true">
+    <div class="cart-head"><h2>Warenkorb</h2><button class="close-btn" id="cartClose" type="button" aria-label="Warenkorb schließen">×</button></div>
+    <div class="cart-empty" id="cartEmpty">Dein Warenkorb ist noch leer.</div>
+    <div id="cartItems"></div>
+    <form class="checkout" id="checkoutForm">
+      <h3>Bestellung aufgeben</h3>
+      <div class="field-grid">
+        <div class="field"><label for="customerName">Name</label><input id="customerName" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="customerPhone">Telefonnummer</label><input id="customerPhone" name="phone" type="tel" autocomplete="tel" required></div>
+      </div>
+      <div class="field-grid">
+        <div class="field"><label for="pickupType">Bestellart</label><select id="pickupType" name="type"><option>Abholung</option><option disabled>Lieferung – später verfügbar</option></select></div>
+        <div class="field"><label for="pickupTime">Gewünschte Uhrzeit</label><input id="pickupTime" name="time" type="time"></div>
+      </div>
+      <div class="field"><label for="orderNote">Hinweis zur Bestellung</label><textarea id="orderNote" name="note" placeholder="Zum Beispiel: ohne Zwiebeln"></textarea></div>
+      <div class="payment-placeholder"><strong>✓ Zahlung bei Abholung</strong><span>Online-Zahlung per Karte, Apple Pay oder PayPal wird später angeschlossen.</span></div>
+      <div class="payment-placeholder"><strong>Gesamtsumme: Preise werden ergänzt</strong><span>Die automatische Berechnung wird aktiv, sobald die endgültigen Preise eingetragen sind.</span></div>
+      <button class="checkout-submit" type="submit">Bestellübersicht erstellen</button>
+      <div class="order-result" id="orderResult"></div>
+    </form>
+  </aside>
+
+  <dialog class="product-dialog" id="productDialog">
+    <form class="dialog-inner" id="productForm">
+      <div class="dialog-head"><div><div class="eyebrow accent">Zusammenstellen</div><h2 id="dialogProductName">Gericht</h2></div><button class="close-btn" id="dialogClose" type="button" aria-label="Fenster schließen">×</button></div>
+      <div class="option-group" id="meatOptions">
+        <h3>Fleisch wählen</h3>
+        <div class="option-list">
+          <label class="option-pill"><input type="radio" name="meat" value="Hähnchen" checked><span>Hähnchen</span></label>
+          <label class="option-pill"><input type="radio" name="meat" value="Rind"><span>Rind</span></label>
+        </div>
+      </div>
+      <div class="option-group" id="sauceOptions">
+        <h3>Saucen wählen</h3>
+        <div class="option-list">
+          <label class="option-pill"><input type="checkbox" name="sauce" value="S1 · Sauce 1"><span>S1 · Sauce 1</span></label>
+          <label class="option-pill"><input type="checkbox" name="sauce" value="S2 · Sauce 2"><span>S2 · Sauce 2</span></label>
+          <label class="option-pill"><input type="checkbox" name="sauce" value="S3 · Sauce 3"><span>S3 · Sauce 3</span></label>
+          <label class="option-pill"><input type="checkbox" name="sauce" value="S4 · Sauce 4"><span>S4 · Sauce 4</span></label>
+          <label class="option-pill"><input type="checkbox" name="sauce" value="S5 · Sauce 5"><span>S5 · Sauce 5</span></label>
+          <label class="option-pill"><input type="checkbox" name="sauce" value="S6 · Sauce 6"><span>S6 · Sauce 6</span></label>
+        </div>
+      </div>
+      <div class="option-group" id="ingredientOptions">
+        <h3>Frische Zutaten</h3>
+        <div class="option-list">
+          <label class="option-pill"><input type="checkbox" name="ingredient" value="Gurkenstreifen" checked><span>Gurke</span></label>
+          <label class="option-pill"><input type="checkbox" name="ingredient" value="Tomatenscheiben" checked><span>Tomate</span></label>
+          <label class="option-pill"><input type="checkbox" name="ingredient" value="Zwiebelringe" checked><span>Zwiebel</span></label>
+          <label class="option-pill"><input type="checkbox" name="ingredient" value="Eisbergsalat" checked><span>Eisbergsalat</span></label>
+          <label class="option-pill"><input type="checkbox" name="ingredient" value="Rotkohl" checked><span>Rotkohl</span></label>
+          <label class="option-pill"><input type="checkbox" name="ingredient" value="Petersilie" checked><span>Petersilie</span></label>
+          <label class="option-pill"><input type="checkbox" name="ingredient" value="Dill" checked><span>Dill</span></label>
+        </div>
+      </div>
+      <div class="dialog-footer"><input id="productQuantity" type="number" min="1" max="20" value="1" aria-label="Anzahl"><button class="add-btn" type="submit">In den Warenkorb</button></div>
+    </form>
+  </dialog>
+
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.navlinks');
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      toggle.textContent = isOpen ? '×' : '☰';
+    });
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = '☰';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const cartDrawer = document.getElementById('cartDrawer');
+    const cartOverlay = document.getElementById('cartOverlay');
+    const cartItems = document.getElementById('cartItems');
+    const cartEmpty = document.getElementById('cartEmpty');
+    const cartCount = document.getElementById('cartCount');
+    const productDialog = document.getElementById('productDialog');
+    const productForm = document.getElementById('productForm');
+    const meatOptions = document.getElementById('meatOptions');
+    const sauceOptions = document.getElementById('sauceOptions');
+    const ingredientOptions = document.getElementById('ingredientOptions');
+    let activeProduct = null;
+    let cart = [];
+    const productCodes = {
+      'Kebab im Brot': '01', 'Signature Dürüm': '02', 'Kebab-Teller': '03',
+      'Vegetarischer Kebab': '04', 'Vegetarischer Dürüm': '05', 'Aslan Bowl': '06',
+      'Beilage': '07', 'Getränk': '08',
+      'Pizza Margherita': '09', 'Pizza Salami': '10', 'Pizza Funghi': '11',
+      'Pizza Tonno': '12', 'Pizza Sucuk': '13', 'Pizza Kebab': '14',
+      'Pizza Vegetaria': '15', 'Pizza Quattro Formaggi': '16', 'Pizza Pepperoni': '17',
+      'Sauce 1': 'S1', 'Sauce 2': 'S2', 'Sauce 3': 'S3',
+      'Sauce 4': 'S4', 'Sauce 5': 'S5', 'Sauce 6': 'S6'
+    };
+    try {
+      const savedCart = JSON.parse(localStorage.getItem('aslanKebabCart') || '[]');
+      cart = Array.isArray(savedCart) ? savedCart.map(item => {
+        const code = productCodes[item.name];
+        return code ? { ...item, name: `${code.startsWith('S') ? code : `Nr. ${code}`} · ${item.name}` } : item;
+      }) : [];
+    } catch (_) { cart = []; }
+
+    function saveCart() {
+      localStorage.setItem('aslanKebabCart', JSON.stringify(cart));
+      renderCart();
+    }
+    function openCart() {
+      cartDrawer.classList.add('open');
+      cartOverlay.classList.add('open');
+      cartDrawer.setAttribute('aria-hidden', 'false');
+    }
+    function closeCart() {
+      cartDrawer.classList.remove('open');
+      cartOverlay.classList.remove('open');
+      cartDrawer.setAttribute('aria-hidden', 'true');
+    }
+    function makeButton(label, className, handler) {
+      const button = document.createElement('button');
+      button.type = 'button'; button.className = className; button.textContent = label;
+      button.addEventListener('click', handler); return button;
+    }
+    function renderCart() {
+      cartItems.replaceChildren();
+      const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      cartCount.textContent = totalCount;
+      cartEmpty.style.display = cart.length ? 'none' : 'block';
+      cart.forEach((item, index) => {
+        const row = document.createElement('article'); row.className = 'cart-item';
+        const product = document.createElement('div'); product.className = 'cart-product';
+        const info = document.createElement('div');
+        const title = document.createElement('strong'); title.textContent = item.name;
+        const meta = document.createElement('div'); meta.className = 'cart-meta';
+        const details = [];
+        if (item.meat) details.push(item.meat);
+        if (Array.isArray(item.sauces) && item.sauces.length) details.push(item.sauces.join(', '));
+        if (Array.isArray(item.ingredients) && item.ingredients.length) details.push(item.ingredients.join(', '));
+        meta.textContent = details.length ? details.join(' · ') : 'Standardauswahl';
+        info.append(title, meta);
+        const code = item.name.match(/(?:Nr\.\s*)?(\d{2}|S\d)/)?.[1];
+        const sourceButton = code ? document.querySelector(`[data-number="${code}"]`) : null;
+        const sourceImage = sourceButton?.closest('article')?.querySelector('img');
+        if (sourceImage) {
+          const thumb = document.createElement('img');
+          thumb.className = 'cart-thumb'; thumb.src = sourceImage.src; thumb.alt = '';
+          product.append(thumb, info);
+        } else product.append(info);
+        const controls = document.createElement('div'); controls.className = 'cart-controls';
+        controls.append(
+          makeButton('−', 'qty-btn', () => { item.qty > 1 ? item.qty-- : cart.splice(index, 1); saveCart(); }),
+          Object.assign(document.createElement('span'), { textContent: item.qty }),
+          makeButton('+', 'qty-btn', () => { item.qty++; saveCart(); }),
+          makeButton('×', 'remove-btn', () => { cart.splice(index, 1); saveCart(); })
+        );
+        row.append(product, controls); cartItems.append(row);
+      });
+    }
+
+    document.getElementById('cartOpen').addEventListener('click', openCart);
+    document.getElementById('cartClose').addEventListener('click', closeCart);
+    cartOverlay.addEventListener('click', closeCart);
+    document.getElementById('dialogClose').addEventListener('click', () => productDialog.close());
+
+    document.querySelectorAll('[data-product]').forEach(button => button.addEventListener('click', () => {
+      activeProduct = { name: button.dataset.product, number: button.dataset.number || '', kind: button.dataset.kind };
+      if (activeProduct.kind === 'sauce') {
+        cart.push({ id: Date.now() + Math.random(), name: `${activeProduct.number} · ${activeProduct.name}`, meat: '', sauces: [], ingredients: [], qty: 1 });
+        saveCart(); openCart(); return;
+      }
+      productForm.reset();
+      document.getElementById('productQuantity').value = 1;
+      document.getElementById('dialogProductName').textContent = `Nr. ${activeProduct.number} · ${activeProduct.name}`;
+      const hasMeat = activeProduct.kind === 'meat' || activeProduct.kind === 'pizza-meat';
+      const hasSauces = activeProduct.kind === 'meat' || activeProduct.kind === 'veg';
+      const hasIngredients = activeProduct.kind === 'meat' || activeProduct.kind === 'veg';
+      meatOptions.hidden = !hasMeat;
+      sauceOptions.hidden = !hasSauces;
+      ingredientOptions.hidden = !hasIngredients;
+      meatOptions.querySelectorAll('input').forEach(input => input.disabled = !hasMeat);
+      sauceOptions.querySelectorAll('input').forEach(input => input.disabled = !hasSauces);
+      ingredientOptions.querySelectorAll('input').forEach(input => input.disabled = !hasIngredients);
+      productDialog.showModal();
+    }));
+
+    productForm.addEventListener('submit', event => {
+      event.preventDefault();
+      if (!activeProduct) return;
+      const data = new FormData(productForm);
+      cart.push({
+        id: Date.now() + Math.random(),
+        name: `Nr. ${activeProduct.number} · ${activeProduct.name}`,
+        meat: (activeProduct.kind === 'meat' || activeProduct.kind === 'pizza-meat') ? String(data.get('meat') || '') : '',
+        sauces: data.getAll('sauce').map(String),
+        ingredients: data.getAll('ingredient').map(String),
+        qty: Math.max(1, Number(document.getElementById('productQuantity').value) || 1)
+      });
+      saveCart(); productDialog.close(); openCart();
+    });
+
+    const buildOrderSummary = () => {
+      const name = document.getElementById('customerName').value.trim();
+      const phone = document.getElementById('customerPhone').value.trim();
+      const type = document.getElementById('pickupType').value;
+      const time = document.getElementById('pickupTime').value;
+      const note = document.getElementById('orderNote').value.trim();
+      const lines = ['BESTELLUNG · ASLAN KEBAB', '', `Name: ${name}`, `Telefon: ${phone}`, `Bestellart: ${type}`, `Uhrzeit: ${time || 'so bald wie möglich'}`, '', 'Produkte:'];
+      cart.forEach((item, index) => {
+        lines.push(`${index + 1}. ${item.qty}× ${item.name}`);
+        if (item.meat) lines.push(`   Fleisch: ${item.meat}`);
+        if (item.sauces.length) lines.push(`   Saucen: ${item.sauces.join(', ')}`);
+        if (item.ingredients.length) lines.push(`   Zutaten: ${item.ingredients.join(', ')}`);
+      });
+      if (note) lines.push('', `Hinweis: ${note}`);
+      lines.push('', 'Gesamtsumme: wird nach Eintragung der Preise angezeigt');
+      return lines.join('\n');
+    };
+
+    const copyText = async text => {
+      if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+      const area = document.createElement('textarea');
+      area.value = text; area.style.position = 'fixed'; area.style.opacity = '0';
+      document.body.append(area); area.select(); document.execCommand('copy'); area.remove();
+    };
+
+    document.getElementById('checkoutForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const result = document.getElementById('orderResult');
+      if (!cart.length) {
+        result.textContent = 'Bitte zuerst mindestens ein Produkt in den Warenkorb legen.';
+        result.classList.add('show'); return;
+      }
+      const summary = buildOrderSummary();
+      result.replaceChildren();
+      const intro = document.createElement('strong');
+      intro.textContent = 'Deine Bestellung ist vorbereitet.';
+      const preview = document.createElement('div');
+      preview.className = 'order-summary'; preview.textContent = summary;
+      const copyButton = document.createElement('button');
+      copyButton.type = 'button'; copyButton.className = 'copy-order'; copyButton.textContent = 'Bestellung kopieren';
+      copyButton.addEventListener('click', async () => {
+        try { await copyText(summary); copyButton.textContent = '✓ Bestellung kopiert'; }
+        catch { copyButton.textContent = 'Kopieren nicht möglich'; }
+      });
+      result.append(intro, preview, copyButton);
+      result.classList.add('show');
+    });
+    renderCart();
+  </script>
+</body>
+</html>
