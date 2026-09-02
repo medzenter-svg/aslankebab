@@ -196,11 +196,11 @@
     .seasoning-copy h3 { font: 500 28px Georgia, serif; margin: 0 0 10px; }
 
     .toppings { background: var(--white); }
-    .topping-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; }
+    .topping-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
     .topping-card { overflow: hidden; border-radius: 22px; background: var(--cream); border: 1px solid #eadfcf; }
-    .topping-card img { width: 100%; aspect-ratio: 1 / .82; object-fit: cover; }
+    .topping-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
     .topping-copy { padding: 18px; }
-    .topping-copy span { color: #54743a; font-size: 9px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    .topping-number { display: inline-flex; align-items: center; justify-content: center; min-width: 38px; height: 28px; padding: 0 10px; border-radius: 99px; background: var(--gold); color: var(--ink); font-size: 10px; font-weight: 900; letter-spacing: .08em; }
     .topping-copy h3 { margin: 5px 0 6px; font: 500 21px/1.05 Georgia, serif; }
     .topping-copy p { margin: 0; color: var(--muted); font-size: 11px; }
 
@@ -503,13 +503,12 @@
           <p>Alle frischen Zutaten können beim Kebab und Dürüm einzeln ausgewählt oder abgewählt werden.</p>
         </div>
         <div class="topping-grid">
-          <article class="topping-card reveal"><img src="assets/topping-cucumber.webp" alt="Gurke in langen dünnen Streifen" loading="lazy"><div class="topping-copy"><span>Frisch</span><h3>Gurkenstreifen</h3><p>Lang und dünn geschnitten.</p></div></article>
-          <article class="topping-card reveal"><img src="assets/topping-tomato.webp" alt="Tomaten in runden Scheiben" loading="lazy"><div class="topping-copy"><span>Saftig</span><h3>Tomatenscheiben</h3><p>Rund und frisch geschnitten.</p></div></article>
-          <article class="topping-card reveal"><img src="assets/topping-onion.webp" alt="Fein geschnittene Zwiebelringe" loading="lazy"><div class="topping-copy"><span>Knackig</span><h3>Zwiebelringe</h3><p>Fein und aromatisch.</p></div></article>
-          <article class="topping-card reveal"><img src="assets/topping-iceberg.webp" alt="Fein geschnittener Eisbergsalat" loading="lazy"><div class="topping-copy"><span>Knackig</span><h3>Eisbergsalat</h3><p>Fein geschnitten.</p></div></article>
-          <article class="topping-card reveal"><img src="assets/topping-red-cabbage.webp" alt="Fein geschnittener Rotkohl" loading="lazy"><div class="topping-copy"><span>Frisch</span><h3>Rotkohl</h3><p>Fein und knackig.</p></div></article>
-          <article class="topping-card reveal"><img src="assets/topping-parsley.webp" alt="Frisch gehackte Petersilie" loading="lazy"><div class="topping-copy"><span>Kräuter</span><h3>Petersilie</h3><p>Frisch und aromatisch.</p></div></article>
-          <article class="topping-card reveal"><img src="assets/topping-dill.webp" alt="Frisch gehackter Dill" loading="lazy"><div class="topping-copy"><span>Kräuter</span><h3>Dill</h3><p>Fein und duftend.</p></div></article>
+          <article class="topping-card reveal"><img src="assets/topping-grilled-vegetables.webp" alt="Gegrillte Gemüsemischung mit Aubergine, Karotte und Paprika" loading="lazy"><div class="topping-copy"><span class="topping-number">Z1</span><h3>Gegrillte Gemüsemischung</h3><p>Aubergine, Karotten und Paprika, frisch gegrillt.</p></div></article>
+          <article class="topping-card reveal"><img src="assets/topping-tomatoes-square.webp" alt="Frische Tomaten in runden Scheiben" loading="lazy"><div class="topping-copy"><span class="topping-number">Z2</span><h3>Tomaten</h3><p>Saftig und in Scheiben geschnitten.</p></div></article>
+          <article class="topping-card reveal"><img src="assets/topping-onions-square.webp" alt="Frische Zwiebeln in feinen Ringen" loading="lazy"><div class="topping-copy"><span class="topping-number">Z3</span><h3>Zwiebeln</h3><p>Feine weiße und rote Zwiebelringe.</p></div></article>
+          <article class="topping-card reveal"><img src="assets/topping-cucumber-salad.webp" alt="Gurkensalat in langen dünnen Streifen mit Kräutern" loading="lazy"><div class="topping-copy"><span class="topping-number">Z4</span><h3>Gurkensalat</h3><p>Knackige Gurkenstreifen mit Kräutern.</p></div></article>
+          <article class="topping-card reveal"><img src="assets/topping-red-cabbage-square.webp" alt="Rotkrautsalat mit feinen Karottenstreifen" loading="lazy"><div class="topping-copy"><span class="topping-number">Z5</span><h3>Rotkrautsalat</h3><p>Knackige rote Kohlstreifen mit Karotte.</p></div></article>
+          <article class="topping-card reveal"><img src="assets/topping-iceberg-square.webp" alt="Frisch geschnittener Eisbergsalat mit wenigen Karottenstreifen" loading="lazy"><div class="topping-copy"><span class="topping-number">Z6</span><h3>Eisbergsalat</h3><p>Frisch, leicht und natürlich geschnitten.</p></div></article>
         </div>
       </div>
     </section>
@@ -637,13 +636,12 @@
       <div class="option-group" id="ingredientOptions">
         <h3>Frische Zutaten</h3>
         <div class="option-list">
-          <label class="option-pill"><input type="checkbox" name="ingredient" value="Gurkenstreifen" checked><span>Gurke</span></label>
-          <label class="option-pill"><input type="checkbox" name="ingredient" value="Tomatenscheiben" checked><span>Tomate</span></label>
-          <label class="option-pill"><input type="checkbox" name="ingredient" value="Zwiebelringe" checked><span>Zwiebel</span></label>
-          <label class="option-pill"><input type="checkbox" name="ingredient" value="Eisbergsalat" checked><span>Eisbergsalat</span></label>
-          <label class="option-pill"><input type="checkbox" name="ingredient" value="Rotkohl" checked><span>Rotkohl</span></label>
-          <label class="option-pill"><input type="checkbox" name="ingredient" value="Petersilie" checked><span>Petersilie</span></label>
-          <label class="option-pill"><input type="checkbox" name="ingredient" value="Dill" checked><span>Dill</span></label>
+          <label class="option-pill"><input type="checkbox" name="ingredient" value="Z1 · Gegrillte Gemüsemischung"><span>Z1 · Grillgemüse</span></label>
+          <label class="option-pill"><input type="checkbox" name="ingredient" value="Z2 · Tomaten" checked><span>Z2 · Tomaten</span></label>
+          <label class="option-pill"><input type="checkbox" name="ingredient" value="Z3 · Zwiebeln" checked><span>Z3 · Zwiebeln</span></label>
+          <label class="option-pill"><input type="checkbox" name="ingredient" value="Z4 · Gurkensalat" checked><span>Z4 · Gurkensalat</span></label>
+          <label class="option-pill"><input type="checkbox" name="ingredient" value="Z5 · Rotkrautsalat" checked><span>Z5 · Rotkrautsalat</span></label>
+          <label class="option-pill"><input type="checkbox" name="ingredient" value="Z6 · Eisbergsalat" checked><span>Z6 · Eisbergsalat</span></label>
         </div>
       </div>
       <div class="dialog-footer"><input id="productQuantity" type="number" min="1" max="20" value="1" aria-label="Anzahl"><button class="add-btn" type="submit">In den Warenkorb</button></div>
