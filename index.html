@@ -219,6 +219,17 @@
     .pizza-bottom .menu-price { color: var(--gold); }
     .pizza-bottom .add-btn { background: var(--gold); color: var(--ink); }
 
+    .burger-menu { background: var(--cream); }
+    .burger-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .burger-card { overflow: hidden; border-radius: 27px; background: var(--white); border: 1px solid #eadfcf; box-shadow: 0 16px 45px rgba(49,17,13,.1); }
+    .burger-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+    .burger-copy { padding: 24px; }
+    .burger-copy h3 { margin: 8px 0 10px; font: 500 27px/1.05 Georgia, serif; }
+    .burger-copy p { min-height: 68px; margin: 0; color: var(--muted); font-size: 12px; }
+    .burger-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 18px; }
+    .burger-note { margin-top: 28px; padding: 22px 26px; border-radius: 22px; background: var(--gold); color: var(--ink); font-weight: 800; text-align: center; }
+    .allergen-note { display: block; margin-top: 10px; color: #886f64; font-size: 10px; }
+
     .phone-order-box { display: flex; align-items: center; justify-content: space-between; gap: 35px; margin-top: 34px; padding: 27px 30px; border-radius: 24px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16); }
     .phone-order-box strong { display: block; font: 500 25px Georgia, serif; }
     .phone-order-box span { color: rgba(255,255,255,.6); font-size: 12px; }
@@ -327,6 +338,7 @@
       .sauce-grid { grid-template-columns: 1fr 1fr; }
       .topping-grid { grid-template-columns: repeat(3, 1fr); }
       .pizza-grid { grid-template-columns: 1fr 1fr; }
+      .burger-grid { grid-template-columns: 1fr 1fr; }
       .dish:nth-child(2) { transform: none; }
       .dish { min-height: 430px; }
       .story-grid { gap: 55px; }
@@ -360,6 +372,7 @@
       .full-menu-layout { grid-template-columns: 1fr; }
       .topping-grid { grid-template-columns: 1fr 1fr; }
       .pizza-grid { grid-template-columns: 1fr; }
+      .burger-grid { grid-template-columns: 1fr; }
       .durum-feature { min-height: 450px; }
       .durum-feature-copy { left: 24px; right: 24px; bottom: 24px; }
       .menu-list { padding: 10px 24px; }
@@ -392,6 +405,7 @@
         <div class="navlinks">
           <a href="#speisekarte">Speisekarte</a>
           <a href="#pizza">Pizza</a>
+          <a href="#burger">Burger</a>
           <a href="#saucen">Saucen</a>
           <a href="#story">Unser Anspruch</a>
           <a href="#kontakt">Kontakt</a>
@@ -496,6 +510,26 @@
           <article class="pizza-card reveal"><img src="assets/pizza-quattro-formaggi.webp" alt="Pizza Quattro Formaggi mit vier Käsesorten" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 16</span><h3>Quattro Formaggi</h3><p>Eine cremige Kombination aus vier Käsesorten.</p><div class="pizza-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Pizza Quattro Formaggi" data-number="16" data-kind="pizza">Auswählen</button></div></div></article>
           <article class="pizza-card reveal"><img src="assets/pizza-pepperoni.webp" alt="Pizza Peperoni mit Tomatensauce, Mozzarella und grünen Peperoni" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 17</span><h3>Pizza Peperoni</h3><p>Tomatensauce, Mozzarella und würzige grüne Peperoni.</p><div class="pizza-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Pizza Peperoni" data-number="17" data-kind="pizza">Auswählen</button></div></div></article>
         </div>
+      </div>
+    </section>
+
+    <section class="burger-menu" id="burger">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="eyebrow accent">100 % frisch zubereitet</div><h2>Burger<br><span class="accent">XL.</span></h2></div>
+          <p>Saftige Burger mit frischem Salat und sorgfältig ausgewählten Zutaten. Rindfleisch wird medium gebraten. Alle Burger sind halal.</p>
+        </div>
+        <div class="burger-grid">
+          <article class="burger-card reveal"><img src="assets/burger-54-classic.webp" alt="Classic Burger mit Rindfleisch, Salat, Tomaten, Zwiebeln und Burgersauce" loading="lazy"><div class="burger-copy"><span class="dish-code">Nr. 54</span><h3>Classic Burger</h3><p>Mit frischem Salat, Tomaten, Zwiebeln und Burgersauce.</p><small class="allergen-note">Allergene: 1, 2, 4, a, c, g</small><div class="burger-bottom"><span class="menu-price">9,00 €</span><button class="add-btn" type="button" data-product="Classic Burger" data-number="54" data-kind="burger" data-price="9.00">Auswählen</button></div></div></article>
+          <article class="burger-card reveal"><img src="assets/burger-55-cheese.webp" alt="Cheese Burger mit Rindfleisch, Käse, Salat, Tomaten, Zwiebeln und Burgersauce" loading="lazy"><div class="burger-copy"><span class="dish-code">Nr. 55</span><h3>Cheese Burger</h3><p>Mit Käse, frischem Salat, Tomaten, Zwiebeln und Burgersauce.</p><small class="allergen-note">Allergene: 1, 2, 4, a, c, g</small><div class="burger-bottom"><span class="menu-price">11,00 €</span><button class="add-btn" type="button" data-product="Cheese Burger" data-number="55" data-kind="burger" data-price="11.00">Auswählen</button></div></div></article>
+          <article class="burger-card reveal"><img src="assets/burger-56-falafel.webp" alt="Falafel Burger mit Hummus, Salat, roten Zwiebeln und Tomaten" loading="lazy"><div class="burger-copy"><span class="dish-code">Nr. 56</span><h3>Falafel Burger</h3><p>Mit Hummus oder Joghurtsoße, Salat, roten Zwiebeln und Tomaten.</p><small class="allergen-note">Allergene: 1, 2, 4, a, c, g</small><div class="burger-bottom"><span class="menu-price">9,00 €</span><button class="add-btn" type="button" data-product="Falafel Burger" data-number="56" data-kind="burger" data-price="9.00">Auswählen</button></div></div></article>
+          <article class="burger-card reveal"><img src="assets/burger-57-chicken.webp" alt="Chicken Burger mit Hühnerfleisch, Käse, Salat, Tomaten, Zwiebeln und Burgersauce" loading="lazy"><div class="burger-copy"><span class="dish-code">Nr. 57</span><h3>Chicken Burger</h3><p>Mit Hühnerfleisch, Käse, frischem Salat, Tomaten, Zwiebeln und Burgersauce.</p><small class="allergen-note">Allergene: 1, 2, 4, a, c, g</small><div class="burger-bottom"><span class="menu-price">12,00 €</span><button class="add-btn" type="button" data-product="Chicken Burger" data-number="57" data-kind="burger" data-price="12.00">Auswählen</button></div></div></article>
+          <article class="burger-card reveal"><img src="assets/burger-58-veggie.webp" alt="Veggie Burger mit Falafel, Grillgemüse, Rucola, Salat, Tomaten und Zwiebeln" loading="lazy"><div class="burger-copy"><span class="dish-code">Nr. 58</span><h3>Veggie Burger</h3><p>Mit Falafel, Grillgemüse, Rucola, frischem Salat, Tomaten, Zwiebeln und Burgersauce.</p><small class="allergen-note">Allergene: 1, 2, 4, a, c, g</small><div class="burger-bottom"><span class="menu-price">11,00 €</span><button class="add-btn" type="button" data-product="Veggie Burger" data-number="58" data-kind="burger" data-price="11.00">Auswählen</button></div></div></article>
+          <article class="burger-card reveal"><img src="assets/burger-59-cricket.webp" alt="Scharfer Cricket Burger mit Rindfleisch, Frischkäse, Jalapeños und Salat" loading="lazy"><div class="burger-copy"><span class="dish-code">Nr. 59</span><h3>Cricket Burger <span class="accent">(scharf)</span></h3><p>Mit Rindfleisch, Frischkäse, Jalapeños, Salat, Tomaten, Zwiebeln und Burgersauce.</p><small class="allergen-note">Allergene: 1, 2, 4, a, c, g</small><div class="burger-bottom"><span class="menu-price">13,00 €</span><button class="add-btn" type="button" data-product="Cricket Burger" data-number="59" data-kind="burger" data-price="13.00">Auswählen</button></div></div></article>
+          <article class="burger-card reveal"><img src="assets/burger-60-chili-cheese.webp" alt="Scharfer Chili-Cheeseburger mit Rindfleisch, Frischkäse, Jalapeños und Chilisauce" loading="lazy"><div class="burger-copy"><span class="dish-code">Nr. 60</span><h3>Chili-Cheeseburger</h3><p>Mit Rindfleisch, Frischkäse, Jalapeños, Salat, Tomaten, Zwiebeln und Chilisauce.</p><small class="allergen-note">Allergene: 1, 2, 4, a, c, g</small><div class="burger-bottom"><span class="menu-price">13,00 €</span><button class="add-btn" type="button" data-product="Chili-Cheeseburger" data-number="60" data-kind="burger" data-price="13.00">Auswählen</button></div></div></article>
+          <article class="burger-card reveal"><img src="assets/burger-61-halloumi.webp" alt="Halloumi-Burger mit gegrilltem Halloumi, Salat, roten Zwiebeln, Tomaten und Soße" loading="lazy"><div class="burger-copy"><span class="dish-code">Nr. 61</span><h3>Halloumi-Burger</h3><p>Mit gegrilltem Halloumi, Salat, roten Zwiebeln, Tomaten und Soße.</p><small class="allergen-note">Allergene: 1, 2, 4, a, c, g</small><div class="burger-bottom"><span class="menu-price">9,00 €</span><button class="add-btn" type="button" data-product="Halloumi-Burger" data-number="61" data-kind="burger" data-price="9.00">Auswählen</button></div></div></article>
+        </div>
+        <div class="burger-note reveal">Jeden Burger auch als Menü erhältlich: Pommes &amp; ein Getränk (0,33-l-Dose) +5,00 €</div>
       </div>
     </section>
 
@@ -665,6 +699,24 @@
           <label class="option-pill"><input type="checkbox" name="addon" value="A3 · Weichkäse nach griechischer Art"><span>A3 · Griechischer Käse</span></label>
         </div>
       </div>
+      <div class="option-group" id="falafelBurgerSauceOptions">
+        <h3>Soße für den Falafel Burger</h3>
+        <div class="option-list">
+          <label class="option-pill"><input type="radio" name="burgerSauce" value="Hummus" checked><span>Hummus</span></label>
+          <label class="option-pill"><input type="radio" name="burgerSauce" value="Joghurtsoße"><span>Joghurtsoße</span></label>
+        </div>
+      </div>
+      <div class="option-group" id="burgerExtraOptions">
+        <h3>Extras für Burger</h3>
+        <div class="option-list">
+          <label class="option-pill"><input type="checkbox" name="addon" value="Käse (+1,00 €)"><span>Käse +1,00 €</span></label>
+          <label class="option-pill"><input type="checkbox" name="addon" value="Jalapeños (+1,00 €)"><span>Jalapeños +1,00 €</span></label>
+          <label class="option-pill"><input type="checkbox" name="addon" value="Büffelmozzarella (+1,00 €)"><span>Büffelmozzarella +1,00 €</span></label>
+          <label class="option-pill"><input type="checkbox" name="addon" value="Avocado (+1,00 €)"><span>Avocado +1,00 €</span></label>
+          <label class="option-pill"><input type="checkbox" name="addon" value="Extra Sauce (+0,50 €)"><span>Sauce +0,50 €</span></label>
+          <label class="option-pill"><input type="checkbox" name="addon" value="Menü: Pommes & Getränk 0,33 l (+5,00 €)"><span>Menü +5,00 €</span></label>
+        </div>
+      </div>
       <div class="dialog-footer"><input id="productQuantity" type="number" min="1" max="20" value="1" aria-label="Anzahl"><button class="add-btn" type="submit">In den Warenkorb</button></div>
     </form>
   </dialog>
@@ -699,6 +751,8 @@
     const sauceOptions = document.getElementById('sauceOptions');
     const ingredientOptions = document.getElementById('ingredientOptions');
     const addonOptions = document.getElementById('addonOptions');
+    const falafelBurgerSauceOptions = document.getElementById('falafelBurgerSauceOptions');
+    const burgerExtraOptions = document.getElementById('burgerExtraOptions');
     let activeProduct = null;
     let cart = [];
     const productCodes = {
@@ -708,6 +762,8 @@
       'Pizza Margherita': '09', 'Pizza Salami': '10', 'Pizza Funghi': '11',
       'Pizza Tonno': '12', 'Pizza Sucuk': '13', 'Pizza Kebab': '14',
       'Pizza Vegetaria': '15', 'Pizza Quattro Formaggi': '16', 'Pizza Peperoni': '17', 'Pizza Pepperoni': '17',
+      'Classic Burger': '54', 'Cheese Burger': '55', 'Falafel Burger': '56', 'Chicken Burger': '57',
+      'Veggie Burger': '58', 'Cricket Burger': '59', 'Chili-Cheeseburger': '60', 'Halloumi-Burger': '61',
       'Sauce 1': 'S1', 'Sauce 2': 'S2', 'Sauce 3': 'S3',
       'Sauce 4': 'S4', 'Sauce 5': 'S5', 'Sauce 6': 'S6',
       'Peperoni': 'A1', 'Oliven': 'A2', 'Weichkäse nach griechischer Art': 'A3'
@@ -782,7 +838,7 @@
     document.getElementById('dialogClose').addEventListener('click', () => productDialog.close());
 
     document.querySelectorAll('[data-product]').forEach(button => button.addEventListener('click', () => {
-      activeProduct = { name: button.dataset.product, number: button.dataset.number || '', kind: button.dataset.kind };
+      activeProduct = { name: button.dataset.product, number: button.dataset.number || '', kind: button.dataset.kind, price: Number(button.dataset.price || 0) };
       if (activeProduct.kind === 'sauce' || activeProduct.kind === 'addon') {
         cart.push({ id: Date.now() + Math.random(), name: `${activeProduct.number} · ${activeProduct.name}`, meat: '', sauces: [], ingredients: [], addons: [], qty: 1 });
         saveCart(); openCart(); return;
@@ -794,14 +850,20 @@
       const hasSauces = activeProduct.kind === 'meat' || activeProduct.kind === 'veg';
       const hasIngredients = activeProduct.kind === 'meat' || activeProduct.kind === 'veg';
       const hasAddons = activeProduct.kind === 'meat' || activeProduct.kind === 'veg' || activeProduct.kind === 'pizza' || activeProduct.kind === 'pizza-meat';
+      const hasBurgerExtras = activeProduct.kind === 'burger';
+      const hasFalafelBurgerSauce = activeProduct.kind === 'burger' && activeProduct.number === '56';
       meatOptions.hidden = !hasMeat;
       sauceOptions.hidden = !hasSauces;
       ingredientOptions.hidden = !hasIngredients;
       addonOptions.hidden = !hasAddons;
+      burgerExtraOptions.hidden = !hasBurgerExtras;
+      falafelBurgerSauceOptions.hidden = !hasFalafelBurgerSauce;
       meatOptions.querySelectorAll('input').forEach(input => input.disabled = !hasMeat);
       sauceOptions.querySelectorAll('input').forEach(input => input.disabled = !hasSauces);
       ingredientOptions.querySelectorAll('input').forEach(input => input.disabled = !hasIngredients);
       addonOptions.querySelectorAll('input').forEach(input => input.disabled = !hasAddons);
+      burgerExtraOptions.querySelectorAll('input').forEach(input => input.disabled = !hasBurgerExtras);
+      falafelBurgerSauceOptions.querySelectorAll('input').forEach(input => input.disabled = !hasFalafelBurgerSauce);
       productDialog.showModal();
     }));
 
@@ -813,7 +875,7 @@
         id: Date.now() + Math.random(),
         name: `Nr. ${activeProduct.number} · ${activeProduct.name}`,
         meat: (activeProduct.kind === 'meat' || activeProduct.kind === 'pizza-meat') ? String(data.get('meat') || '') : '',
-        sauces: data.getAll('sauce').map(String),
+        sauces: [...data.getAll('sauce').map(String), ...data.getAll('burgerSauce').map(String)],
         ingredients: data.getAll('ingredient').map(String),
         addons: data.getAll('addon').map(String),
         qty: Math.max(1, Number(document.getElementById('productQuantity').value) || 1)
