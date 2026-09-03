@@ -141,11 +141,16 @@
     .full-menu { padding-top: 45px; background: var(--paper); }
     .full-menu-layout { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .product-card { overflow: hidden; border-radius: 27px; background: var(--white); border: 1px solid #eadfcf; box-shadow: 0 14px 42px rgba(49,17,13,.1); display: flex; flex-direction: column; }
-    .product-card img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+    .product-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
     .product-card-copy { padding: 23px; display: flex; flex: 1; flex-direction: column; }
     .product-card h3 { margin: 9px 0; font: 500 27px/1 Georgia, serif; }
     .product-card p { min-height: 42px; margin: 0; color: var(--muted); font-size: 12px; }
     .product-card-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 20px; }
+    .menu-category { grid-column: 1 / -1; margin: 34px 0 2px; padding: 18px 22px; border-radius: 20px; background: var(--wine); color: white; }
+    .menu-category:first-child { margin-top: 0; }
+    .menu-category h3 { margin: 0 0 4px; color: var(--gold); font: 500 30px Georgia, serif; }
+    .menu-category p { margin: 0; color: rgba(255,255,255,.67); font-size: 12px; }
+    .dual-price { white-space: normal; line-height: 1.45; }
     .durum-feature { min-height: 650px; border-radius: 34px; position: relative; overflow: hidden; color: white; box-shadow: var(--shadow); }
     .durum-feature img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .durum-feature::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 38%, rgba(29,8,7,.94)); }
@@ -447,23 +452,23 @@
       <div class="container">
         <div class="section-head reveal">
           <div><div class="eyebrow accent">Unsere Favoriten</div><h2>Einfach gut.<br>Einfach <span class="accent">Aslan.</span></h2></div>
-          <p>Unsere Klassiker verbinden kräftige Röstaromen mit frischen Zutaten. Wähle deinen Favoriten – klassisch im Brot, als Dürüm oder als Bowl.</p>
+          <p>Unsere Klassiker verbinden kräftige Röstaromen mit frischen Zutaten. Alle Nummern und Preise entsprechen der aktuellen Speisekarte.</p>
         </div>
         <div class="menu-grid">
           <article class="dish reveal">
-            <img src="assets/kebab-bread.webp" alt="Frisch zubereiteter Kebab" loading="lazy">
-            <span class="price">Preis folgt</span>
-            <div class="dish-copy"><span class="dish-tag">Der Klassiker</span><h3><span class="dish-code">Nr. 01</span>Aslan Kebab</h3><p>Grillfleisch, knackiger Salat, Tomate, Zwiebel und Sauce nach Wahl.</p></div>
+            <img src="assets/menu-01-drehspiess-sandwich.webp" alt="Drehspieß Sandwich mit Salat und Soße" loading="lazy">
+            <span class="price">ab 7,50 €</span>
+            <div class="dish-copy"><span class="dish-tag">Der Klassiker</span><h3><span class="dish-code">Nr. 01</span>Drehspieß Sandwich</h3><p>Mit Hähnchen oder Kalb, frischem Salat und Soße.</p></div>
           </article>
           <article class="dish reveal">
-            <img src="assets/durum-kebab-light.webp" alt="Frisch gegrillter Signature Dürüm auf heller Keramikteller" loading="lazy">
-            <span class="price">Preis folgt</span>
-            <div class="dish-copy"><span class="dish-tag">Gerollter Genuss</span><h3><span class="dish-code">Nr. 02</span>Signature Dürüm</h3><p>Dünnes Fladenbrot, saftige Füllung und unsere würzige Haussauce.</p></div>
+            <img src="assets/menu-03-drehspiess-dueruem.webp" alt="Drehspieß Dürüm mit Salat und Soße" loading="lazy">
+            <span class="price">ab 8,50 €</span>
+            <div class="dish-copy"><span class="dish-tag">Gerollter Genuss</span><h3><span class="dish-code">Nr. 03</span>Drehspieß Dürüm</h3><p>Mit Hähnchen oder Kalb, frischem Salat und Soße.</p></div>
           </article>
           <article class="dish reveal">
-            <img src="assets/aslan-bowl.webp" alt="Frische Kebab Bowl" loading="lazy">
-            <span class="price">Preis folgt</span>
-            <div class="dish-copy"><span class="dish-tag">Frisch &amp; leicht</span><h3><span class="dish-code">Nr. 06</span>Aslan Bowl</h3><p>Salat, Grillgemüse, Fleisch oder Falafel und cremiges Dressing.</p></div>
+            <img src="assets/menu-13-falafel-teller.webp" alt="Falafel Teller mit Salat und Pommes" loading="lazy">
+            <span class="price">11,00 €</span>
+            <div class="dish-copy"><span class="dish-tag">Vegetarischer Favorit</span><h3><span class="dish-code">Nr. 13</span>Falafel Teller</h3><p>Knusprige Falafel mit Salat und Pommes oder Couscous.</p></div>
           </article>
         </div>
         <div class="menu-foot reveal">Auch vegetarisch erhältlich · Allergene bitte vor Ort erfragen<br><a class="btn" href="#speisekarte">Komplette Speisekarte ansehen</a></div>
@@ -474,21 +479,34 @@
       <div class="container">
         <div class="section-head reveal">
           <div><div class="eyebrow accent">Unsere Speisekarte</div><h2>Was darf es<br><span class="accent">heute sein?</span></h2></div>
-          <p>Das vollständige Angebot steht hier übersichtlich bereit. Namen, Zutaten und endgültige Preise ergänzen wir gemeinsam, sobald die Angaben feststehen.</p>
+          <p>Originale Nummern, Preise und Zutaten nach der aktuellen Speisekarte. Heute ergänzt: Drehspieß, vegetarische Gerichte und Falafel.</p>
         </div>
         <div class="full-menu-layout">
-          <article class="product-card reveal"><img src="assets/kebab-bread.webp" alt="Kebab im gerösteten Brot mit Fleisch, Salat und Sauce" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 01</span><h3>Kebab im Brot</h3><p>Wahlweise mit Hähnchen oder Rind und frischen Zutaten.</p><div class="product-card-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Kebab im Brot" data-number="01" data-kind="meat">Auswählen</button></div></div></article>
-          <article class="product-card reveal"><img src="assets/durum-kebab-light.webp" alt="Signature Dürüm mit gegrilltem Fleisch und frischem Gemüse" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 02</span><h3>Signature Dürüm</h3><p>Frisch gerollt, herzhaft gefüllt, wahlweise mit Hähnchen oder Rind.</p><div class="product-card-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Signature Dürüm" data-number="02" data-kind="meat">Auswählen</button></div></div></article>
-          <article class="product-card reveal"><img src="assets/kebab-plate.webp" alt="Kebab-Teller mit Fleisch, Pommes, Salat und Sauce" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 03</span><h3>Kebab-Teller</h3><p>Gegrilltes Fleisch mit Pommes, knackigem Salat und Sauce.</p><div class="product-card-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Kebab-Teller" data-number="03" data-kind="meat">Auswählen</button></div></div></article>
-          <article class="product-card reveal"><img src="assets/vegetarian-kebab.webp" alt="Vegetarischer Kebab mit Falafel, Gemüse und Salat" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 04</span><h3>Vegetarischer Kebab</h3><p>Mit Falafel, Grillgemüse, frischem Salat und Kräutern.</p><div class="product-card-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Vegetarischer Kebab" data-number="04" data-kind="veg">Auswählen</button></div></div></article>
-          <article class="product-card reveal"><img src="assets/vegetarian-durum.webp" alt="Vegetarischer Dürüm mit Falafel, Gemüse und Kräutern" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 05</span><h3>Vegetarischer Dürüm</h3><p>Frisch gerollt mit Falafel, Grillgemüse und frischen Kräutern.</p><div class="product-card-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Vegetarischer Dürüm" data-number="05" data-kind="veg">Auswählen</button></div></div></article>
-          <article class="product-card reveal"><img src="assets/aslan-bowl.webp" alt="Aslan Bowl mit Fleisch, Reis, Salat und Gemüse" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 06</span><h3>Aslan Bowl</h3><p>Mit Hähnchen, Rind oder Falafel, Reis und knackigem Gemüse.</p><div class="product-card-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Aslan Bowl" data-number="06" data-kind="meat">Auswählen</button></div></div></article>
-          <article class="product-card reveal"><img src="assets/side-dishes.webp" alt="Goldene Pommes und frischer gemischter Salat als Beilage" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 07</span><h3>Beilagen</h3><p>Pommes, frischer Salat und weitere Beilagen nach Wahl.</p><div class="product-card-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Beilage" data-number="07" data-kind="simple">Auswählen</button></div></div></article>
-          <article class="product-card reveal"><img src="assets/drinks.webp" alt="Wasser, Cola und Ayran auf einem hellen Tablett" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 08</span><h3>Getränke</h3><p>Erfrischende Getränke; das genaue Angebot wird noch ergänzt.</p><div class="product-card-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Getränk" data-number="08" data-kind="simple">Auswählen</button></div></div></article>
+          <div class="menu-category reveal"><h3>Drehspieß</h3><p>Wahlweise mit Hähnchen oder Kalb.</p></div>
+          <article class="product-card reveal"><img src="assets/menu-01-drehspiess-sandwich.webp" alt="Drehspieß Sandwich mit Fleisch, Salat und Soße" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 01</span><h3>Drehspieß Sandwich</h3><p>Pute- und Hähnchenfleisch oder Kalb, mit Salat und Soße.</p><div class="product-card-bottom"><span class="menu-price dual-price">Hähnchen 7,50 €<br>Kalb 8,50 €</span><button class="add-btn" type="button" data-product="Drehspieß Sandwich" data-number="01" data-kind="meat" data-price-chicken="7.50" data-price-veal="8.50">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-02-drehspiess-teller.webp" alt="Drehspieß Teller mit Fleisch, Pommes, Salat und Soße" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 02</span><h3>Drehspieß Teller</h3><p>Mit Reis und Salat oder mit Pommes und Salat.</p><div class="product-card-bottom"><span class="menu-price dual-price">Hähnchen 12,00 €<br>Kalb 13,00 €</span><button class="add-btn" type="button" data-product="Drehspieß Teller" data-number="02" data-kind="meat" data-price-chicken="12.00" data-price-veal="13.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-03-drehspiess-dueruem.webp" alt="Drehspieß Dürüm mit Fleisch, Salat und Soße" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 03</span><h3>Drehspieß Dürüm</h3><p>Gerolltes Fladenbrot mit Salat und Soße.</p><div class="product-card-bottom"><span class="menu-price dual-price">Hähnchen 8,50 €<br>Kalb 9,50 €</span><button class="add-btn" type="button" data-product="Drehspieß Dürüm" data-number="03" data-kind="meat" data-price-chicken="8.50" data-price-veal="9.50">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-04-drehspiess-box.webp" alt="Drehspieß Box mit Fleisch, Pommes oder Reis und Salat" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 04</span><h3>Drehspieß Box</h3><p>Mit Salat und Pommes oder Reis.</p><div class="product-card-bottom"><span class="menu-price dual-price">Hähnchen 8,00 €<br>Kalb 8,50 €</span><button class="add-btn" type="button" data-product="Drehspieß Box" data-number="04" data-kind="meat" data-price-chicken="8.00" data-price-veal="8.50">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-05-schueler-sandwich.webp" alt="Kleines Schüler Sandwich mit Drehspießfleisch, Salat und Soße" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 05</span><h3>Schüler Sandwich</h3><p>Pute- und Hähnchenfleisch oder Kalb, mit Salat und Soße.</p><div class="product-card-bottom"><span class="menu-price dual-price">Hähnchen 5,00 €<br>Kalb 6,00 €</span><button class="add-btn" type="button" data-product="Schüler Sandwich" data-number="05" data-kind="meat" data-price-chicken="5.00" data-price-veal="6.00">Auswählen</button></div></div></article>
+
+          <div class="menu-category reveal"><h3>Vegetarisch</h3><p>Mozzarella, Halloumi oder gegrillte Aubergine und Zucchini.</p></div>
+          <article class="product-card reveal"><img src="assets/menu-06-mozzarella-sandwich.webp" alt="Mozzarella Sandwich mit Salat, Tomaten und roten Zwiebeln" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 06</span><h3>Mozzarella Sandwich</h3><p>Mit Salat, Tomaten und roten Zwiebeln.</p><div class="product-card-bottom"><span class="menu-price">6,00 €</span><button class="add-btn" type="button" data-product="Mozzarella Sandwich" data-number="06" data-kind="veg" data-price="6.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-07-mozzarella-dueruem.webp" alt="Mozzarella Dürüm mit Salat, Tomaten und roten Zwiebeln" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 07</span><h3>Mozzarella Dürüm</h3><p>Mit Salat, Tomaten und roten Zwiebeln.</p><div class="product-card-bottom"><span class="menu-price">7,00 €</span><button class="add-btn" type="button" data-product="Mozzarella Dürüm" data-number="07" data-kind="veg" data-price="7.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-08-halloumi-sandwich.webp" alt="Halloumi Sandwich mit Salat, Tomaten und roten Zwiebeln" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 08</span><h3>Halloumi Sandwich</h3><p>Mit Salat, Tomaten und roten Zwiebeln.</p><div class="product-card-bottom"><span class="menu-price">6,00 €</span><button class="add-btn" type="button" data-product="Halloumi Sandwich" data-number="08" data-kind="veg" data-price="6.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-09-halloumi-dueruem.webp" alt="Halloumi Dürüm mit Salat, Tomaten und roten Zwiebeln" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 09</span><h3>Halloumi Dürüm</h3><p>Mit Salat, Tomaten und roten Zwiebeln.</p><div class="product-card-bottom"><span class="menu-price">7,00 €</span><button class="add-btn" type="button" data-product="Halloumi Dürüm" data-number="09" data-kind="veg" data-price="7.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-10-aubergine-zucchini-sandwich.webp" alt="Aubergine mit Zucchini Sandwich, Salat, Tomaten und roten Zwiebeln" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 10</span><h3>Aubergine mit Zucchini Sandwich</h3><p>Mit Salat, Tomaten und roten Zwiebeln.</p><div class="product-card-bottom"><span class="menu-price">6,00 €</span><button class="add-btn" type="button" data-product="Aubergine mit Zucchini Sandwich" data-number="10" data-kind="veg" data-price="6.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-11-aubergine-zucchini-dueruem.webp" alt="Aubergine mit Zucchini Dürüm, Salat, Tomaten und roten Zwiebeln" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 11</span><h3>Aubergine mit Zucchini Dürüm</h3><p>Mit Salat, Tomaten und roten Zwiebeln.</p><div class="product-card-bottom"><span class="menu-price">7,00 €</span><button class="add-btn" type="button" data-product="Aubergine mit Zucchini Dürüm" data-number="11" data-kind="veg" data-price="7.00">Auswählen</button></div></div></article>
+
+          <div class="menu-category reveal"><h3>Falafel</h3><p>Knusprige Kichererbsenbällchen, frisch zubereitet.</p></div>
+          <article class="product-card reveal"><img src="assets/menu-12-falafel-sandwich.webp" alt="Falafel Sandwich mit Salat, Tomaten, Zwiebeln und Soße" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 12</span><h3>Falafel Sandwich</h3><p>Falafel mit Salat, Tomaten, Zwiebeln und Soße.</p><div class="product-card-bottom"><span class="menu-price">7,00 €</span><button class="add-btn" type="button" data-product="Falafel Sandwich" data-number="12" data-kind="veg" data-price="7.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-13-falafel-teller.webp" alt="Falafel Teller mit Salat und Pommes oder Couscous" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 13</span><h3>Falafel Teller</h3><p>Mit Salat und Pommes oder Couscous.</p><div class="product-card-bottom"><span class="menu-price">11,00 €</span><button class="add-btn" type="button" data-product="Falafel Teller" data-number="13" data-kind="veg" data-price="11.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-14-falafel-dueruem.webp" alt="Falafel Dürüm mit Salat, Tomaten, Zwiebeln und Soße" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 14</span><h3>Falafel Dürüm</h3><p>Falafel im Dürüm mit Salat, Tomaten, Zwiebeln und Soße.</p><div class="product-card-bottom"><span class="menu-price">7,50 €</span><button class="add-btn" type="button" data-product="Falafel Dürüm" data-number="14" data-kind="veg" data-price="7.50">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-15-falafel-box.webp" alt="Falafel Box mit vier Kichererbsenbällchen und Salat" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 15</span><h3>Falafel Box</h3><p>Vier Kichererbsenbällchen mit frischem Salat und Soße.</p><div class="product-card-bottom"><span class="menu-price">7,00 €</span><button class="add-btn" type="button" data-product="Falafel Box" data-number="15" data-kind="veg" data-price="7.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-16-couscous-teller.webp" alt="Frischer Couscous Teller mit Petersilie, Lauchzwiebeln, Paprika und Zitrone" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 16</span><h3>Couscous Teller</h3><p>Frischer Couscous-Salat mit Petersilie, Lauchzwiebeln, Paprika und Zitrone.</p><div class="product-card-bottom"><span class="menu-price">8,00 €</span><button class="add-btn" type="button" data-product="Couscous Teller" data-number="16" data-kind="veg" data-price="8.00">Auswählen</button></div></div></article>
         </div>
         <div class="meat-choice reveal">
           <div class="meat-choice-icon">✦</div>
-          <div><h3>Zwei Fleischsorten zur Wahl</h3><p>Unsere Kebab- und Dürüm-Gerichte sind wahlweise mit saftigem Hähnchenfleisch oder herzhaftem Rindfleisch erhältlich.</p></div>
+          <div><h3>Zwei Fleischsorten zur Wahl</h3><p>Die Drehspieß-Gerichte Nr. 01–05 sind wahlweise mit Hähnchenfleisch oder Kalbfleisch erhältlich.</p></div>
         </div>
       </div>
     </section>
@@ -500,15 +518,14 @@
           <p>Knuspriger Boden, aromatische Tomatensauce und sorgfältig ausgewählte Zutaten. Jede Pizza kann direkt in den Warenkorb gelegt werden.</p>
         </div>
         <div class="pizza-grid">
-          <article class="pizza-card reveal"><img src="assets/pizza-margherita.webp" alt="Pizza Margherita mit Tomatensauce, Mozzarella und Basilikum" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 09</span><h3>Pizza Margherita</h3><p>Tomatensauce, Mozzarella und frisches Basilikum.</p><div class="pizza-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Pizza Margherita" data-number="09" data-kind="pizza">Auswählen</button></div></div></article>
-          <article class="pizza-card reveal"><img src="assets/pizza-salami.webp" alt="Pizza Salami mit Tomatensauce und Mozzarella" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 10</span><h3>Pizza Salami</h3><p>Tomatensauce, Mozzarella und Rindersalami.</p><div class="pizza-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Pizza Salami" data-number="10" data-kind="pizza">Auswählen</button></div></div></article>
-          <article class="pizza-card reveal"><img src="assets/pizza-funghi.webp" alt="Pizza Funghi mit frischen Champignons" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 11</span><h3>Pizza Funghi</h3><p>Tomatensauce, Mozzarella und frische Champignons.</p><div class="pizza-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Pizza Funghi" data-number="11" data-kind="pizza">Auswählen</button></div></div></article>
-          <article class="pizza-card reveal"><img src="assets/pizza-tonno.webp" alt="Pizza Tonno mit Thunfisch und roten Zwiebeln" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 12</span><h3>Pizza Tonno</h3><p>Tomatensauce, Mozzarella, Thunfisch und rote Zwiebeln.</p><div class="pizza-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Pizza Tonno" data-number="12" data-kind="pizza">Auswählen</button></div></div></article>
-          <article class="pizza-card reveal"><img src="assets/pizza-sucuk.webp" alt="Pizza Sucuk mit würziger türkischer Wurst" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 13</span><h3>Pizza Sucuk</h3><p>Tomatensauce, Mozzarella und würzige Sucuk.</p><div class="pizza-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Pizza Sucuk" data-number="13" data-kind="pizza">Auswählen</button></div></div></article>
-          <article class="pizza-card reveal"><img src="assets/pizza-kebab.webp" alt="Pizza Kebab mit gegrilltem Fleisch und roten Zwiebeln" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 14</span><h3>Pizza Kebab</h3><p>Tomatensauce, Mozzarella, Kebabfleisch und rote Zwiebeln.</p><div class="pizza-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Pizza Kebab" data-number="14" data-kind="pizza-meat">Auswählen</button></div></div></article>
-          <article class="pizza-card reveal"><img src="assets/pizza-vegetaria.webp" alt="Pizza Vegetaria mit Gemüse, Pilzen und Oliven" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 15</span><h3>Pizza Vegetaria</h3><p>Tomatensauce, Mozzarella, Gemüse, Pilze und Oliven.</p><div class="pizza-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Pizza Vegetaria" data-number="15" data-kind="pizza">Auswählen</button></div></div></article>
-          <article class="pizza-card reveal"><img src="assets/pizza-quattro-formaggi.webp" alt="Pizza Quattro Formaggi mit vier Käsesorten" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 16</span><h3>Quattro Formaggi</h3><p>Eine cremige Kombination aus vier Käsesorten.</p><div class="pizza-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Pizza Quattro Formaggi" data-number="16" data-kind="pizza">Auswählen</button></div></div></article>
-          <article class="pizza-card reveal"><img src="assets/pizza-pepperoni.webp" alt="Pizza Peperoni mit Tomatensauce, Mozzarella und grünen Peperoni" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 17</span><h3>Pizza Peperoni</h3><p>Tomatensauce, Mozzarella und würzige grüne Peperoni.</p><div class="pizza-bottom"><span class="menu-price">Preis folgt</span><button class="add-btn" type="button" data-product="Pizza Peperoni" data-number="17" data-kind="pizza">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-margherita.webp" alt="Pizza Margherita mit Tomatensauce und Käse" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 63</span><h3>Margherita</h3><p>Mit Tomatensauce und Käse.</p><div class="pizza-bottom"><span class="menu-price">26 cm 8,00 € · 32 cm 11,00 €</span><button class="add-btn" type="button" data-product="Margherita" data-number="63" data-kind="pizza" data-price-small="8.00" data-price-large="11.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-sucuk.webp" alt="Pizza Sucuk mit Knoblauchwurst, Peperoni und Zwiebeln" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 64</span><h3>Sucuk</h3><p>Mit Knoblauchwurst, Peperoni und Zwiebeln.</p><div class="pizza-bottom"><span class="menu-price">26 cm 9,00 € · 32 cm 12,00 €</span><button class="add-btn" type="button" data-product="Sucuk" data-number="64" data-kind="pizza" data-price-small="9.00" data-price-large="12.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-salami.webp" alt="Pizza Salami mit Rindersalami" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 65</span><h3>Salami</h3><p>Mit Rindersalami.</p><div class="pizza-bottom"><span class="menu-price">26 cm 9,00 € · 32 cm 12,00 €</span><button class="add-btn" type="button" data-product="Salami" data-number="65" data-kind="pizza" data-price-small="9.00" data-price-large="12.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-tonno.webp" alt="Pizza Tonno mit Thunfisch und Zwiebeln" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 66</span><h3>Tonno</h3><p>Mit Thunfisch und Zwiebeln.</p><div class="pizza-bottom"><span class="menu-price">26 cm 10,00 € · 32 cm 13,00 €</span><button class="add-btn" type="button" data-product="Tonno" data-number="66" data-kind="pizza" data-price-small="10.00" data-price-large="13.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-kebab.webp" alt="Pizza Döner mit Drehspießfleisch, Zwiebeln und Käse" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 68</span><h3>Döner</h3><p>Mit Tomatensauce, Drehspießfleisch, Zwiebeln und Käse.</p><div class="pizza-bottom"><span class="menu-price">26 cm 10,00 € · 32 cm 13,00 €</span><button class="add-btn" type="button" data-product="Döner" data-number="68" data-kind="pizza" data-price-small="10.00" data-price-large="13.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-vegetaria.webp" alt="Vegetarische Pizza mit Champignons, Mais, Broccoli, Zucchini, Zwiebeln, Paprika und Oliven" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 69</span><h3>Vegetarisch</h3><p>Mit Champignons, Mais, Broccoli, Zucchini, Zwiebeln, Paprika und Oliven.</p><div class="pizza-bottom"><span class="menu-price">26 cm 10,00 € · 32 cm 13,00 €</span><button class="add-btn" type="button" data-product="Vegetarisch" data-number="69" data-kind="pizza" data-price-small="10.00" data-price-large="13.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-funghi.webp" alt="Pizza Funghi mit frischen Champignons" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 70</span><h3>Funghi</h3><p>Mit frischen Champignons.</p><div class="pizza-bottom"><span class="menu-price">26 cm 9,00 € · 32 cm 12,00 €</span><button class="add-btn" type="button" data-product="Funghi" data-number="70" data-kind="pizza" data-price-small="9.00" data-price-large="12.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-quattro-formaggi.webp" alt="Pizza Quattro Formaggi mit Mozzarella, Gorgonzola, Schafskäse und Käse" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 77</span><h3>Quattro Formaggi</h3><p>Mit Mozzarella, Gorgonzola, Schafskäse und Käse.</p><div class="pizza-bottom"><span class="menu-price">26 cm 10,00 € · 32 cm 13,00 €</span><button class="add-btn" type="button" data-product="Quattro Formaggi" data-number="77" data-kind="pizza" data-price-small="10.00" data-price-large="13.00">Auswählen</button></div></div></article>
         </div>
       </div>
     </section>
@@ -653,7 +670,7 @@
       </div>
       <div class="field"><label for="orderNote">Hinweis zur Bestellung</label><textarea id="orderNote" name="note" placeholder="Zum Beispiel: ohne Zwiebeln"></textarea></div>
       <div class="payment-placeholder"><strong>✓ Zahlung bei Abholung</strong><span>Online-Zahlung per Karte, Apple Pay oder PayPal wird später angeschlossen.</span></div>
-      <div class="payment-placeholder"><strong>Gesamtsumme: Preise werden ergänzt</strong><span>Die automatische Berechnung wird aktiv, sobald die endgültigen Preise eingetragen sind.</span></div>
+      <div class="payment-placeholder"><strong id="cartTotal">Gesamtsumme: 0,00 €</strong><span>Für bereits eingetragene Gerichte wird der Preis automatisch berechnet.</span></div>
       <button class="checkout-submit" type="submit">Bestellübersicht erstellen</button>
       <div class="order-result" id="orderResult"></div>
     </form>
@@ -666,7 +683,14 @@
         <h3>Fleisch wählen</h3>
         <div class="option-list">
           <label class="option-pill"><input type="radio" name="meat" value="Hähnchen" checked><span>Hähnchen</span></label>
-          <label class="option-pill"><input type="radio" name="meat" value="Rind"><span>Rind</span></label>
+          <label class="option-pill"><input type="radio" name="meat" value="Kalb"><span>Kalb</span></label>
+        </div>
+      </div>
+      <div class="option-group" id="pizzaSizeOptions">
+        <h3>Größe wählen</h3>
+        <div class="option-list">
+          <label class="option-pill"><input type="radio" name="pizzaSize" value="26 cm" checked><span>26 cm</span></label>
+          <label class="option-pill"><input type="radio" name="pizzaSize" value="32 cm"><span>32 cm</span></label>
         </div>
       </div>
       <div class="option-group" id="sauceOptions">
@@ -751,17 +775,20 @@
     const sauceOptions = document.getElementById('sauceOptions');
     const ingredientOptions = document.getElementById('ingredientOptions');
     const addonOptions = document.getElementById('addonOptions');
+    const pizzaSizeOptions = document.getElementById('pizzaSizeOptions');
     const falafelBurgerSauceOptions = document.getElementById('falafelBurgerSauceOptions');
     const burgerExtraOptions = document.getElementById('burgerExtraOptions');
     let activeProduct = null;
     let cart = [];
     const productCodes = {
-      'Kebab im Brot': '01', 'Signature Dürüm': '02', 'Kebab-Teller': '03',
-      'Vegetarischer Kebab': '04', 'Vegetarischer Dürüm': '05', 'Aslan Bowl': '06',
-      'Beilage': '07', 'Getränk': '08',
-      'Pizza Margherita': '09', 'Pizza Salami': '10', 'Pizza Funghi': '11',
-      'Pizza Tonno': '12', 'Pizza Sucuk': '13', 'Pizza Kebab': '14',
-      'Pizza Vegetaria': '15', 'Pizza Quattro Formaggi': '16', 'Pizza Peperoni': '17', 'Pizza Pepperoni': '17',
+      'Drehspieß Sandwich': '01', 'Drehspieß Teller': '02', 'Drehspieß Dürüm': '03',
+      'Drehspieß Box': '04', 'Schüler Sandwich': '05', 'Mozzarella Sandwich': '06',
+      'Mozzarella Dürüm': '07', 'Halloumi Sandwich': '08', 'Halloumi Dürüm': '09',
+      'Aubergine mit Zucchini Sandwich': '10', 'Aubergine mit Zucchini Dürüm': '11',
+      'Falafel Sandwich': '12', 'Falafel Teller': '13', 'Falafel Dürüm': '14',
+      'Falafel Box': '15', 'Couscous Teller': '16',
+      'Margherita': '63', 'Sucuk': '64', 'Salami': '65', 'Tonno': '66',
+      'Döner': '68', 'Vegetarisch': '69', 'Funghi': '70', 'Quattro Formaggi': '77',
       'Classic Burger': '54', 'Cheese Burger': '55', 'Falafel Burger': '56', 'Chicken Burger': '57',
       'Veggie Burger': '58', 'Cricket Burger': '59', 'Chili-Cheeseburger': '60', 'Halloumi-Burger': '61',
       'Sauce 1': 'S1', 'Sauce 2': 'S2', 'Sauce 3': 'S3',
@@ -780,6 +807,12 @@
       localStorage.setItem('aslanKebabCart', JSON.stringify(cart));
       renderCart();
     }
+    const formatMoney = value => `${Number(value || 0).toFixed(2).replace('.', ',')} €`;
+    const extraPrice = item => (item.addons || []).reduce((sum, addon) => {
+      const match = String(addon).match(/\+([0-9]+),([0-9]{2})\s*€/);
+      return sum + (match ? Number(`${match[1]}.${match[2]}`) : 0);
+    }, 0);
+    const itemTotal = item => (Number(item.unitPrice || 0) + extraPrice(item)) * Number(item.qty || 1);
     function openCart() {
       cartDrawer.classList.add('open');
       cartOverlay.classList.add('open');
@@ -799,6 +832,7 @@
       cartItems.replaceChildren();
       const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
       cartCount.textContent = totalCount;
+      document.getElementById('cartTotal').textContent = `Gesamtsumme: ${formatMoney(cart.reduce((sum, item) => sum + itemTotal(item), 0))}`;
       cartEmpty.style.display = cart.length ? 'none' : 'block';
       cart.forEach((item, index) => {
         const row = document.createElement('article'); row.className = 'cart-item';
@@ -811,6 +845,8 @@
         if (Array.isArray(item.sauces) && item.sauces.length) details.push(item.sauces.join(', '));
         if (Array.isArray(item.ingredients) && item.ingredients.length) details.push(item.ingredients.join(', '));
         if (Array.isArray(item.addons) && item.addons.length) details.push(item.addons.join(', '));
+        if (item.size) details.push(item.size);
+        if (Number(item.unitPrice || 0)) details.push(formatMoney(item.unitPrice));
         meta.textContent = details.length ? details.join(' · ') : 'Standardauswahl';
         info.append(title, meta);
         const code = item.name.match(/(?:Nr\.\s*)?(\d{2}|S\d|A\d)/)?.[1];
@@ -838,7 +874,16 @@
     document.getElementById('dialogClose').addEventListener('click', () => productDialog.close());
 
     document.querySelectorAll('[data-product]').forEach(button => button.addEventListener('click', () => {
-      activeProduct = { name: button.dataset.product, number: button.dataset.number || '', kind: button.dataset.kind, price: Number(button.dataset.price || 0) };
+      activeProduct = {
+        name: button.dataset.product,
+        number: button.dataset.number || '',
+        kind: button.dataset.kind,
+        price: Number(button.dataset.price || 0),
+        priceChicken: Number(button.dataset.priceChicken || 0),
+        priceVeal: Number(button.dataset.priceVeal || 0),
+        priceSmall: Number(button.dataset.priceSmall || 0),
+        priceLarge: Number(button.dataset.priceLarge || 0)
+      };
       if (activeProduct.kind === 'sauce' || activeProduct.kind === 'addon') {
         cart.push({ id: Date.now() + Math.random(), name: `${activeProduct.number} · ${activeProduct.name}`, meat: '', sauces: [], ingredients: [], addons: [], qty: 1 });
         saveCart(); openCart(); return;
@@ -847,18 +892,21 @@
       document.getElementById('productQuantity').value = 1;
       document.getElementById('dialogProductName').textContent = `Nr. ${activeProduct.number} · ${activeProduct.name}`;
       const hasMeat = activeProduct.kind === 'meat' || activeProduct.kind === 'pizza-meat';
+      const hasPizzaSize = activeProduct.kind === 'pizza' || activeProduct.kind === 'pizza-meat';
       const hasSauces = activeProduct.kind === 'meat' || activeProduct.kind === 'veg';
       const hasIngredients = activeProduct.kind === 'meat' || activeProduct.kind === 'veg';
       const hasAddons = activeProduct.kind === 'meat' || activeProduct.kind === 'veg' || activeProduct.kind === 'pizza' || activeProduct.kind === 'pizza-meat';
       const hasBurgerExtras = activeProduct.kind === 'burger';
       const hasFalafelBurgerSauce = activeProduct.kind === 'burger' && activeProduct.number === '56';
       meatOptions.hidden = !hasMeat;
+      pizzaSizeOptions.hidden = !hasPizzaSize;
       sauceOptions.hidden = !hasSauces;
       ingredientOptions.hidden = !hasIngredients;
       addonOptions.hidden = !hasAddons;
       burgerExtraOptions.hidden = !hasBurgerExtras;
       falafelBurgerSauceOptions.hidden = !hasFalafelBurgerSauce;
       meatOptions.querySelectorAll('input').forEach(input => input.disabled = !hasMeat);
+      pizzaSizeOptions.querySelectorAll('input').forEach(input => input.disabled = !hasPizzaSize);
       sauceOptions.querySelectorAll('input').forEach(input => input.disabled = !hasSauces);
       ingredientOptions.querySelectorAll('input').forEach(input => input.disabled = !hasIngredients);
       addonOptions.querySelectorAll('input').forEach(input => input.disabled = !hasAddons);
@@ -871,10 +919,19 @@
       event.preventDefault();
       if (!activeProduct) return;
       const data = new FormData(productForm);
+      const meat = (activeProduct.kind === 'meat' || activeProduct.kind === 'pizza-meat') ? String(data.get('meat') || '') : '';
+      const size = (activeProduct.kind === 'pizza' || activeProduct.kind === 'pizza-meat') ? String(data.get('pizzaSize') || '') : '';
+      const unitPrice = activeProduct.priceChicken
+        ? (meat === 'Kalb' ? activeProduct.priceVeal : activeProduct.priceChicken)
+        : activeProduct.priceSmall
+          ? (size === '32 cm' ? activeProduct.priceLarge : activeProduct.priceSmall)
+          : activeProduct.price;
       cart.push({
         id: Date.now() + Math.random(),
         name: `Nr. ${activeProduct.number} · ${activeProduct.name}`,
-        meat: (activeProduct.kind === 'meat' || activeProduct.kind === 'pizza-meat') ? String(data.get('meat') || '') : '',
+        meat,
+        size,
+        unitPrice,
         sauces: [...data.getAll('sauce').map(String), ...data.getAll('burgerSauce').map(String)],
         ingredients: data.getAll('ingredient').map(String),
         addons: data.getAll('addon').map(String),
@@ -891,14 +948,15 @@
       const note = document.getElementById('orderNote').value.trim();
       const lines = ['BESTELLUNG · ASLAN KEBAB', '', `Name: ${name}`, `Telefon: ${phone}`, `Bestellart: ${type}`, `Uhrzeit: ${time || 'so bald wie möglich'}`, '', 'Produkte:'];
       cart.forEach((item, index) => {
-        lines.push(`${index + 1}. ${item.qty}× ${item.name}`);
+        lines.push(`${index + 1}. ${item.qty}× ${item.name}${Number(item.unitPrice || 0) ? ` — ${formatMoney(itemTotal(item))}` : ''}`);
         if (item.meat) lines.push(`   Fleisch: ${item.meat}`);
+        if (item.size) lines.push(`   Größe: ${item.size}`);
         if (Array.isArray(item.sauces) && item.sauces.length) lines.push(`   Saucen: ${item.sauces.join(', ')}`);
         if (Array.isArray(item.ingredients) && item.ingredients.length) lines.push(`   Zutaten: ${item.ingredients.join(', ')}`);
         if (Array.isArray(item.addons) && item.addons.length) lines.push(`   Extras: ${item.addons.join(', ')}`);
       });
       if (note) lines.push('', `Hinweis: ${note}`);
-      lines.push('', 'Gesamtsumme: wird nach Eintragung der Preise angezeigt');
+      lines.push('', `Gesamtsumme: ${formatMoney(cart.reduce((sum, item) => sum + itemTotal(item), 0))}`);
       return lines.join('\n');
     };
 
