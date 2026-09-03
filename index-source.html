@@ -1,0 +1,1090 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#24110f">
+  <meta name="description" content="Aslan Kebab – frisch gegrillt, ehrlich gewürzt und mit Liebe serviert.">
+  <title>Aslan Kebab | Frisch. Ehrlich. Unvergesslich.</title>
+  <style>
+    :root {
+      --ink: #24110f;
+      --wine: #7c1f1d;
+      --wine-dark: #4d1212;
+      --gold: #d99a39;
+      --cream: #fff8eb;
+      --paper: #f4ead8;
+      --white: #fffdf8;
+      --muted: #755f59;
+      --shadow: 0 24px 70px rgba(49, 17, 13, .16);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .16;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+      z-index: 20;
+      mix-blend-mode: multiply;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+
+    .topbar {
+      background: var(--ink);
+      color: rgba(255,255,255,.74);
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: .15em;
+      padding: 8px 20px;
+      text-transform: uppercase;
+    }
+    header {
+      position: absolute;
+      top: 32px;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      color: white;
+    }
+    nav { height: 92px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 12px; font-weight: 850; letter-spacing: .04em; }
+    .logo-mark {
+      width: 48px; height: 48px; border: 1px solid rgba(255,255,255,.36); border-radius: 50%;
+      display: grid; place-items: center; font-family: Georgia, serif; font-size: 27px; color: var(--gold);
+      overflow: hidden; background: rgba(33,12,10,.3); backdrop-filter: blur(10px);
+    }
+    .logo-mark img { width: 100%; height: 100%; object-fit: cover; }
+    .logo span small { display: block; margin-top: -2px; font-size: 9px; font-weight: 600; letter-spacing: .28em; opacity: .7; }
+    .navlinks { display: flex; gap: 34px; align-items: center; font-size: 14px; font-weight: 650; }
+    .navlinks > a:not(.nav-cta) { opacity: .85; }
+    .navlinks > a:hover { opacity: 1; }
+    .nav-cta { padding: 13px 20px; border-radius: 99px; background: var(--gold); color: var(--ink); }
+    .cart-button { border: 1px solid rgba(255,255,255,.32); background: rgba(28,8,7,.28); color: white; border-radius: 99px; padding: 11px 15px; font: inherit; font-size: 12px; font-weight: 800; cursor: pointer; }
+    .cart-count { display: inline-grid; place-items: center; min-width: 22px; height: 22px; margin-left: 7px; padding: 0 5px; border-radius: 99px; background: var(--gold); color: var(--ink); }
+    .menu-toggle { display: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); background: rgba(0,0,0,.18); color: white; font-size: 21px; }
+
+    .hero {
+      min-height: 820px;
+      color: white;
+      display: grid;
+      align-items: center;
+      position: relative;
+      background:
+        linear-gradient(90deg, rgba(28,8,7,.94) 0%, rgba(44,11,9,.78) 46%, rgba(44,11,9,.18) 100%),
+        url("assets/story-kebab.webp") center 57%/cover no-repeat;
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: auto 0 0; height: 130px;
+      background: linear-gradient(transparent, rgba(36,17,15,.3));
+    }
+    .hero-content { position: relative; z-index: 2; padding-top: 90px; max-width: 680px; }
+    .eyebrow { display: flex; align-items: center; gap: 14px; text-transform: uppercase; letter-spacing: .25em; font-size: 12px; font-weight: 750; color: var(--gold); }
+    .eyebrow::before { content: ""; width: 48px; height: 1px; background: currentColor; }
+    h1, h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; line-height: .98; margin: 0; }
+    h1 { font-size: clamp(66px, 8vw, 118px); letter-spacing: -.05em; margin-top: 25px; }
+    h1 em { display: block; color: var(--gold); font-weight: 400; }
+    .hero-copy { max-width: 530px; font-size: 19px; color: rgba(255,255,255,.77); margin: 28px 0 34px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .btn { min-height: 54px; padding: 0 25px; border-radius: 99px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-weight: 800; font-size: 14px; transition: transform .2s, background .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--gold); color: var(--ink); }
+    .btn-secondary { border: 1px solid rgba(255,255,255,.35); color: white; backdrop-filter: blur(8px); }
+    .hero-note { display: flex; gap: 20px; align-items: center; margin-top: 44px; font-size: 12px; color: rgba(255,255,255,.63); }
+    .hero-note strong { display: block; color: white; font-size: 15px; }
+    .rating { color: var(--gold); letter-spacing: .08em; }
+
+    .quick-info { position: relative; z-index: 4; margin-top: -45px; }
+    .quick-grid { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--white); border-radius: 22px; box-shadow: var(--shadow); overflow: hidden; }
+    .quick-item { padding: 28px 32px; display: flex; gap: 17px; align-items: center; }
+    .quick-item + .quick-item { border-left: 1px solid #eadfcf; }
+    .icon { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; color: var(--wine); background: #f8e8cf; font-size: 20px; flex: 0 0 auto; }
+    .quick-item span { color: var(--muted); font-size: 12px; display: block; }
+    .quick-item strong { font-size: 15px; }
+
+    section { padding: 120px 0; }
+    .section-head { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 40px; margin-bottom: 55px; }
+    .section-head h2 { font-size: clamp(47px, 6vw, 78px); letter-spacing: -.04em; margin-top: 16px; }
+    .section-head p { color: var(--muted); max-width: 530px; margin: 0 0 4px auto; }
+    .accent { color: var(--wine); }
+
+    .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .dish { position: relative; overflow: hidden; border-radius: var(--radius); min-height: 470px; background: #321512; box-shadow: 0 12px 35px rgba(50,18,13,.12); }
+    .dish:nth-child(2) { transform: translateY(28px); }
+    .dish img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; transition: transform .5s; }
+    .dish:hover img { transform: scale(1.04); }
+    .dish::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 38%, rgba(24,7,5,.93)); }
+    .dish-copy { position: absolute; z-index: 2; left: 28px; right: 28px; bottom: 25px; color: white; }
+    .dish-tag { display: inline-block; color: var(--gold); text-transform: uppercase; font-size: 10px; font-weight: 850; letter-spacing: .16em; margin-bottom: 8px; }
+    .dish-code { display: inline-block; margin-right: 8px; padding: 5px 8px; border-radius: 99px; background: var(--gold); color: var(--ink); font: 850 10px/1 Inter, sans-serif; vertical-align: middle; }
+    .dish h3 { font-family: Georgia, serif; font-size: 31px; line-height: 1; margin: 0 0 9px; font-weight: 500; }
+    .dish p { margin: 0; color: rgba(255,255,255,.67); font-size: 13px; }
+    .price { position: absolute; z-index: 3; top: 20px; right: 20px; width: 65px; height: 65px; border-radius: 50%; display: grid; place-items: center; background: var(--gold); color: var(--ink); font-weight: 900; font-size: 14px; }
+    .menu-foot { margin-top: 65px; text-align: center; color: var(--muted); font-size: 13px; }
+    .menu-foot .btn { margin-top: 18px; color: white; background: var(--wine); }
+
+    .full-menu { padding-top: 45px; background: var(--paper); }
+    .full-menu-layout { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .product-card { overflow: hidden; border-radius: 27px; background: var(--white); border: 1px solid #eadfcf; box-shadow: 0 14px 42px rgba(49,17,13,.1); display: flex; flex-direction: column; }
+    .product-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+    .product-card-copy { padding: 23px; display: flex; flex: 1; flex-direction: column; }
+    .product-card h3 { margin: 9px 0; font: 500 27px/1 Georgia, serif; }
+    .product-card p { min-height: 42px; margin: 0; color: var(--muted); font-size: 12px; }
+    .product-card-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 20px; }
+    .menu-category { grid-column: 1 / -1; margin: 34px 0 2px; padding: 18px 22px; border-radius: 20px; background: var(--wine); color: white; }
+    .menu-category:first-child { margin-top: 0; }
+    .menu-category h3 { margin: 0 0 4px; color: var(--gold); font: 500 30px Georgia, serif; }
+    .menu-category p { margin: 0; color: rgba(255,255,255,.67); font-size: 12px; }
+    .dual-price { white-space: normal; line-height: 1.45; }
+    .durum-feature { min-height: 650px; border-radius: 34px; position: relative; overflow: hidden; color: white; box-shadow: var(--shadow); }
+    .durum-feature img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .durum-feature::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 38%, rgba(29,8,7,.94)); }
+    .durum-feature-copy { position: absolute; z-index: 2; left: 38px; right: 38px; bottom: 36px; }
+    .durum-feature h3 { font: 500 45px/1 Georgia, serif; margin: 8px 0 12px; }
+    .durum-feature p { max-width: 540px; margin: 0; color: rgba(255,255,255,.7); }
+    .menu-list { background: var(--white); border-radius: 34px; padding: 18px 36px; box-shadow: var(--shadow); }
+    .menu-line { display: grid; grid-template-columns: 1fr auto; gap: 25px; padding: 24px 0; border-bottom: 1px solid #eadfcf; }
+    .menu-line:last-child { border-bottom: 0; }
+    .menu-line h3 { margin: 0 0 5px; font: 500 23px/1.1 Georgia, serif; }
+    .menu-line p { margin: 0; color: var(--muted); font-size: 12px; }
+    .menu-price { color: var(--wine); font-size: 12px; font-weight: 850; white-space: nowrap; padding-top: 4px; }
+    .menu-action { display: flex; flex-direction: column; align-items: flex-end; gap: 9px; }
+    .add-btn { border: 0; border-radius: 99px; padding: 10px 15px; background: var(--wine); color: white; font-size: 11px; font-weight: 850; cursor: pointer; transition: transform .2s, background .2s; }
+    .add-btn:hover { transform: translateY(-2px); background: var(--wine-dark); }
+    .add-btn.light { background: var(--gold); color: var(--ink); margin-top: 18px; align-self: flex-start; }
+    .choice-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+    .choice-pill { padding: 7px 12px; border-radius: 99px; background: rgba(217,154,57,.14); border: 1px solid rgba(217,154,57,.38); color: var(--gold); font-size: 11px; font-weight: 850; letter-spacing: .04em; }
+    .meat-choice { display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: center; margin: 26px 0; padding: 25px 30px; border-radius: 25px; background: var(--wine); color: white; }
+    .meat-choice-icon { width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; background: var(--gold); color: var(--ink); font-size: 25px; }
+    .meat-choice h3 { margin: 0 0 5px; font: 500 25px Georgia, serif; }
+    .meat-choice p { margin: 0; color: rgba(255,255,255,.66); font-size: 13px; }
+    .vegetarian-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .vegetarian-card { display: grid; grid-template-columns: 1.1fr .9fr; min-height: 300px; overflow: hidden; border-radius: 28px; background: var(--white); box-shadow: 0 14px 42px rgba(49,17,13,.11); }
+    .vegetarian-card img { width: 100%; height: 100%; object-fit: cover; }
+    .vegetarian-card-copy { padding: 30px 27px; display: flex; flex-direction: column; justify-content: center; }
+    .vegetarian-card h3 { margin: 7px 0 10px; font: 500 29px/1 Georgia, serif; }
+    .vegetarian-card p { color: var(--muted); font-size: 12px; margin: 0; }
+    .veg-label { color: #54743a; font-size: 10px; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+
+    .sauces { background: var(--cream); }
+    .sauce-hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 46px; align-items: center; margin-bottom: 52px; }
+    .sauce-hero img { border-radius: 34px; box-shadow: var(--shadow); }
+    .sauce-hero h2 { font-size: clamp(50px, 6vw, 78px); letter-spacing: -.04em; margin: 18px 0 22px; }
+    .sauce-hero p { color: var(--muted); }
+    .sauce-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .sauce-card { overflow: hidden; border-radius: 23px; background: var(--white); border: 1px solid #eadfcf; box-shadow: 0 12px 32px rgba(49,17,13,.08); }
+    .sauce-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+    .sauce-card-body { padding: 22px 24px 24px; }
+    .sauce-number { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: var(--paper); color: var(--wine); font: 600 18px Georgia, serif; }
+    .sauce-card h3 { font: 500 25px Georgia, serif; margin: 16px 0 9px; }
+    .sauce-card .add-btn { margin-top: 17px; }
+    .placeholder-copy { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+    .addon-heading { margin: 68px 0 24px; }
+    .addon-heading h2 { margin: 12px 0 10px; font-size: clamp(38px, 5vw, 58px); }
+    .addon-heading p { margin: 0; color: var(--muted); }
+    .seasonings { margin-top: 70px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .seasoning-card { border-radius: 30px; overflow: hidden; background: var(--white); box-shadow: 0 15px 45px rgba(49,17,13,.11); }
+    .seasoning-card img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+    .seasoning-copy { padding: 28px; }
+    .seasoning-copy h3 { font: 500 28px Georgia, serif; margin: 0 0 10px; }
+
+    .toppings { background: var(--white); }
+    .topping-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .topping-card { overflow: hidden; border-radius: 22px; background: var(--cream); border: 1px solid #eadfcf; }
+    .topping-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+    .topping-copy { padding: 18px; }
+    .topping-number { display: inline-flex; align-items: center; justify-content: center; min-width: 38px; height: 28px; padding: 0 10px; border-radius: 99px; background: var(--gold); color: var(--ink); font-size: 10px; font-weight: 900; letter-spacing: .08em; }
+    .topping-copy h3 { margin: 5px 0 6px; font: 500 21px/1.05 Georgia, serif; }
+    .topping-copy p { margin: 0; color: var(--muted); font-size: 11px; }
+
+    .pizza-menu { background: var(--ink); color: white; }
+    .pizza-menu .section-head p { color: rgba(255,255,255,.58); }
+    .pizza-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .pizza-card { overflow: hidden; border-radius: 27px; background: #321714; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 18px 50px rgba(0,0,0,.18); }
+    .pizza-card img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+    .pizza-copy { padding: 24px; }
+    .pizza-copy h3 { margin: 8px 0 9px; font: 500 28px/1 Georgia, serif; }
+    .pizza-copy p { min-height: 40px; margin: 0; color: rgba(255,255,255,.58); font-size: 12px; }
+    .pizza-bottom { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-top: 20px; }
+    .pizza-bottom .menu-price { color: var(--gold); }
+    .pizza-bottom .add-btn { background: var(--gold); color: var(--ink); }
+
+    .burger-menu { background: var(--cream); }
+    .burger-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .burger-card { overflow: hidden; border-radius: 27px; background: var(--white); border: 1px solid #eadfcf; box-shadow: 0 16px 45px rgba(49,17,13,.1); }
+    .burger-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+    .burger-copy { padding: 24px; }
+    .burger-copy h3 { margin: 8px 0 10px; font: 500 27px/1.05 Georgia, serif; }
+    .burger-copy p { min-height: 68px; margin: 0; color: var(--muted); font-size: 12px; }
+    .burger-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 18px; }
+    .burger-note { margin-top: 28px; padding: 22px 26px; border-radius: 22px; background: var(--gold); color: var(--ink); font-weight: 800; text-align: center; }
+    .allergen-note { display: block; margin-top: 10px; color: #886f64; font-size: 10px; }
+
+    .phone-order-box { display: flex; align-items: center; justify-content: space-between; gap: 35px; margin-top: 34px; padding: 27px 30px; border-radius: 24px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16); }
+    .phone-order-box strong { display: block; font: 500 25px Georgia, serif; }
+    .phone-order-box span { color: rgba(255,255,255,.6); font-size: 12px; }
+    .phone-order-box .btn { margin: 0; white-space: nowrap; }
+    .floating-phone { position: fixed; z-index: 18; right: 22px; bottom: 22px; display: flex; align-items: center; gap: 11px; padding: 13px 19px; border-radius: 99px; background: var(--gold); color: var(--ink); font-size: 13px; font-weight: 900; box-shadow: 0 12px 35px rgba(36,17,15,.28); }
+    .floating-phone b { font-size: 19px; }
+
+    .cart-overlay { position: fixed; inset: 0; z-index: 40; background: rgba(23,7,6,.58); opacity: 0; pointer-events: none; transition: opacity .25s; backdrop-filter: blur(3px); }
+    .cart-overlay.open { opacity: 1; pointer-events: auto; }
+    .cart-drawer { position: fixed; z-index: 41; top: 0; right: 0; bottom: 0; width: min(470px, 100%); padding: 27px; background: var(--cream); transform: translateX(102%); transition: transform .3s ease; overflow-y: auto; box-shadow: -25px 0 80px rgba(35,9,7,.26); }
+    .cart-drawer.open { transform: none; }
+    .cart-head { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-bottom: 20px; border-bottom: 1px solid #e4d5c2; }
+    .cart-head h2 { font-size: 38px; }
+    .close-btn { width: 42px; height: 42px; border-radius: 50%; border: 1px solid #dfcfba; background: white; font-size: 22px; cursor: pointer; }
+    .cart-empty { padding: 35px 0; text-align: center; color: var(--muted); }
+    .cart-item { display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; padding: 19px 0; border-bottom: 1px solid #e4d5c2; }
+    .cart-product { display: grid; grid-template-columns: 68px 1fr; gap: 13px; align-items: center; min-width: 0; }
+    .cart-thumb { width: 68px; height: 68px; border-radius: 13px; object-fit: cover; background: white; }
+    .cart-item strong { display: block; font: 500 20px Georgia, serif; }
+    .cart-meta { color: var(--muted); font-size: 11px; margin-top: 5px; }
+    .cart-controls { display: flex; align-items: center; gap: 8px; }
+    .qty-btn, .remove-btn { border: 1px solid #dfcfba; background: white; border-radius: 50%; width: 29px; height: 29px; cursor: pointer; }
+    .remove-btn { color: var(--wine); margin-left: 4px; }
+    .checkout { margin-top: 30px; padding-top: 25px; border-top: 2px solid var(--ink); }
+    .checkout h3 { font: 500 28px Georgia, serif; margin: 0 0 18px; }
+    .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .field { margin-bottom: 12px; }
+    .field label { display: block; margin: 0 0 6px; color: var(--muted); font-size: 11px; font-weight: 750; }
+    .field input, .field select, .field textarea { width: 100%; border: 1px solid #dbcbb7; border-radius: 13px; padding: 12px 13px; background: white; color: var(--ink); font: inherit; font-size: 13px; }
+    .field textarea { min-height: 76px; resize: vertical; }
+    .payment-placeholder { margin: 16px 0; padding: 16px; border-radius: 15px; background: var(--paper); border: 1px dashed #ccb89e; }
+    .payment-placeholder strong { display: block; font-size: 13px; }
+    .payment-placeholder span { color: var(--muted); font-size: 11px; }
+    .checkout-submit { width: 100%; border: 0; border-radius: 99px; padding: 16px; background: var(--wine); color: white; font-weight: 900; cursor: pointer; }
+    .order-result { display: none; margin-top: 14px; padding: 15px; border-radius: 14px; background: #e8f0df; color: #365024; font-size: 12px; }
+    .order-result.show { display: block; }
+    .order-summary { margin: 12px 0; padding: 13px; border-radius: 11px; background: white; color: var(--ink); font: 12px/1.55 Inter, sans-serif; white-space: pre-wrap; }
+    .copy-order { width: 100%; border: 1px solid #9eb086; border-radius: 99px; padding: 11px; background: transparent; color: #365024; font-weight: 850; cursor: pointer; }
+
+    .product-dialog { width: min(520px, calc(100% - 28px)); border: 0; border-radius: 28px; padding: 0; background: var(--cream); color: var(--ink); box-shadow: var(--shadow); }
+    .product-dialog::backdrop { background: rgba(23,7,6,.64); backdrop-filter: blur(4px); }
+    .dialog-inner { padding: 30px; }
+    .dialog-head { display: flex; justify-content: space-between; gap: 20px; align-items: start; }
+    .dialog-head h2 { font-size: 38px; }
+    .option-group { margin-top: 23px; }
+    .option-group h3 { margin: 0 0 11px; font-size: 12px; text-transform: uppercase; letter-spacing: .12em; }
+    .option-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .option-pill input { position: absolute; opacity: 0; }
+    .option-pill span { display: inline-block; padding: 10px 14px; border: 1px solid #dbcbb7; border-radius: 99px; background: white; font-size: 12px; cursor: pointer; }
+    .option-pill input:checked + span { background: var(--wine); border-color: var(--wine); color: white; }
+    .dialog-footer { display: flex; gap: 12px; align-items: center; margin-top: 27px; }
+    .dialog-footer input { width: 72px; padding: 13px; border: 1px solid #dbcbb7; border-radius: 13px; background: white; }
+    .dialog-footer .add-btn { flex: 1; padding: 15px; }
+
+    .story { background: var(--ink); color: white; position: relative; overflow: hidden; }
+    .story::before { content: "ASLAN"; position: absolute; top: -25px; right: -20px; color: rgba(255,255,255,.025); font-family: Georgia, serif; font-size: 230px; letter-spacing: -.06em; }
+    .story-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 80px; align-items: center; }
+    .story-art { position: relative; min-height: 560px; }
+    .story-art img { width: 82%; height: 520px; object-fit: cover; border-radius: 180px 180px 28px 28px; }
+    .seal { position: absolute; right: 0; bottom: 15px; width: 155px; height: 155px; border-radius: 50%; background: var(--gold); color: var(--ink); display: grid; place-items: center; text-align: center; padding: 25px; font-family: Georgia, serif; font-size: 20px; line-height: 1.08; transform: rotate(8deg); border: 7px solid var(--ink); outline: 1px solid var(--gold); }
+    .story h2 { font-size: clamp(52px, 6vw, 82px); letter-spacing: -.04em; margin: 20px 0 28px; }
+    .story p { color: rgba(255,255,255,.65); max-width: 570px; }
+    .features { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 35px; margin-top: 32px; }
+    .feature { display: flex; gap: 10px; align-items: center; font-size: 14px; font-weight: 700; }
+    .check { width: 25px; height: 25px; display: grid; place-items: center; border-radius: 50%; color: var(--gold); border: 1px solid rgba(217,154,57,.4); }
+
+    .order { background: var(--paper); }
+    .order-card { border-radius: 36px; overflow: hidden; display: grid; grid-template-columns: 1.2fr .8fr; background: var(--wine); color: white; box-shadow: var(--shadow); }
+    .order-copy { padding: 70px; position: relative; }
+    .order-copy h2 { font-size: clamp(48px, 6vw, 78px); letter-spacing: -.04em; margin: 18px 0 22px; }
+    .order-copy p { color: rgba(255,255,255,.7); max-width: 580px; }
+    .order-copy .btn { margin-top: 20px; background: var(--gold); color: var(--ink); }
+    .order-side { min-height: 440px; background:
+      linear-gradient(rgba(30,8,6,.08), rgba(30,8,6,.32)),
+      url("assets/kebab-plate.webp") center/cover; }
+
+    footer { background: #180b0a; color: white; padding: 70px 0 28px; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 70px; padding-bottom: 60px; }
+    .footer-brand p { color: rgba(255,255,255,.54); max-width: 390px; margin-top: 22px; }
+    footer h4 { font-size: 12px; text-transform: uppercase; color: var(--gold); letter-spacing: .18em; margin: 8px 0 20px; }
+    footer ul { list-style: none; padding: 0; margin: 0; color: rgba(255,255,255,.65); font-size: 14px; }
+    footer li { margin: 10px 0; }
+    .copyright { border-top: 1px solid rgba(255,255,255,.1); padding-top: 24px; display: flex; justify-content: space-between; gap: 20px; color: rgba(255,255,255,.38); font-size: 12px; }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 850px) {
+      header { top: 32px; }
+      .menu-toggle { display: block; }
+      .navlinks { display: none; position: absolute; top: 82px; left: 20px; right: 20px; padding: 24px; border-radius: 22px; background: rgba(36,17,15,.97); flex-direction: column; align-items: stretch; gap: 18px; box-shadow: var(--shadow); }
+      .navlinks.open { display: flex; }
+      .nav-cta { text-align: center; }
+      .cart-button { width: 100%; }
+      .hero { min-height: 760px; background-position: 64% center; }
+      .hero-content { padding-top: 100px; }
+      .quick-grid { grid-template-columns: 1fr; }
+      .quick-item + .quick-item { border-left: 0; border-top: 1px solid #eadfcf; }
+      .section-head, .story-grid, .order-card { grid-template-columns: 1fr; }
+      .section-head p { margin-left: 0; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .full-menu-layout { grid-template-columns: repeat(2, 1fr); }
+      .sauce-hero { grid-template-columns: 1fr; }
+      .vegetarian-grid { grid-template-columns: 1fr; }
+      .durum-feature { min-height: 540px; }
+      .sauce-grid { grid-template-columns: 1fr 1fr; }
+      .topping-grid { grid-template-columns: repeat(3, 1fr); }
+      .pizza-grid { grid-template-columns: 1fr 1fr; }
+      .burger-grid { grid-template-columns: 1fr 1fr; }
+      .dish:nth-child(2) { transform: none; }
+      .dish { min-height: 430px; }
+      .story-grid { gap: 55px; }
+      .story-art { min-height: 480px; }
+      .story-art img { height: 450px; }
+      .order-side { min-height: 320px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+      .floating-phone { width: 56px; height: 56px; right: 14px; bottom: 14px; justify-content: center; padding: 0; font-size: 0; }
+      .floating-phone b { font-size: 22px; }
+    }
+    @media (max-width: 560px) {
+      .container { width: min(100% - 28px, 1180px); }
+      .topbar { font-size: 9px; letter-spacing: .12em; }
+      nav { height: 78px; }
+      .logo-mark { width: 42px; height: 42px; }
+      h1 { font-size: 61px; }
+      .hero-copy { font-size: 16px; }
+      .hero-actions .btn { width: 100%; }
+      .hero-note { gap: 13px; }
+      .quick-info { margin-top: -25px; }
+      .quick-item { padding: 22px; }
+      section { padding: 85px 0; }
+      .section-head { margin-bottom: 35px; }
+      .dish { min-height: 390px; }
+      .story-art { min-height: 410px; }
+      .story-art img { height: 390px; width: 90%; }
+      .seal { width: 125px; height: 125px; font-size: 16px; }
+      .features { grid-template-columns: 1fr; }
+      .sauce-grid, .seasonings { grid-template-columns: 1fr; }
+      .full-menu-layout { grid-template-columns: 1fr; }
+      .topping-grid { grid-template-columns: 1fr 1fr; }
+      .pizza-grid { grid-template-columns: 1fr; }
+      .burger-grid { grid-template-columns: 1fr; }
+      .durum-feature { min-height: 450px; }
+      .durum-feature-copy { left: 24px; right: 24px; bottom: 24px; }
+      .menu-list { padding: 10px 24px; }
+      .vegetarian-card { grid-template-columns: 1fr; }
+      .vegetarian-card img { aspect-ratio: 3 / 2; }
+      .meat-choice { grid-template-columns: 1fr; }
+      .phone-order-box { align-items: stretch; flex-direction: column; }
+      .phone-order-box .btn { width: 100%; }
+      .floating-phone { right: 14px; bottom: 14px; }
+      .cart-item { grid-template-columns: 1fr; }
+      .cart-controls { margin-left: 81px; }
+      .field-grid { grid-template-columns: 1fr; }
+      .order-copy { padding: 45px 28px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 35px; }
+      .footer-brand { grid-column: auto; }
+      .copyright { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">Täglich frisch zubereitet · 100 % Geschmack · Direkt vom Grill</div>
+  <header>
+    <div class="container">
+      <nav aria-label="Hauptnavigation">
+        <a class="logo" href="#start" aria-label="Aslan Kebab Startseite">
+          <span class="logo-mark"><img src="assets/aslan-avatar.webp" alt=""></span>
+          <span>ASLAN KEBAB<small>GRILL &amp; GENUSS</small></span>
+        </a>
+        <button class="menu-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+        <div class="navlinks">
+          <a href="#speisekarte">Speisekarte</a>
+          <a href="#pizza">Pizza</a>
+          <a href="#burger">Burger</a>
+          <a href="#saucen">Saucen</a>
+          <a href="#story">Unser Anspruch</a>
+          <a href="#kontakt">Kontakt</a>
+          <a href="#bestellen" class="nav-cta">Jetzt bestellen</a>
+          <button class="cart-button" id="cartOpen" type="button">Warenkorb <span class="cart-count" id="cartCount">0</span></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="start">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">Kebab neu gedacht</div>
+          <h1>Feuer.<em>Frische.</em>Geschmack.</h1>
+          <p class="hero-copy">Saftiges Fleisch vom Grill, knackiges Gemüse und hausgemachte Saucen – jeden Tag frisch, ehrlich und mit Leidenschaft zubereitet.</p>
+          <div class="hero-actions">
+            <a href="#speisekarte" class="btn btn-primary">Speisekarte entdecken <span>→</span></a>
+            <a href="#kontakt" class="btn btn-secondary">Standort &amp; Öffnungszeiten</a>
+          </div>
+          <div class="hero-note">
+            <div class="rating">★★★★★</div>
+            <div><strong>Frisch vom Grill</strong>Dein Lieblingskebab wartet.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="quick-info">
+      <div class="container quick-grid">
+        <div class="quick-item"><div class="icon">◷</div><div><span>Öffnungszeiten</span><strong>Täglich · 11:00–23:00 Uhr</strong></div></div>
+        <div class="quick-item"><div class="icon">⌖</div><div><span>Vor Ort genießen</span><strong>Zentral · schnell erreichbar</strong></div></div>
+        <div class="quick-item"><div class="icon">✦</div><div><span>Unser Versprechen</span><strong>Frisch · herzhaft · hausgemacht</strong></div></div>
+      </div>
+    </div>
+
+    <section id="highlights">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="eyebrow accent">Unsere Favoriten</div><h2>Einfach gut.<br>Einfach <span class="accent">Aslan.</span></h2></div>
+          <p>Unsere Klassiker verbinden kräftige Röstaromen mit frischen Zutaten. Alle Nummern und Preise entsprechen der aktuellen Speisekarte.</p>
+        </div>
+        <div class="menu-grid">
+          <article class="dish reveal">
+            <img src="assets/menu-01-drehspiess-sandwich.webp" alt="Drehspieß Sandwich mit Salat und Soße" loading="lazy">
+            <span class="price">ab 7,50 €</span>
+            <div class="dish-copy"><span class="dish-tag">Der Klassiker</span><h3><span class="dish-code">Nr. 01</span>Drehspieß Sandwich</h3><p>Mit Hähnchen oder Kalb, frischem Salat und Soße.</p></div>
+          </article>
+          <article class="dish reveal">
+            <img src="assets/menu-03-drehspiess-dueruem.webp" alt="Drehspieß Dürüm mit Salat und Soße" loading="lazy">
+            <span class="price">ab 8,50 €</span>
+            <div class="dish-copy"><span class="dish-tag">Gerollter Genuss</span><h3><span class="dish-code">Nr. 03</span>Drehspieß Dürüm</h3><p>Mit Hähnchen oder Kalb, frischem Salat und Soße.</p></div>
+          </article>
+          <article class="dish reveal">
+            <img src="assets/menu-13-falafel-teller.webp" alt="Falafel Teller mit Salat und Pommes" loading="lazy">
+            <span class="price">11,00 €</span>
+            <div class="dish-copy"><span class="dish-tag">Vegetarischer Favorit</span><h3><span class="dish-code">Nr. 13</span>Falafel Teller</h3><p>Knusprige Falafel mit Salat und Pommes oder Couscous.</p></div>
+          </article>
+        </div>
+        <div class="menu-foot reveal">Auch vegetarisch erhältlich · Allergene bitte vor Ort erfragen<br><a class="btn" href="#speisekarte">Komplette Speisekarte ansehen</a></div>
+      </div>
+    </section>
+
+    <section class="full-menu" id="speisekarte">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="eyebrow accent">Unsere Speisekarte</div><h2>Was darf es<br><span class="accent">heute sein?</span></h2></div>
+          <p>Originale Nummern, Preise und Zutaten nach der aktuellen Speisekarte. Ergänzt: Drehspieß, vegetarische Gerichte, Falafel, Chicken Teller, Lahmacun, Pasta, Börek, Pommes, Pide und Salate.</p>
+        </div>
+        <div class="full-menu-layout">
+          <div class="menu-category reveal"><h3>Drehspieß</h3><p>Wahlweise mit Hähnchen oder Kalb.</p></div>
+          <article class="product-card reveal"><img src="assets/menu-01-drehspiess-sandwich.webp" alt="Drehspieß Sandwich mit Fleisch, Salat und Soße" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 01</span><h3>Drehspieß Sandwich</h3><p>Pute- und Hähnchenfleisch oder Kalb, mit Salat und Soße.</p><div class="product-card-bottom"><span class="menu-price dual-price">Hähnchen 7,50 €<br>Kalb 8,50 €</span><button class="add-btn" type="button" data-product="Drehspieß Sandwich" data-number="01" data-kind="meat" data-price-chicken="7.50" data-price-veal="8.50">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-02-drehspiess-teller.webp" alt="Drehspieß Teller mit Fleisch, Pommes, Salat und Soße" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 02</span><h3>Drehspieß Teller</h3><p>Mit Reis und Salat oder mit Pommes und Salat.</p><div class="product-card-bottom"><span class="menu-price dual-price">Hähnchen 12,00 €<br>Kalb 13,00 €</span><button class="add-btn" type="button" data-product="Drehspieß Teller" data-number="02" data-kind="meat" data-price-chicken="12.00" data-price-veal="13.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-03-drehspiess-dueruem.webp" alt="Drehspieß Dürüm mit Fleisch, Salat und Soße" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 03</span><h3>Drehspieß Dürüm</h3><p>Gerolltes Fladenbrot mit Salat und Soße.</p><div class="product-card-bottom"><span class="menu-price dual-price">Hähnchen 8,50 €<br>Kalb 9,50 €</span><button class="add-btn" type="button" data-product="Drehspieß Dürüm" data-number="03" data-kind="meat" data-price-chicken="8.50" data-price-veal="9.50">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-04-drehspiess-box.webp" alt="Drehspieß Box mit Fleisch, Pommes oder Reis und Salat" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 04</span><h3>Drehspieß Box</h3><p>Mit Salat und Pommes oder Reis.</p><div class="product-card-bottom"><span class="menu-price dual-price">Hähnchen 8,00 €<br>Kalb 8,50 €</span><button class="add-btn" type="button" data-product="Drehspieß Box" data-number="04" data-kind="meat" data-price-chicken="8.00" data-price-veal="8.50">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-05-schueler-sandwich.webp" alt="Kleines Schüler Sandwich mit Drehspießfleisch, Salat und Soße" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 05</span><h3>Schüler Sandwich</h3><p>Pute- und Hähnchenfleisch oder Kalb, mit Salat und Soße.</p><div class="product-card-bottom"><span class="menu-price dual-price">Hähnchen 5,00 €<br>Kalb 6,00 €</span><button class="add-btn" type="button" data-product="Schüler Sandwich" data-number="05" data-kind="meat" data-price-chicken="5.00" data-price-veal="6.00">Auswählen</button></div></div></article>
+
+          <div class="menu-category reveal"><h3>Vegetarisch</h3><p>Mozzarella, Halloumi oder gegrillte Aubergine und Zucchini.</p></div>
+          <article class="product-card reveal"><img src="assets/menu-06-mozzarella-sandwich.webp" alt="Mozzarella Sandwich mit Salat, Tomaten und roten Zwiebeln" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 06</span><h3>Mozzarella Sandwich</h3><p>Mit Salat, Tomaten und roten Zwiebeln.</p><div class="product-card-bottom"><span class="menu-price">6,00 €</span><button class="add-btn" type="button" data-product="Mozzarella Sandwich" data-number="06" data-kind="veg" data-price="6.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-07-mozzarella-dueruem.webp" alt="Mozzarella Dürüm mit Salat, Tomaten und roten Zwiebeln" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 07</span><h3>Mozzarella Dürüm</h3><p>Mit Salat, Tomaten und roten Zwiebeln.</p><div class="product-card-bottom"><span class="menu-price">7,00 €</span><button class="add-btn" type="button" data-product="Mozzarella Dürüm" data-number="07" data-kind="veg" data-price="7.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-08-halloumi-sandwich.webp" alt="Halloumi Sandwich mit Salat, Tomaten und roten Zwiebeln" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 08</span><h3>Halloumi Sandwich</h3><p>Mit Salat, Tomaten und roten Zwiebeln.</p><div class="product-card-bottom"><span class="menu-price">6,00 €</span><button class="add-btn" type="button" data-product="Halloumi Sandwich" data-number="08" data-kind="veg" data-price="6.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-09-halloumi-dueruem.webp" alt="Halloumi Dürüm mit Salat, Tomaten und roten Zwiebeln" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 09</span><h3>Halloumi Dürüm</h3><p>Mit Salat, Tomaten und roten Zwiebeln.</p><div class="product-card-bottom"><span class="menu-price">7,00 €</span><button class="add-btn" type="button" data-product="Halloumi Dürüm" data-number="09" data-kind="veg" data-price="7.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-10-aubergine-zucchini-sandwich.webp" alt="Aubergine mit Zucchini Sandwich, Salat, Tomaten und roten Zwiebeln" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 10</span><h3>Aubergine mit Zucchini Sandwich</h3><p>Mit Salat, Tomaten und roten Zwiebeln.</p><div class="product-card-bottom"><span class="menu-price">6,00 €</span><button class="add-btn" type="button" data-product="Aubergine mit Zucchini Sandwich" data-number="10" data-kind="veg" data-price="6.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-11-aubergine-zucchini-dueruem.webp" alt="Aubergine mit Zucchini Dürüm, Salat, Tomaten und roten Zwiebeln" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 11</span><h3>Aubergine mit Zucchini Dürüm</h3><p>Mit Salat, Tomaten und roten Zwiebeln.</p><div class="product-card-bottom"><span class="menu-price">7,00 €</span><button class="add-btn" type="button" data-product="Aubergine mit Zucchini Dürüm" data-number="11" data-kind="veg" data-price="7.00">Auswählen</button></div></div></article>
+
+          <div class="menu-category reveal"><h3>Falafel</h3><p>Knusprige Kichererbsenbällchen, frisch zubereitet.</p></div>
+          <article class="product-card reveal"><img src="assets/menu-12-falafel-sandwich.webp" alt="Falafel Sandwich mit Salat, Tomaten, Zwiebeln und Soße" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 12</span><h3>Falafel Sandwich</h3><p>Falafel mit Salat, Tomaten, Zwiebeln und Soße.</p><div class="product-card-bottom"><span class="menu-price">7,00 €</span><button class="add-btn" type="button" data-product="Falafel Sandwich" data-number="12" data-kind="veg" data-price="7.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-13-falafel-teller.webp" alt="Falafel Teller mit Salat und Pommes oder Couscous" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 13</span><h3>Falafel Teller</h3><p>Mit Salat und Pommes oder Couscous.</p><div class="product-card-bottom"><span class="menu-price">11,00 €</span><button class="add-btn" type="button" data-product="Falafel Teller" data-number="13" data-kind="veg" data-price="11.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-14-falafel-dueruem.webp" alt="Falafel Dürüm mit Salat, Tomaten, Zwiebeln und Soße" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 14</span><h3>Falafel Dürüm</h3><p>Falafel im Dürüm mit Salat, Tomaten, Zwiebeln und Soße.</p><div class="product-card-bottom"><span class="menu-price">7,50 €</span><button class="add-btn" type="button" data-product="Falafel Dürüm" data-number="14" data-kind="veg" data-price="7.50">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-15-falafel-box.webp" alt="Falafel Box mit vier Kichererbsenbällchen und Salat" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 15</span><h3>Falafel Box</h3><p>Vier Kichererbsenbällchen mit frischem Salat und Soße.</p><div class="product-card-bottom"><span class="menu-price">7,00 €</span><button class="add-btn" type="button" data-product="Falafel Box" data-number="15" data-kind="veg" data-price="7.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-16-couscous-teller.webp" alt="Frischer Couscous Teller mit Petersilie, Lauchzwiebeln, Paprika und Zitrone" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 16</span><h3>Couscous Teller</h3><p>Frischer Couscous-Salat mit Petersilie, Lauchzwiebeln, Paprika und Zitrone.</p><div class="product-card-bottom"><span class="menu-price">8,00 €</span><button class="add-btn" type="button" data-product="Couscous Teller" data-number="16" data-kind="veg" data-price="8.00">Auswählen</button></div></div></article>
+
+          <div class="menu-category reveal"><h3>Chicken Teller</h3><p>Mit Pommes oder Reis und frischem Salat.</p></div>
+          <article class="product-card reveal"><img src="assets/menu-17-haehnchenschnitzel.webp" alt="Hähnchenschnitzel mit Pommes und Salat" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 17</span><h3>Hähnchenschnitzel</h3><p>Mit Pommes oder Reis und Salat.</p><div class="product-card-bottom"><span class="menu-price">12,00 €</span><button class="add-btn" type="button" data-product="Hähnchenschnitzel" data-number="17" data-kind="simple" data-price="12.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-18-chicken-nuggets-strips.webp" alt="Sechs Chicken Nuggets und Crispy Strips mit Pommes und Salat" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 18</span><h3>Chicken Nuggets / Crispy Strips</h3><p>Mit Pommes und Salat, 6 Stück.</p><div class="product-card-bottom"><span class="menu-price">12,00 €</span><button class="add-btn" type="button" data-product="Chicken Nuggets / Crispy Strips" data-number="18" data-kind="simple" data-price="12.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-19-chicken-wings.webp" alt="Sechs Chicken Wings mit Pommes und Salat" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 19</span><h3>Chicken Wings / Fried Chicken</h3><p>Mit Pommes oder Reis und Salat, 6 Stück.</p><div class="product-card-bottom"><span class="menu-price">12,00 €</span><button class="add-btn" type="button" data-product="Chicken Wings / Fried Chicken" data-number="19" data-kind="simple" data-price="12.00">Auswählen</button></div></div></article>
+
+          <div class="menu-category reveal"><h3>Lahmacun</h3><p>Frisch gebackene türkische Pizza, mit Salat oder Drehspießfleisch.</p></div>
+          <article class="product-card reveal"><img src="assets/menu-20-lahmacun-salat.webp" alt="Lahmacun mit frischem Salat" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 20</span><h3>Lahmacun mit Salat</h3><p>Türkische Pizza mit frischem Salat, Tomaten und Zwiebeln.</p><div class="product-card-bottom"><span class="menu-price">7,00 €</span><button class="add-btn" type="button" data-product="Lahmacun mit Salat" data-number="20" data-kind="veg" data-price="7.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-21-lahmacun-drehspiess.webp" alt="Lahmacun mit Drehspießfleisch und Salat" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 21</span><h3>Lahmacun mit Drehspießfleisch</h3><p>Mit Drehspießfleisch, Salat, Tomaten, Zwiebeln und Soße.</p><div class="product-card-bottom"><span class="menu-price dual-price">Hähnchen 10,00 €<br>Kalb 11,00 €</span><button class="add-btn" type="button" data-product="Lahmacun mit Drehspießfleisch" data-number="21" data-kind="meat" data-price-chicken="10.00" data-price-veal="11.00">Auswählen</button></div></div></article>
+
+          <div class="menu-category reveal"><h3>Pasta</h3><p>Italienische Pastagerichte mit Tomaten-, Sahne- oder Käsesoße.</p></div>
+          <article class="product-card reveal"><img src="assets/menu-22-arrabiata.webp" alt="Pasta Arrabiata mit Tomatensoße, Chili und Knoblauch" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 22</span><h3>Arrabiata</h3><p>In Tomatensoße, Chili und Knoblauch (scharf).</p><div class="product-card-bottom"><span class="menu-price">8,00 €</span><button class="add-btn" type="button" data-product="Arrabiata" data-number="22" data-kind="simple" data-price="8.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-23-napoli.webp" alt="Pasta Napoli in Tomatensoße" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 23</span><h3>Napoli</h3><p>In Tomatensoße.</p><div class="product-card-bottom"><span class="menu-price">8,00 €</span><button class="add-btn" type="button" data-product="Napoli" data-number="23" data-kind="simple" data-price="8.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-24-bolognese.webp" alt="Pasta Bolognese mit Rind-Hackfleischsauce und Parmesan" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 24</span><h3>Bolognese</h3><p>Mit Rind-Hackfleischsauce und Parmesan.</p><div class="product-card-bottom"><span class="menu-price">9,00 €</span><button class="add-btn" type="button" data-product="Bolognese" data-number="24" data-kind="simple" data-price="9.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-25-carbonara.webp" alt="Pasta Carbonara mit Schinken, Champignons, Sahnesoße und Parmesan" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 25</span><h3>Carbonara</h3><p>Schinken, frische Champignons, Sahnesoße und Parmesan.</p><div class="product-card-bottom"><span class="menu-price">9,00 €</span><button class="add-btn" type="button" data-product="Carbonara" data-number="25" data-kind="simple" data-price="9.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-26-vegetarisch-pasta.webp" alt="Vegetarische Pasta mit frischem Gemüse und Sahnesoße" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 26</span><h3>Vegetarisch</h3><p>Mit frischen Tomaten, Broccoli, Spinat, frischen Champignons, Zwiebeln, Paprika und Sahnesoße.</p><div class="product-card-bottom"><span class="menu-price">9,00 €</span><button class="add-btn" type="button" data-product="Vegetarisch Pasta" data-number="26" data-kind="simple" data-price="9.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-27-lasagne-vegetarisch.webp" alt="Vegetarische Lasagne mit Gemüse, Zucchini, Aubergine und Paprika" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 27</span><h3>Lasagne Vegetarisch</h3><p>Mit Gemüse, Zucchini, Aubergine und Paprika.</p><div class="product-card-bottom"><span class="menu-price">9,00 €</span><button class="add-btn" type="button" data-product="Lasagne Vegetarisch" data-number="27" data-kind="simple" data-price="9.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-28-frutti-di-mare.webp" alt="Pasta Frutti di Mare mit Meeresfrüchten in scharfer Tomatensoße" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 28</span><h3>Frutti di Mare</h3><p>In Tomatensoße mit Meeresfrüchten, Chili und Knoblauch (scharf).</p><div class="product-card-bottom"><span class="menu-price">11,00 €</span><button class="add-btn" type="button" data-product="Frutti di Mare Pasta" data-number="28" data-kind="simple" data-price="11.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-29-quattro-formaggi-pasta.webp" alt="Pasta Quattro Formaggi mit vier verschiedenen Käsesorten überbacken" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 29</span><h3>Quattro Formaggi</h3><p>Überbacken mit vier verschiedenen Käsesorten.</p><div class="product-card-bottom"><span class="menu-price">10,00 €</span><button class="add-btn" type="button" data-product="Quattro Formaggi Pasta" data-number="29" data-kind="simple" data-price="10.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-30-pollo.webp" alt="Pasta Pollo mit Hähnchenbrust, Chili, Champignons und Tomatensoße" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 30</span><h3>Pollo</h3><p>Hähnchenbrust, Chili, frische Champignons und Tomatensoße.</p><div class="product-card-bottom"><span class="menu-price">10,00 €</span><button class="add-btn" type="button" data-product="Pollo" data-number="30" data-kind="simple" data-price="10.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-31-tortellini-spinaci.webp" alt="Tortellini Spinaci in Kräuter-Rahmsoße mit Mozzarella überbacken" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 31</span><h3>Tortellini Spinaci</h3><p>Frische Tortellini mit Spinat-Ricotta-Füllung in Kräuter-Rahmsoße, mit Mozzarella überbacken.</p><div class="product-card-bottom"><span class="menu-price">10,00 €</span><button class="add-btn" type="button" data-product="Tortellini Spinaci" data-number="31" data-kind="simple" data-price="10.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-32-tortellini-di-carne.webp" alt="Tortellini di Carne mit Schinken und Champignons in Tomaten-Sahnesoße" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 32</span><h3>Tortellini di Carne</h3><p>Frische Tortellini mit gemischter Fleischfüllung, italienischem Hinterschinken und Champignons in Tomaten-Sahnesoße, mit Mozzarella überbacken.</p><div class="product-card-bottom"><span class="menu-price">10,00 €</span><button class="add-btn" type="button" data-product="Tortellini di Carne" data-number="32" data-kind="simple" data-price="10.00">Auswählen</button></div></div></article>
+
+          <div class="menu-category reveal"><h3>Börek</h3><p>Knuspriges, frisch gebackenes Teiggebäck mit verschiedenen Füllungen.</p></div>
+          <article class="product-card reveal"><img src="assets/menu-33-zigaretten-boerek.webp" alt="Knusprige Zigaretten Börek mit Käsefüllung" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 33</span><h3>Zigaretten Börek</h3><p>Knusprige, gerollte Teigröllchen mit Käsefüllung.</p><div class="product-card-bottom"><span class="menu-price">3,00 €</span><button class="add-btn" type="button" data-product="Zigaretten Börek" data-number="33" data-kind="simple" data-price="3.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-34-boerek-kaese.webp" alt="Goldbrauner Börek mit Käsefüllung" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 34</span><h3>Börek mit Käse</h3><p>Blättriges Teiggebäck mit cremiger Käsefüllung.</p><div class="product-card-bottom"><span class="menu-price">4,00 €</span><button class="add-btn" type="button" data-product="Börek mit Käse" data-number="34" data-kind="simple" data-price="4.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-35-boerek-kartoffel.webp" alt="Goldbrauner Börek mit Kartoffelfüllung" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 35</span><h3>Börek mit Kartoffel</h3><p>Blättriges Teiggebäck mit würziger Kartoffelfüllung.</p><div class="product-card-bottom"><span class="menu-price">4,00 €</span><button class="add-btn" type="button" data-product="Börek mit Kartoffel" data-number="35" data-kind="simple" data-price="4.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-36-boerek-spinat.webp" alt="Goldbrauner Börek mit Spinatfüllung" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 36</span><h3>Börek mit Spinat</h3><p>Blättriges Teiggebäck mit herzhafter Spinatfüllung.</p><div class="product-card-bottom"><span class="menu-price">4,00 €</span><button class="add-btn" type="button" data-product="Börek mit Spinat" data-number="36" data-kind="simple" data-price="4.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-37-boerek-hackfleisch.webp" alt="Goldbrauner Börek mit Hackfleischfüllung" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 37</span><h3>Börek mit Hackfleisch</h3><p>Blättriges Teiggebäck mit würziger Hackfleischfüllung.</p><div class="product-card-bottom"><span class="menu-price">6,00 €</span><button class="add-btn" type="button" data-product="Börek mit Hackfleisch" data-number="37" data-kind="simple" data-price="6.00">Auswählen</button></div></div></article>
+
+          <div class="menu-category reveal"><h3>Pommes</h3><p>Goldgelb, knusprig und frisch zubereitet.</p></div>
+          <article class="product-card reveal"><img src="assets/menu-38-pommes-klein.webp" alt="Kleine Portion goldgelbe Pommes" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 38</span><h3>Pommes klein</h3><p>Kleine Portion knusprige, goldgelbe Pommes.</p><div class="product-card-bottom"><span class="menu-price">4,00 €</span><button class="add-btn" type="button" data-product="Pommes klein" data-number="38" data-kind="simple" data-price="4.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-39-pommes-gross.webp" alt="Große Portion goldgelbe Pommes" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 39</span><h3>Pommes groß</h3><p>Große Portion knusprige, goldgelbe Pommes.</p><div class="product-card-bottom"><span class="menu-price">5,50 €</span><button class="add-btn" type="button" data-product="Pommes groß" data-number="39" data-kind="simple" data-price="5.50">Auswählen</button></div></div></article>
+
+          <div class="menu-category reveal"><h3>Pide</h3><p>Frisch gebackene türkische Teigschiffchen mit herzhaften Füllungen.</p></div>
+          <article class="product-card reveal"><img src="assets/menu-40-pide-spinat.webp" alt="Pide mit frischer Spinatfüllung" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 40</span><h3>Pide Spinat</h3><p>Knusprig gebackenes Pide mit herzhafter Spinatfüllung.</p><div class="product-card-bottom"><span class="menu-price">8,50 €</span><button class="add-btn" type="button" data-product="Pide Spinat" data-number="40" data-kind="simple" data-price="8.50">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-41-pide-hackfleisch.webp" alt="Pide mit würziger Hackfleischfüllung" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 41</span><h3>Pide Hackfleisch</h3><p>Knusprig gebackenes Pide mit würziger Hackfleischfüllung.</p><div class="product-card-bottom"><span class="menu-price">9,50 €</span><button class="add-btn" type="button" data-product="Pide Hackfleisch" data-number="41" data-kind="simple" data-price="9.50">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-42-pide-kaese.webp" alt="Pide mit goldbraun überbackenem Käse" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 42</span><h3>Pide Käse</h3><p>Knusprig gebackenes Pide mit cremig geschmolzenem Käse.</p><div class="product-card-bottom"><span class="menu-price">8,00 €</span><button class="add-btn" type="button" data-product="Pide Käse" data-number="42" data-kind="simple" data-price="8.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-43-pide-sucuk.webp" alt="Pide mit türkischer Knoblauchwurst Sucuk" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 43</span><h3>Pide Sucuk</h3><p>Knusprig gebackenes Pide mit würziger türkischer Knoblauchwurst.</p><div class="product-card-bottom"><span class="menu-price">9,00 €</span><button class="add-btn" type="button" data-product="Pide Sucuk" data-number="43" data-kind="simple" data-price="9.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-44-pide-salami.webp" alt="Pide mit Salami" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 44</span><h3>Pide Salami</h3><p>Knusprig gebackenes Pide mit herzhaften Salamischeiben.</p><div class="product-card-bottom"><span class="menu-price">9,00 €</span><button class="add-btn" type="button" data-product="Pide Salami" data-number="44" data-kind="simple" data-price="9.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-45-pide-doener.webp" alt="Pide mit saftigem Dönerfleisch" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 45</span><h3>Pide Döner</h3><p>Knusprig gebackenes Pide mit saftigem, fein geschnittenem Dönerfleisch.</p><div class="product-card-bottom"><span class="menu-price">9,50 €</span><button class="add-btn" type="button" data-product="Pide Döner" data-number="45" data-kind="simple" data-price="9.50">Auswählen</button></div></div></article>
+
+          <div class="menu-category reveal"><h3>Salat</h3><p>Frisch, knackig und für jede Bestellung einzeln zubereitet.</p></div>
+          <article class="product-card reveal"><img src="assets/menu-46-gurkensalat.webp" alt="Frischer Gurkensalat mit Dill" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 46</span><h3>Gurkensalat</h3><p>Frische, knackige Gurkenscheiben mit etwas Dill.</p><div class="product-card-bottom"><span class="menu-price">4,00 €</span><button class="add-btn" type="button" data-product="Gurkensalat" data-number="46" data-kind="simple" data-price="4.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-47-gruener-salat.webp" alt="Frischer grüner Salat" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 47</span><h3>Grüner Salat</h3><p>Knackiger grüner Blattsalat, frisch geschnitten.</p><div class="product-card-bottom"><span class="menu-price">4,00 €</span><button class="add-btn" type="button" data-product="Grüner Salat" data-number="47" data-kind="simple" data-price="4.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-48-gemischter-salat.webp" alt="Gemischter Salat mit Tomaten, Zwiebeln, Gurken, Paprika, Mais und Oliven" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 48</span><h3>Gemischter Salat</h3><p>Mit Tomaten, Zwiebeln, Gurken, Paprika, Mais und Oliven.</p><div class="product-card-bottom"><span class="menu-price">5,00 €</span><button class="add-btn" type="button" data-product="Gemischter Salat" data-number="48" data-kind="simple" data-price="5.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-49-tomatensalat-zwiebeln.webp" alt="Tomatensalat mit frischen Tomaten und Zwiebeln" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 49</span><h3>Tomatensalat mit Zwiebeln</h3><p>Mit frischen Tomaten und Zwiebeln.</p><div class="product-card-bottom"><span class="menu-price">4,00 €</span><button class="add-btn" type="button" data-product="Tomatensalat mit Zwiebeln" data-number="49" data-kind="simple" data-price="4.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-50-griechischer-bauernsalat.webp" alt="Griechischer Bauernsalat mit Peperoni, Schafskäse und Oliven" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 50</span><h3>Griechischer Bauernsalat</h3><p>Gemischter Salat mit Peperoni, Schafskäse und Oliven.</p><div class="product-card-bottom"><span class="menu-price">7,00 €</span><button class="add-btn" type="button" data-product="Griechischer Bauernsalat" data-number="50" data-kind="simple" data-price="7.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-51-nizza-salat.webp" alt="Nizza Salat mit Thunfisch und Ei" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 51</span><h3>Nizza Salat</h3><p>Gemischter Salat mit Thunfisch und Ei.</p><div class="product-card-bottom"><span class="menu-price">7,00 €</span><button class="add-btn" type="button" data-product="Nizza Salat" data-number="51" data-kind="simple" data-price="7.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-52-tomaten-mozzarella.webp" alt="Frische Tomaten mit Büffelmozzarella und Basilikum" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 52</span><h3>Tomaten Mozzarella</h3><p>Mit frischen Tomaten, Büffelmozzarella und Basilikum.</p><div class="product-card-bottom"><span class="menu-price">7,00 €</span><button class="add-btn" type="button" data-product="Tomaten Mozzarella" data-number="52" data-kind="simple" data-price="7.00">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-53-fitness-salat.webp" alt="Fitness Salat mit Hühnerbrust und Champignons" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 53</span><h3>Fitness Salat</h3><p>Gemischter Salat mit Hühnerbrust und Champignons.</p><div class="product-card-bottom"><span class="menu-price">7,00 €</span><button class="add-btn" type="button" data-product="Fitness Salat" data-number="53" data-kind="simple" data-price="7.00">Auswählen</button></div></div></article>
+        </div>
+        <div class="meat-choice reveal">
+          <div class="meat-choice-icon">✦</div>
+          <div><h3>Zwei Fleischsorten zur Wahl</h3><p>Die Drehspieß-Gerichte Nr. 01–05 sowie Lahmacun Nr. 21 sind wahlweise mit Hähnchenfleisch oder Kalbfleisch erhältlich.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="burger-menu" id="burger">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="eyebrow accent">100 % frisch zubereitet</div><h2>Burger<br><span class="accent">XL.</span></h2></div>
+          <p>Saftige Burger mit frischem Salat und sorgfältig ausgewählten Zutaten. Rindfleisch wird medium gebraten. Alle Burger sind halal.</p>
+        </div>
+        <div class="burger-grid">
+          <article class="burger-card reveal"><img src="assets/burger-54-classic.webp" alt="Classic Burger mit 100 % frischem Rindfleisch, Salat, Tomaten, Zwiebeln und Burgersauce" loading="lazy"><div class="burger-copy"><span class="dish-code">Nr. 54</span><h3>Classic Burger</h3><p>Mit 100 % frischem Rindfleisch (medium gebraten), frischem Salat, Tomaten, Zwiebeln und Burgersauce.</p><small class="allergen-note">Allergene: 1, 2, 4, a, c, g</small><div class="burger-bottom"><span class="menu-price">9,00 €</span><button class="add-btn" type="button" data-product="Classic Burger" data-number="54" data-kind="burger" data-price="9.00">Auswählen</button></div></div></article>
+          <article class="burger-card reveal"><img src="assets/burger-55-cheese.webp" alt="Cheese Burger mit 100 % frischem Rindfleisch, Käse, Salat, Tomaten, Zwiebeln und Burgersauce" loading="lazy"><div class="burger-copy"><span class="dish-code">Nr. 55</span><h3>Cheese Burger</h3><p>Mit 100 % frischem Rindfleisch (medium gebraten), Käse, frischem Salat, Tomaten, Zwiebeln und Burgersauce.</p><small class="allergen-note">Allergene: 1, 2, 4, a, c, g</small><div class="burger-bottom"><span class="menu-price">11,00 €</span><button class="add-btn" type="button" data-product="Cheese Burger" data-number="55" data-kind="burger" data-price="11.00">Auswählen</button></div></div></article>
+          <article class="burger-card reveal"><img src="assets/burger-56-falafel.webp" alt="Falafel Burger mit Hummus oder Joghurtsoße, Salat, roten Zwiebeln und Tomaten" loading="lazy"><div class="burger-copy"><span class="dish-code">Nr. 56</span><h3>Falafel Burger</h3><p>Mit Hummus oder Joghurtsoße, Salat, roten Zwiebeln und Tomaten.</p><small class="allergen-note">Allergene: 1, 2, 4, a, c, g</small><div class="burger-bottom"><span class="menu-price">9,00 €</span><button class="add-btn" type="button" data-product="Falafel Burger" data-number="56" data-kind="burger" data-price="9.00">Auswählen</button></div></div></article>
+          <article class="burger-card reveal"><img src="assets/burger-57-chicken.webp" alt="Chicken Burger mit Hühnerfleisch, Käse, Salat, Tomaten, Zwiebeln und Burgersauce" loading="lazy"><div class="burger-copy"><span class="dish-code">Nr. 57</span><h3>Chicken Burger</h3><p>Mit Hühnerfleisch, Käse, frischem Salat, Tomaten, Zwiebeln und Burgersauce.</p><small class="allergen-note">Allergene: 1, 2, 4, a, c, g</small><div class="burger-bottom"><span class="menu-price">12,00 €</span><button class="add-btn" type="button" data-product="Chicken Burger" data-number="57" data-kind="burger" data-price="12.00">Auswählen</button></div></div></article>
+          <article class="burger-card reveal"><img src="assets/burger-58-veggie.webp" alt="Veggie Burger mit Falafel, frisch gegrilltem Gemüse, Rucola, Salat, Tomaten und Zwiebeln" loading="lazy"><div class="burger-copy"><span class="dish-code">Nr. 58</span><h3>Veggie Burger</h3><p>Mit Falafel, frisch gegrilltem Gemüse, Rucola, frischem Salat, Tomaten, Zwiebeln und Burgersauce.</p><small class="allergen-note">Allergene: 1, 2, 4, a, c, g</small><div class="burger-bottom"><span class="menu-price">11,00 €</span><button class="add-btn" type="button" data-product="Veggie Burger" data-number="58" data-kind="burger" data-price="11.00">Auswählen</button></div></div></article>
+          <article class="burger-card reveal"><img src="assets/burger-59-cricket.webp" alt="Scharfer Cricket Burger mit 100 % frischem Rindfleisch, Frischkäse, Jalapeños und Salat" loading="lazy"><div class="burger-copy"><span class="dish-code">Nr. 59</span><h3>Cricket Burger <span class="accent">(scharf)</span></h3><p>Mit 100 % frischem Rindfleisch (medium gebraten), Frischkäse, Jalapeños, frischem Salat, Tomaten, Zwiebeln und Burgersauce.</p><small class="allergen-note">Allergene: 1, 2, 4, a, c, g</small><div class="burger-bottom"><span class="menu-price">13,00 €</span><button class="add-btn" type="button" data-product="Cricket Burger" data-number="59" data-kind="burger" data-price="13.00">Auswählen</button></div></div></article>
+          <article class="burger-card reveal"><img src="assets/burger-60-chili-cheese.webp" alt="Scharfer Chili-Cheeseburger mit 100 % frischem Rindfleisch, Frischkäse, Jalapeños und Chilisauce" loading="lazy"><div class="burger-copy"><span class="dish-code">Nr. 60</span><h3>Chili-Cheeseburger</h3><p>Mit 100 % frischem Rindfleisch (medium gebraten), Frischkäse, Jalapeños, frischem Salat, Tomaten, Zwiebeln und Chilisauce.</p><small class="allergen-note">Allergene: 1, 2, 4, a, c, g</small><div class="burger-bottom"><span class="menu-price">13,00 €</span><button class="add-btn" type="button" data-product="Chili-Cheeseburger" data-number="60" data-kind="burger" data-price="13.00">Auswählen</button></div></div></article>
+          <article class="burger-card reveal"><img src="assets/burger-61-halloumi.webp" alt="Halloumi-Burger mit Halloumi, Salat, roten Zwiebeln, Tomaten und Soße" loading="lazy"><div class="burger-copy"><span class="dish-code">Nr. 61</span><h3>Halloumi-Burger</h3><p>Mit Halloumi, Salat, roten Zwiebeln, Tomaten und Soße.</p><small class="allergen-note">Allergene: 1, 2, 4, a, c, g</small><div class="burger-bottom"><span class="menu-price">9,00 €</span><button class="add-btn" type="button" data-product="Halloumi-Burger" data-number="61" data-kind="burger" data-price="9.00">Auswählen</button></div></div></article>
+        </div>
+        <div class="burger-note reveal">Jeden Burger auch als Menü erhältlich: Pommes &amp; ein Getränk (0,33-l-Dose) +5,00 €</div>
+      </div>
+    </section>
+
+    <section class="pizza-menu" id="pizza">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="eyebrow">Frisch aus dem Ofen</div><h2>Unsere<br><span style="color:var(--gold)">Pizza.</span></h2></div>
+          <p>Knuspriger Boden, aromatische Tomatensauce und sorgfältig ausgewählte Zutaten. Jede Pizza kann direkt in den Warenkorb gelegt werden.</p>
+        </div>
+        <div class="pizza-grid">
+          <article class="pizza-card reveal"><img src="assets/pizza-margherita.webp" alt="Pizza Margherita mit Tomatensauce und Käse" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 63</span><h3>Margherita</h3><p>Mit Tomatensauce und Käse.</p><div class="pizza-bottom"><span class="menu-price">26 cm 8,00 € · 32 cm 11,00 €</span><button class="add-btn" type="button" data-product="Margherita" data-number="63" data-kind="pizza" data-price-small="8.00" data-price-large="11.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-sucuk.webp" alt="Pizza Sucuk mit Knoblauchwurst, Peperoni und Zwiebeln" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 64</span><h3>Sucuk</h3><p>Mit Knoblauchwurst, Peperoni und Zwiebeln.</p><div class="pizza-bottom"><span class="menu-price">26 cm 9,00 € · 32 cm 12,00 €</span><button class="add-btn" type="button" data-product="Sucuk" data-number="64" data-kind="pizza" data-price-small="9.00" data-price-large="12.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-salami.webp" alt="Pizza Salami mit Rindersalami" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 65</span><h3>Salami</h3><p>Mit Rindersalami.</p><div class="pizza-bottom"><span class="menu-price">26 cm 9,00 € · 32 cm 12,00 €</span><button class="add-btn" type="button" data-product="Salami" data-number="65" data-kind="pizza" data-price-small="9.00" data-price-large="12.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-tonno.webp" alt="Pizza Tonno mit Thunfisch und Zwiebeln" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 66</span><h3>Tonno</h3><p>Mit Thunfisch und Zwiebeln.</p><div class="pizza-bottom"><span class="menu-price">26 cm 10,00 € · 32 cm 13,00 €</span><button class="add-btn" type="button" data-product="Tonno" data-number="66" data-kind="pizza" data-price-small="10.00" data-price-large="13.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-67-huhn.webp" alt="Pizza Huhn mit Hühnerfleisch, Mais, Paprika und Zwiebeln" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 67</span><h3>Huhn</h3><p>Mit Hühnerfleisch, Mais, Paprika und Zwiebeln.</p><div class="pizza-bottom"><span class="menu-price">26 cm 10,00 € · 32 cm 13,00 €</span><button class="add-btn" type="button" data-product="Huhn" data-number="67" data-kind="pizza" data-price-small="10.00" data-price-large="13.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-kebab.webp" alt="Pizza Döner mit Drehspießfleisch, Zwiebeln und Käse" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 68</span><h3>Döner</h3><p>Mit Tomatensauce, Drehspießfleisch, Zwiebeln und Käse.</p><div class="pizza-bottom"><span class="menu-price">26 cm 10,00 € · 32 cm 13,00 €</span><button class="add-btn" type="button" data-product="Döner" data-number="68" data-kind="pizza" data-price-small="10.00" data-price-large="13.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-vegetaria.webp" alt="Vegetarische Pizza mit Champignons, Mais, Broccoli, Zucchini, Zwiebeln, Paprika und Oliven" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 69</span><h3>Vegetarisch</h3><p>Mit Champignons, Mais, Broccoli, Zucchini, Zwiebeln, Paprika und Oliven.</p><div class="pizza-bottom"><span class="menu-price">26 cm 10,00 € · 32 cm 13,00 €</span><button class="add-btn" type="button" data-product="Vegetarisch" data-number="69" data-kind="pizza" data-price-small="10.00" data-price-large="13.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-funghi.webp" alt="Pizza Funghi mit frischen Champignons" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 70</span><h3>Funghi</h3><p>Mit frischen Champignons.</p><div class="pizza-bottom"><span class="menu-price">26 cm 9,00 € · 32 cm 12,00 €</span><button class="add-btn" type="button" data-product="Funghi" data-number="70" data-kind="pizza" data-price-small="9.00" data-price-large="12.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-71-prosciutto.webp" alt="Pizza Prosciutto mit Vorderschinken" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 71</span><h3>Prosciutto</h3><p>Mit Vorderschinken.</p><div class="pizza-bottom"><span class="menu-price">26 cm 9,00 € · 32 cm 12,00 €</span><button class="add-btn" type="button" data-product="Prosciutto" data-number="71" data-kind="pizza" data-price-small="9.00" data-price-large="12.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-72-hawaii.webp" alt="Pizza Hawaii mit Vorderschinken und Ananas" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 72</span><h3>Hawaii</h3><p>Mit Vorderschinken und Ananas.</p><div class="pizza-bottom"><span class="menu-price">26 cm 9,00 € · 32 cm 12,00 €</span><button class="add-btn" type="button" data-product="Hawaii" data-number="72" data-kind="pizza" data-price-small="9.00" data-price-large="12.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-73-regina.webp" alt="Pizza Regina mit Vorderschinken und frischen Champignons" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 73</span><h3>Regina</h3><p>Mit Vorderschinken und frischen Champignons.</p><div class="pizza-bottom"><span class="menu-price">26 cm 10,00 € · 32 cm 13,00 €</span><button class="add-btn" type="button" data-product="Regina" data-number="73" data-kind="pizza" data-price-small="10.00" data-price-large="13.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-74-americana.webp" alt="Pizza Americana mit Salami, Mais und Zwiebeln" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 74</span><h3>Americana</h3><p>Mit Salami, Mais und Zwiebeln.</p><div class="pizza-bottom"><span class="menu-price">26 cm 10,00 € · 32 cm 13,00 €</span><button class="add-btn" type="button" data-product="Americana" data-number="74" data-kind="pizza" data-price-small="10.00" data-price-large="13.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-75-spinaci.webp" alt="Pizza Spinaci mit Spinat, Ei und Zwiebeln" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 75</span><h3>Spinaci</h3><p>Mit Spinat, Ei und Zwiebeln.</p><div class="pizza-bottom"><span class="menu-price">26 cm 10,00 € · 32 cm 13,00 €</span><button class="add-btn" type="button" data-product="Spinaci" data-number="75" data-kind="pizza" data-price-small="10.00" data-price-large="13.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-76-napoli.webp" alt="Pizza Napoli mit Vorderschinken und Ei" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 76</span><h3>Napoli</h3><p>Mit Vorderschinken und Ei.</p><div class="pizza-bottom"><span class="menu-price">26 cm 10,00 € · 32 cm 13,00 €</span><button class="add-btn" type="button" data-product="Napoli" data-number="76" data-kind="pizza" data-price-small="10.00" data-price-large="13.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-quattro-formaggi.webp" alt="Pizza Quattro Formaggi mit Mozzarella, Gorgonzola, Schafskäse und Käse" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 77</span><h3>Quattro Formaggi</h3><p>Mit Mozzarella, Gorgonzola, Schafskäse und Käse.</p><div class="pizza-bottom"><span class="menu-price">26 cm 10,00 € · 32 cm 13,00 €</span><button class="add-btn" type="button" data-product="Quattro Formaggi" data-number="77" data-kind="pizza" data-price-small="10.00" data-price-large="13.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-78-frutti-di-mare.webp" alt="Pizza Frutti di Mare mit Meeresfrüchten, Knoblauch und Zwiebeln" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 78</span><h3>Frutti di Mare</h3><p>Mit Meeresfrüchten, Knoblauch und Zwiebeln.</p><div class="pizza-bottom"><span class="menu-price">26 cm 11,00 € · 32 cm 14,00 €</span><button class="add-btn" type="button" data-product="Frutti di Mare" data-number="78" data-kind="pizza" data-price-small="11.00" data-price-large="14.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-79-gorgonzola.webp" alt="Pizza Gorgonzola mit frischen Champignons und Peperoni" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 79</span><h3>Gorgonzola</h3><p>Mit Gorgonzola, frischen Champignons und Peperoni.</p><div class="pizza-bottom"><span class="menu-price">26 cm 10,00 € · 32 cm 13,00 €</span><button class="add-btn" type="button" data-product="Gorgonzola" data-number="79" data-kind="pizza" data-price-small="10.00" data-price-large="13.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-80-mozzarella.webp" alt="Pizza Mozzarella mit Mozzarella und Tomatenscheiben" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 80</span><h3>Mozzarella</h3><p>Mit Mozzarella und Tomatenscheiben.</p><div class="pizza-bottom"><span class="menu-price">26 cm 10,00 € · 32 cm 13,00 €</span><button class="add-btn" type="button" data-product="Mozzarella" data-number="80" data-kind="pizza" data-price-small="10.00" data-price-large="13.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-81-capricciosa.webp" alt="Pizza Capricciosa mit Vorderschinken, Champignons, Artischocken, Peperoni und Oliven" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 81</span><h3>Capricciosa</h3><p>Mit Vorderschinken, frischen Champignons, Artischocken, Peperoni und Oliven.</p><div class="pizza-bottom"><span class="menu-price">26 cm 11,00 € · 32 cm 14,00 €</span><button class="add-btn" type="button" data-product="Capricciosa" data-number="81" data-kind="pizza" data-price-small="11.00" data-price-large="14.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-82-quattro-stagioni.webp" alt="Pizza Quattro Stagioni mit Vorderschinken, Champignons, Paprika und Oliven" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 82</span><h3>Quattro Stagioni</h3><p>Mit Vorderschinken, frischen Champignons, Paprika und Oliven.</p><div class="pizza-bottom"><span class="menu-price">26 cm 10,00 € · 32 cm 13,00 €</span><button class="add-btn" type="button" data-product="Quattro Stagioni" data-number="82" data-kind="pizza" data-price-small="10.00" data-price-large="13.00">Auswählen</button></div></div></article>
+          <article class="pizza-card reveal"><img src="assets/pizza-83-pikante.webp" alt="Scharfe Pizza Pikante mit Salami und Paprika" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. 83</span><h3>Pikante</h3><p>Mit scharfer Salami und Paprika.</p><div class="pizza-bottom"><span class="menu-price">26 cm 10,00 € · 32 cm 13,00 €</span><button class="add-btn" type="button" data-product="Pikante" data-number="83" data-kind="pizza" data-price-small="10.00" data-price-large="13.00">Auswählen</button></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="pizza-menu" id="suessigkeiten">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="eyebrow">Etwas Süßes</div><h2>Unsere<br><span style="color:var(--gold)">Süßigkeiten.</span></h2></div>
+          <p>Ein süßer Abschluss nach dem Essen. Weitere Angaben ergänzen wir, sobald die vollständigen Informationen vorliegen.</p>
+        </div>
+        <div class="pizza-grid">
+          <article class="pizza-card reveal"><img src="assets/dessert-tiramisu.webp" alt="Frisches Tiramisu mit Mascarponecreme und Kakao auf einem hellen Teller" loading="lazy"><div class="pizza-copy"><span class="dish-code">Nr. folgt</span><h3>Tiramisu</h3><p>Zusammensetzung wird später ergänzt.<br>&nbsp;<br>&nbsp;</p><div class="pizza-bottom"><span class="menu-price">4,50 €</span><button class="add-btn" type="button" data-product="Tiramisu" data-number="folgt" data-kind="simple" data-price="4.50">Auswählen</button></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="toppings" id="zutaten">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="eyebrow accent">Frische Zutaten</div><h2>Du entscheidest,<br>was <span class="accent">hineinkommt.</span></h2></div>
+          <p>Alle frischen Zutaten können beim Kebab und Dürüm einzeln ausgewählt oder abgewählt werden.</p>
+        </div>
+        <div class="topping-grid">
+          <article class="topping-card reveal"><img src="assets/topping-grilled-vegetables.webp" alt="Gegrillte Gemüsemischung mit Aubergine, Karotte und Paprika" loading="lazy"><div class="topping-copy"><span class="topping-number">Z1</span><h3>Gegrillte Gemüsemischung</h3><p>Aubergine, Karotten und Paprika, frisch gegrillt.</p></div></article>
+          <article class="topping-card reveal"><img src="assets/topping-tomatoes-square.webp" alt="Frische Tomaten in runden Scheiben" loading="lazy"><div class="topping-copy"><span class="topping-number">Z2</span><h3>Tomaten</h3><p>Saftig und in Scheiben geschnitten.</p></div></article>
+          <article class="topping-card reveal"><img src="assets/topping-onions-square.webp" alt="Frische Zwiebeln in feinen Ringen" loading="lazy"><div class="topping-copy"><span class="topping-number">Z3</span><h3>Zwiebeln</h3><p>Feine weiße und rote Zwiebelringe.</p></div></article>
+          <article class="topping-card reveal"><img src="assets/topping-cucumber-salad.webp" alt="Gurkensalat in langen dünnen Streifen mit Kräutern" loading="lazy"><div class="topping-copy"><span class="topping-number">Z4</span><h3>Gurkensalat</h3><p>Knackige Gurkenstreifen mit Kräutern.</p></div></article>
+          <article class="topping-card reveal"><img src="assets/topping-red-cabbage-square.webp" alt="Rotkrautsalat mit feinen Karottenstreifen" loading="lazy"><div class="topping-copy"><span class="topping-number">Z5</span><h3>Rotkrautsalat</h3><p>Knackige rote Kohlstreifen mit Karotte.</p></div></article>
+          <article class="topping-card reveal"><img src="assets/topping-iceberg-square.webp" alt="Frisch geschnittener Eisbergsalat mit wenigen Karottenstreifen" loading="lazy"><div class="topping-copy"><span class="topping-number">Z6</span><h3>Eisbergsalat</h3><p>Frisch, leicht und natürlich geschnitten.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="story" id="story">
+      <div class="container story-grid">
+        <div class="story-art reveal">
+          <img src="assets/story-kebab.webp" alt="Appetitliches gegrilltes Hähnchen- und Rindfleisch mit frischem Gemüse" loading="lazy">
+          <div class="seal">Mit Herz<br>&amp; Feuer</div>
+        </div>
+        <div class="reveal">
+          <div class="eyebrow">Unser Anspruch</div>
+          <h2>Geschmack beginnt bei den Zutaten.</h2>
+          <p>Bei Aslan Kebab geht es nicht um irgendeinen schnellen Imbiss. Es geht um ehrliches Essen: gutes Fleisch, frisches Gemüse, aromatische Gewürze und Saucen, die wir selbst abstimmen.</p>
+          <p>Vom ersten Schnitt bis zum letzten Bissen achten wir auf Qualität – damit du den Unterschied schmeckst.</p>
+          <div class="features">
+            <div class="feature"><span class="check">✓</span> Täglich frisch</div>
+            <div class="feature"><span class="check">✓</span> Direkt vom Grill</div>
+            <div class="feature"><span class="check">✓</span> Hausgemachte Saucen</div>
+            <div class="feature"><span class="check">✓</span> Vegetarische Auswahl</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sauces" id="saucen">
+      <div class="container">
+        <div class="sauce-hero reveal">
+          <img src="assets/six-sauces.webp" alt="Sechs verschiedene hausgemachte Saucen in kleinen Schalen" loading="lazy">
+          <div><div class="eyebrow accent">Sechs besondere Saucen</div><h2>Dein Geschmack.<br>Deine <span class="accent">Wahl.</span></h2><p>Von mild und cremig bis kräftig und würzig. Die endgültigen Namen und Rezeptbeschreibungen ergänzen wir später.</p></div>
+        </div>
+        <div class="sauce-grid">
+          <article class="sauce-card reveal"><img src="assets/sauce-1.webp" alt="Orange-rote Sauce 1 in einer hohen quadratischen Keramikschale" loading="lazy"><div class="sauce-card-body"><span class="sauce-number">S1</span><h3>Sauce 1</h3><p class="placeholder-copy">Beschreibung folgt.<br>Geschmack wird ergänzt.<br>Schärfegrad wird ergänzt.</p><button class="add-btn" type="button" data-product="Sauce 1" data-number="S1" data-kind="sauce">Auswählen</button></div></article>
+          <article class="sauce-card reveal"><img src="assets/sauce-2.webp" alt="Milchig-weiße Sauce 2 mit leichtem Orangeton in einer hohen quadratischen Keramikschale" loading="lazy"><div class="sauce-card-body"><span class="sauce-number">S2</span><h3>Sauce 2</h3><p class="placeholder-copy">Beschreibung folgt.<br>Geschmack wird ergänzt.<br>Schärfegrad wird ergänzt.</p><button class="add-btn" type="button" data-product="Sauce 2" data-number="S2" data-kind="sauce">Auswählen</button></div></article>
+          <article class="sauce-card reveal"><img src="assets/sauce-3.webp" alt="Zartrosa Sauce 3 in einer hohen quadratischen Keramikschale" loading="lazy"><div class="sauce-card-body"><span class="sauce-number">S3</span><h3>Sauce 3</h3><p class="placeholder-copy">Beschreibung folgt.<br>Geschmack wird ergänzt.<br>Schärfegrad wird ergänzt.</p><button class="add-btn" type="button" data-product="Sauce 3" data-number="S3" data-kind="sauce">Auswählen</button></div></article>
+          <article class="sauce-card reveal"><img src="assets/sauce-4.webp" alt="Weiße Sauce 4 in einer hohen quadratischen Keramikschale" loading="lazy"><div class="sauce-card-body"><span class="sauce-number">S4</span><h3>Sauce 4</h3><p class="placeholder-copy">Beschreibung folgt.<br>Geschmack wird ergänzt.<br>Schärfegrad wird ergänzt.</p><button class="add-btn" type="button" data-product="Sauce 4" data-number="S4" data-kind="sauce">Auswählen</button></div></article>
+          <article class="sauce-card reveal"><img src="assets/sauce-5.webp" alt="Rote Chilisauce 5 in einer hohen quadratischen Keramikschale" loading="lazy"><div class="sauce-card-body"><span class="sauce-number">S5</span><h3>Sauce 5</h3><p class="placeholder-copy">Beschreibung folgt.<br>Geschmack wird ergänzt.<br>Schärfegrad wird ergänzt.</p><button class="add-btn" type="button" data-product="Sauce 5" data-number="S5" data-kind="sauce">Auswählen</button></div></article>
+          <article class="sauce-card reveal"><img src="assets/sauce-6.webp" alt="Helle orange Sauce 6 in einer hohen quadratischen Keramikschale" loading="lazy"><div class="sauce-card-body"><span class="sauce-number">S6</span><h3>Sauce 6</h3><p class="placeholder-copy">Beschreibung folgt.<br>Geschmack wird ergänzt.<br>Schärfegrad wird ergänzt.</p><button class="add-btn" type="button" data-product="Sauce 6" data-number="S6" data-kind="sauce">Auswählen</button></div></article>
+        </div>
+        <div class="addon-heading reveal">
+          <div class="eyebrow accent">Extras</div>
+          <h2>Noch mehr nach deinem Geschmack.</h2>
+          <p>Diese Extras können zu Kebab, Dürüm oder Pizza ausgewählt werden.</p>
+        </div>
+        <div class="sauce-grid">
+          <article class="sauce-card reveal"><img src="assets/addon-peperoni.webp" alt="Grüne eingelegte Peperoni in einer hohen quadratischen Keramikschale" loading="lazy"><div class="sauce-card-body"><span class="sauce-number">A1</span><h3>Peperoni</h3><p class="placeholder-copy">Als Extra auswählbar.<br>Beschreibung folgt.<br>Preis wird ergänzt.</p><button class="add-btn" type="button" data-product="Peperoni" data-number="A1" data-kind="addon">Auswählen</button></div></article>
+          <article class="sauce-card reveal"><img src="assets/addon-olives.webp" alt="Schwarze Oliven in einer hohen quadratischen Keramikschale" loading="lazy"><div class="sauce-card-body"><span class="sauce-number">A2</span><h3>Oliven</h3><p class="placeholder-copy">Als Extra auswählbar.<br>Beschreibung folgt.<br>Preis wird ergänzt.</p><button class="add-btn" type="button" data-product="Oliven" data-number="A2" data-kind="addon">Auswählen</button></div></article>
+          <article class="sauce-card reveal"><img src="assets/addon-greek-cheese.webp" alt="Weißer Weichkäse nach griechischer Art in einer hohen quadratischen Keramikschale" loading="lazy"><div class="sauce-card-body"><span class="sauce-number">A3</span><h3>Weichkäse nach griechischer Art</h3><p class="placeholder-copy">Als Extra auswählbar.<br>Beschreibung folgt.<br>Preis wird ergänzt.</p><button class="add-btn" type="button" data-product="Weichkäse nach griechischer Art" data-number="A3" data-kind="addon">Auswählen</button></div></article>
+        </div>
+        <div class="seasonings">
+          <article class="seasoning-card reveal"><img src="assets/red-seasoning.webp" alt="Bordeauxrote, trockene Gewürzmischung" loading="lazy"><div class="seasoning-copy"><h3>Rote Gewürzmischung</h3><p class="placeholder-copy">Beschreibung folgt.<br>Zutaten werden ergänzt.<br>Geschmacksprofil wird ergänzt.</p></div></article>
+          <article class="seasoning-card reveal"><img src="assets/green-seasoning.webp" alt="Grüne Kräuter-Gewürzmischung" loading="lazy"><div class="seasoning-copy"><h3>Grüne Kräutermischung</h3><p class="placeholder-copy">Beschreibung folgt.<br>Zutaten werden ergänzt.<br>Geschmacksprofil wird ergänzt.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="order" id="bestellen">
+      <div class="container">
+        <div class="order-card reveal">
+          <div class="order-copy">
+            <div class="eyebrow">Hungrig geworden?</div>
+            <h2>Heute ist ein guter Tag für Kebab.</h2>
+            <p>Bestelle direkt bei uns oder komm vorbei. Schnell zubereitet, heiß serviert und genau so, wie du ihn liebst.</p>
+            <div class="phone-order-box" id="telefon-bestellen">
+              <div><strong>Direkt telefonisch bestellen</strong><span>Die Bestellnummer wird hier ergänzt.</span></div>
+              <a href="#kontakt" class="btn">☎ Nummer folgt</a>
+            </div>
+          </div>
+          <div class="order-side" role="img" aria-label="Gemeinsames Essen bei Aslan Kebab"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="kontakt">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo"><span class="logo-mark"><img src="assets/aslan-avatar.webp" alt=""></span><span>ASLAN KEBAB<small>GRILL &amp; GENUSS</small></span></div>
+          <p>Frisch gegrillt, ehrlich gewürzt und mit Liebe serviert. Dein Kebab-Moment – mitten in der Stadt.</p>
+        </div>
+        <div><h4>Besuche uns</h4><ul><li>Adresse wird ergänzt</li><li>Telefon wird ergänzt</li><li>E-Mail wird ergänzt</li></ul></div>
+        <div><h4>Öffnungszeiten</h4><ul><li>Montag–Donnerstag: 11–23 Uhr</li><li>Freitag–Samstag: 11–24 Uhr</li><li>Sonntag: 12–22 Uhr</li></ul></div>
+      </div>
+      <div class="copyright"><span>© <span id="year"></span> Aslan Kebab. Alle Rechte vorbehalten.</span><span>Impressum · Datenschutz</span></div>
+    </div>
+  </footer>
+
+  <a class="floating-phone" href="#telefon-bestellen" aria-label="Telefonisch bestellen"><b>☎</b> Telefonisch bestellen</a>
+
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Warenkorb" aria-hidden="true">
+    <div class="cart-head"><h2>Warenkorb</h2><button class="close-btn" id="cartClose" type="button" aria-label="Warenkorb schließen">×</button></div>
+    <div class="cart-empty" id="cartEmpty">Dein Warenkorb ist noch leer.</div>
+    <div id="cartItems"></div>
+    <form class="checkout" id="checkoutForm">
+      <h3>Bestellung aufgeben</h3>
+      <div class="field-grid">
+        <div class="field"><label for="customerName">Name</label><input id="customerName" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="customerPhone">Telefonnummer</label><input id="customerPhone" name="phone" type="tel" autocomplete="tel" required></div>
+      </div>
+      <div class="field-grid">
+        <div class="field"><label for="pickupType">Bestellart</label><select id="pickupType" name="type"><option>Abholung</option><option disabled>Lieferung – später verfügbar</option></select></div>
+        <div class="field"><label for="pickupTime">Gewünschte Uhrzeit</label><input id="pickupTime" name="time" type="time"></div>
+      </div>
+      <div class="field"><label for="orderNote">Hinweis zur Bestellung</label><textarea id="orderNote" name="note" placeholder="Zum Beispiel: ohne Zwiebeln"></textarea></div>
+      <div class="payment-placeholder"><strong>✓ Zahlung bei Abholung</strong><span>Online-Zahlung per Karte, Apple Pay oder PayPal wird später angeschlossen.</span></div>
+      <div class="payment-placeholder"><strong id="cartTotal">Gesamtsumme: 0,00 €</strong><span>Für bereits eingetragene Gerichte wird der Preis automatisch berechnet.</span></div>
+      <button class="checkout-submit" type="submit">Bestellübersicht erstellen</button>
+      <div class="order-result" id="orderResult"></div>
+    </form>
+  </aside>
+
+  <dialog class="product-dialog" id="productDialog">
+    <form class="dialog-inner" id="productForm">
+      <div class="dialog-head"><div><div class="eyebrow accent">Zusammenstellen</div><h2 id="dialogProductName">Gericht</h2></div><button class="close-btn" id="dialogClose" type="button" aria-label="Fenster schließen">×</button></div>
+      <div class="option-group" id="meatOptions">
+        <h3>Fleisch wählen</h3>
+        <div class="option-list">
+          <label class="option-pill"><input type="radio" name="meat" value="Hähnchen" checked><span>Hähnchen</span></label>
+          <label class="option-pill"><input type="radio" name="meat" value="Kalb"><span>Kalb</span></label>
+        </div>
+      </div>
+      <div class="option-group" id="pizzaSizeOptions">
+        <h3>Größe wählen</h3>
+        <div class="option-list">
+          <label class="option-pill"><input type="radio" name="pizzaSize" value="26 cm" checked><span>26 cm</span></label>
+          <label class="option-pill"><input type="radio" name="pizzaSize" value="32 cm"><span>32 cm</span></label>
+        </div>
+      </div>
+      <div class="option-group" id="sauceOptions">
+        <h3>Saucen wählen</h3>
+        <div class="option-list">
+          <label class="option-pill"><input type="checkbox" name="sauce" value="S1 · Sauce 1"><span>S1 · Sauce 1</span></label>
+          <label class="option-pill"><input type="checkbox" name="sauce" value="S2 · Sauce 2"><span>S2 · Sauce 2</span></label>
+          <label class="option-pill"><input type="checkbox" name="sauce" value="S3 · Sauce 3"><span>S3 · Sauce 3</span></label>
+          <label class="option-pill"><input type="checkbox" name="sauce" value="S4 · Sauce 4"><span>S4 · Sauce 4</span></label>
+          <label class="option-pill"><input type="checkbox" name="sauce" value="S5 · Sauce 5"><span>S5 · Sauce 5</span></label>
+          <label class="option-pill"><input type="checkbox" name="sauce" value="S6 · Sauce 6"><span>S6 · Sauce 6</span></label>
+        </div>
+      </div>
+      <div class="option-group" id="ingredientOptions">
+        <h3>Frische Zutaten</h3>
+        <div class="option-list">
+          <label class="option-pill"><input type="checkbox" name="ingredient" value="Z1 · Gegrillte Gemüsemischung"><span>Z1 · Grillgemüse</span></label>
+          <label class="option-pill"><input type="checkbox" name="ingredient" value="Z2 · Tomaten" checked><span>Z2 · Tomaten</span></label>
+          <label class="option-pill"><input type="checkbox" name="ingredient" value="Z3 · Zwiebeln" checked><span>Z3 · Zwiebeln</span></label>
+          <label class="option-pill"><input type="checkbox" name="ingredient" value="Z4 · Gurkensalat" checked><span>Z4 · Gurkensalat</span></label>
+          <label class="option-pill"><input type="checkbox" name="ingredient" value="Z5 · Rotkrautsalat" checked><span>Z5 · Rotkrautsalat</span></label>
+          <label class="option-pill"><input type="checkbox" name="ingredient" value="Z6 · Eisbergsalat" checked><span>Z6 · Eisbergsalat</span></label>
+        </div>
+      </div>
+      <div class="option-group" id="addonOptions">
+        <h3>Extras wählen</h3>
+        <div class="option-list">
+          <label class="option-pill"><input type="checkbox" name="addon" value="A1 · Peperoni"><span>A1 · Peperoni</span></label>
+          <label class="option-pill"><input type="checkbox" name="addon" value="A2 · Oliven"><span>A2 · Oliven</span></label>
+          <label class="option-pill"><input type="checkbox" name="addon" value="A3 · Weichkäse nach griechischer Art"><span>A3 · Griechischer Käse</span></label>
+        </div>
+      </div>
+      <div class="option-group" id="falafelBurgerSauceOptions">
+        <h3>Soße für den Falafel Burger</h3>
+        <div class="option-list">
+          <label class="option-pill"><input type="radio" name="burgerSauce" value="Hummus" checked><span>Hummus</span></label>
+          <label class="option-pill"><input type="radio" name="burgerSauce" value="Joghurtsoße"><span>Joghurtsoße</span></label>
+        </div>
+      </div>
+      <div class="option-group" id="burgerExtraOptions">
+        <h3>Extras für Burger</h3>
+        <div class="option-list">
+          <label class="option-pill"><input type="checkbox" name="addon" value="Käse (+1,00 €)"><span>Käse +1,00 €</span></label>
+          <label class="option-pill"><input type="checkbox" name="addon" value="Jalapeños (+1,00 €)"><span>Jalapeños +1,00 €</span></label>
+          <label class="option-pill"><input type="checkbox" name="addon" value="Büffelmozzarella (+1,00 €)"><span>Büffelmozzarella +1,00 €</span></label>
+          <label class="option-pill"><input type="checkbox" name="addon" value="Avocado (+1,00 €)"><span>Avocado +1,00 €</span></label>
+          <label class="option-pill"><input type="checkbox" name="addon" value="Extra Sauce (+0,50 €)"><span>Sauce +0,50 €</span></label>
+          <label class="option-pill"><input type="checkbox" name="addon" value="Menü: Pommes & Getränk 0,33 l (+5,00 €)"><span>Menü +5,00 €</span></label>
+        </div>
+      </div>
+      <div class="dialog-footer"><input id="productQuantity" type="number" min="1" max="20" value="1" aria-label="Anzahl"><button class="add-btn" type="submit">In den Warenkorb</button></div>
+    </form>
+  </dialog>
+
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.navlinks');
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      toggle.textContent = isOpen ? '×' : '☰';
+    });
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = '☰';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const cartDrawer = document.getElementById('cartDrawer');
+    const cartOverlay = document.getElementById('cartOverlay');
+    const cartItems = document.getElementById('cartItems');
+    const cartEmpty = document.getElementById('cartEmpty');
+    const cartCount = document.getElementById('cartCount');
+    const productDialog = document.getElementById('productDialog');
+    const productForm = document.getElementById('productForm');
+    const meatOptions = document.getElementById('meatOptions');
+    const sauceOptions = document.getElementById('sauceOptions');
+    const ingredientOptions = document.getElementById('ingredientOptions');
+    const addonOptions = document.getElementById('addonOptions');
+    const pizzaSizeOptions = document.getElementById('pizzaSizeOptions');
+    const falafelBurgerSauceOptions = document.getElementById('falafelBurgerSauceOptions');
+    const burgerExtraOptions = document.getElementById('burgerExtraOptions');
+    let activeProduct = null;
+    let cart = [];
+    const productCodes = {
+      'Drehspieß Sandwich': '01', 'Drehspieß Teller': '02', 'Drehspieß Dürüm': '03',
+      'Drehspieß Box': '04', 'Schüler Sandwich': '05', 'Mozzarella Sandwich': '06',
+      'Mozzarella Dürüm': '07', 'Halloumi Sandwich': '08', 'Halloumi Dürüm': '09',
+      'Aubergine mit Zucchini Sandwich': '10', 'Aubergine mit Zucchini Dürüm': '11',
+      'Falafel Sandwich': '12', 'Falafel Teller': '13', 'Falafel Dürüm': '14',
+      'Falafel Box': '15', 'Couscous Teller': '16',
+      'Hähnchenschnitzel': '17', 'Chicken Nuggets / Crispy Strips': '18',
+      'Chicken Wings / Fried Chicken': '19', 'Lahmacun mit Salat': '20',
+      'Lahmacun mit Drehspießfleisch': '21',
+      'Arrabiata': '22', 'Napoli': '23', 'Bolognese': '24', 'Carbonara': '25',
+      'Vegetarisch Pasta': '26', 'Lasagne Vegetarisch': '27', 'Frutti di Mare Pasta': '28',
+      'Quattro Formaggi Pasta': '29', 'Pollo': '30', 'Tortellini Spinaci': '31',
+      'Tortellini di Carne': '32',
+      'Zigaretten Börek': '33', 'Börek mit Käse': '34', 'Börek mit Kartoffel': '35',
+      'Börek mit Spinat': '36', 'Börek mit Hackfleisch': '37',
+      'Pommes klein': '38', 'Pommes groß': '39',
+      'Pide Spinat': '40', 'Pide Hackfleisch': '41', 'Pide Käse': '42',
+      'Pide Sucuk': '43', 'Pide Salami': '44', 'Pide Döner': '45',
+      'Gurkensalat': '46', 'Grüner Salat': '47', 'Gemischter Salat': '48',
+      'Tomatensalat mit Zwiebeln': '49', 'Griechischer Bauernsalat': '50',
+      'Nizza Salat': '51', 'Tomaten Mozzarella': '52', 'Fitness Salat': '53',
+      'Margherita': '63', 'Sucuk': '64', 'Salami': '65', 'Tonno': '66', 'Huhn': '67',
+      'Döner': '68', 'Vegetarisch': '69', 'Funghi': '70', 'Prosciutto': '71',
+      'Hawaii': '72', 'Regina': '73', 'Americana': '74', 'Spinaci': '75',
+      'Napoli': '76', 'Quattro Formaggi': '77', 'Frutti di Mare': '78',
+      'Gorgonzola': '79', 'Mozzarella': '80', 'Capricciosa': '81',
+      'Quattro Stagioni': '82', 'Pikante': '83',
+      'Classic Burger': '54', 'Cheese Burger': '55', 'Falafel Burger': '56', 'Chicken Burger': '57',
+      'Veggie Burger': '58', 'Cricket Burger': '59', 'Chili-Cheeseburger': '60', 'Halloumi-Burger': '61',
+      'Sauce 1': 'S1', 'Sauce 2': 'S2', 'Sauce 3': 'S3',
+      'Sauce 4': 'S4', 'Sauce 5': 'S5', 'Sauce 6': 'S6',
+      'Peperoni': 'A1', 'Oliven': 'A2', 'Weichkäse nach griechischer Art': 'A3'
+    };
+    try {
+      const savedCart = JSON.parse(localStorage.getItem('aslanKebabCart') || '[]');
+      cart = Array.isArray(savedCart) ? savedCart.map(item => {
+        const code = productCodes[item.name];
+        return code ? { ...item, name: `${code.startsWith('S') || code.startsWith('A') ? code : `Nr. ${code}`} · ${item.name}` } : item;
+      }) : [];
+    } catch (_) { cart = []; }
+
+    function saveCart() {
+      localStorage.setItem('aslanKebabCart', JSON.stringify(cart));
+      renderCart();
+    }
+    const formatMoney = value => `${Number(value || 0).toFixed(2).replace('.', ',')} €`;
+    const extraPrice = item => (item.addons || []).reduce((sum, addon) => {
+      const match = String(addon).match(/\+([0-9]+),([0-9]{2})\s*€/);
+      return sum + (match ? Number(`${match[1]}.${match[2]}`) : 0);
+    }, 0);
+    const itemTotal = item => (Number(item.unitPrice || 0) + extraPrice(item)) * Number(item.qty || 1);
+    function openCart() {
+      cartDrawer.classList.add('open');
+      cartOverlay.classList.add('open');
+      cartDrawer.setAttribute('aria-hidden', 'false');
+    }
+    function closeCart() {
+      cartDrawer.classList.remove('open');
+      cartOverlay.classList.remove('open');
+      cartDrawer.setAttribute('aria-hidden', 'true');
+    }
+    function makeButton(label, className, handler) {
+      const button = document.createElement('button');
+      button.type = 'button'; button.className = className; button.textContent = label;
+      button.addEventListener('click', handler); return button;
+    }
+    function renderCart() {
+      cartItems.replaceChildren();
+      const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      cartCount.textContent = totalCount;
+      document.getElementById('cartTotal').textContent = `Gesamtsumme: ${formatMoney(cart.reduce((sum, item) => sum + itemTotal(item), 0))}`;
+      cartEmpty.style.display = cart.length ? 'none' : 'block';
+      cart.forEach((item, index) => {
+        const row = document.createElement('article'); row.className = 'cart-item';
+        const product = document.createElement('div'); product.className = 'cart-product';
+        const info = document.createElement('div');
+        const title = document.createElement('strong'); title.textContent = item.name;
+        const meta = document.createElement('div'); meta.className = 'cart-meta';
+        const details = [];
+        if (item.meat) details.push(item.meat);
+        if (Array.isArray(item.sauces) && item.sauces.length) details.push(item.sauces.join(', '));
+        if (Array.isArray(item.ingredients) && item.ingredients.length) details.push(item.ingredients.join(', '));
+        if (Array.isArray(item.addons) && item.addons.length) details.push(item.addons.join(', '));
+        if (item.size) details.push(item.size);
+        if (Number(item.unitPrice || 0)) details.push(formatMoney(item.unitPrice));
+        meta.textContent = details.length ? details.join(' · ') : 'Standardauswahl';
+        info.append(title, meta);
+        const code = item.name.match(/(?:Nr\.\s*)?(\d{2}|S\d|A\d)/)?.[1];
+        const sourceButton = code ? document.querySelector(`[data-number="${code}"]`) : null;
+        const sourceImage = sourceButton?.closest('article')?.querySelector('img');
+        if (sourceImage) {
+          const thumb = document.createElement('img');
+          thumb.className = 'cart-thumb'; thumb.src = sourceImage.src; thumb.alt = '';
+          product.append(thumb, info);
+        } else product.append(info);
+        const controls = document.createElement('div'); controls.className = 'cart-controls';
+        controls.append(
+          makeButton('−', 'qty-btn', () => { item.qty > 1 ? item.qty-- : cart.splice(index, 1); saveCart(); }),
+          Object.assign(document.createElement('span'), { textContent: item.qty }),
+          makeButton('+', 'qty-btn', () => { item.qty++; saveCart(); }),
+          makeButton('×', 'remove-btn', () => { cart.splice(index, 1); saveCart(); })
+        );
+        row.append(product, controls); cartItems.append(row);
+      });
+    }
+
+    document.getElementById('cartOpen').addEventListener('click', openCart);
+    document.getElementById('cartClose').addEventListener('click', closeCart);
+    cartOverlay.addEventListener('click', closeCart);
+    document.getElementById('dialogClose').addEventListener('click', () => productDialog.close());
+
+    document.querySelectorAll('[data-product]').forEach(button => button.addEventListener('click', () => {
+      activeProduct = {
+        name: button.dataset.product,
+        number: button.dataset.number || '',
+        kind: button.dataset.kind,
+        price: Number(button.dataset.price || 0),
+        priceChicken: Number(button.dataset.priceChicken || 0),
+        priceVeal: Number(button.dataset.priceVeal || 0),
+        priceSmall: Number(button.dataset.priceSmall || 0),
+        priceLarge: Number(button.dataset.priceLarge || 0)
+      };
+      if (activeProduct.kind === 'sauce' || activeProduct.kind === 'addon') {
+        cart.push({ id: Date.now() + Math.random(), name: `${activeProduct.number} · ${activeProduct.name}`, meat: '', sauces: [], ingredients: [], addons: [], qty: 1 });
+        saveCart(); openCart(); return;
+      }
+      productForm.reset();
+      document.getElementById('productQuantity').value = 1;
+      document.getElementById('dialogProductName').textContent = `Nr. ${activeProduct.number} · ${activeProduct.name}`;
+      const hasMeat = activeProduct.kind === 'meat' || activeProduct.kind === 'pizza-meat';
+      const hasPizzaSize = activeProduct.kind === 'pizza' || activeProduct.kind === 'pizza-meat';
+      const hasSauces = activeProduct.kind === 'meat' || activeProduct.kind === 'veg';
+      const hasIngredients = activeProduct.kind === 'meat' || activeProduct.kind === 'veg';
+      const hasAddons = activeProduct.kind === 'meat' || activeProduct.kind === 'veg' || activeProduct.kind === 'pizza' || activeProduct.kind === 'pizza-meat';
+      const hasBurgerExtras = activeProduct.kind === 'burger';
+      const hasFalafelBurgerSauce = activeProduct.kind === 'burger' && activeProduct.number === '56';
+      meatOptions.hidden = !hasMeat;
+      pizzaSizeOptions.hidden = !hasPizzaSize;
+      sauceOptions.hidden = !hasSauces;
+      ingredientOptions.hidden = !hasIngredients;
+      addonOptions.hidden = !hasAddons;
+      burgerExtraOptions.hidden = !hasBurgerExtras;
+      falafelBurgerSauceOptions.hidden = !hasFalafelBurgerSauce;
+      meatOptions.querySelectorAll('input').forEach(input => input.disabled = !hasMeat);
+      pizzaSizeOptions.querySelectorAll('input').forEach(input => input.disabled = !hasPizzaSize);
+      sauceOptions.querySelectorAll('input').forEach(input => input.disabled = !hasSauces);
+      ingredientOptions.querySelectorAll('input').forEach(input => input.disabled = !hasIngredients);
+      addonOptions.querySelectorAll('input').forEach(input => input.disabled = !hasAddons);
+      burgerExtraOptions.querySelectorAll('input').forEach(input => input.disabled = !hasBurgerExtras);
+      falafelBurgerSauceOptions.querySelectorAll('input').forEach(input => input.disabled = !hasFalafelBurgerSauce);
+      productDialog.showModal();
+    }));
+
+    productForm.addEventListener('submit', event => {
+      event.preventDefault();
+      if (!activeProduct) return;
+      const data = new FormData(productForm);
+      const meat = (activeProduct.kind === 'meat' || activeProduct.kind === 'pizza-meat') ? String(data.get('meat') || '') : '';
+      const size = (activeProduct.kind === 'pizza' || activeProduct.kind === 'pizza-meat') ? String(data.get('pizzaSize') || '') : '';
+      const unitPrice = activeProduct.priceChicken
+        ? (meat === 'Kalb' ? activeProduct.priceVeal : activeProduct.priceChicken)
+        : activeProduct.priceSmall
+          ? (size === '32 cm' ? activeProduct.priceLarge : activeProduct.priceSmall)
+          : activeProduct.price;
+      cart.push({
+        id: Date.now() + Math.random(),
+        name: `Nr. ${activeProduct.number} · ${activeProduct.name}`,
+        meat,
+        size,
+        unitPrice,
+        sauces: [...data.getAll('sauce').map(String), ...data.getAll('burgerSauce').map(String)],
+        ingredients: data.getAll('ingredient').map(String),
+        addons: data.getAll('addon').map(String),
+        qty: Math.max(1, Number(document.getElementById('productQuantity').value) || 1)
+      });
+      saveCart(); productDialog.close(); openCart();
+    });
+
+    const buildOrderSummary = () => {
+      const name = document.getElementById('customerName').value.trim();
+      const phone = document.getElementById('customerPhone').value.trim();
+      const type = document.getElementById('pickupType').value;
+      const time = document.getElementById('pickupTime').value;
+      const note = document.getElementById('orderNote').value.trim();
+      const lines = ['BESTELLUNG · ASLAN KEBAB', '', `Name: ${name}`, `Telefon: ${phone}`, `Bestellart: ${type}`, `Uhrzeit: ${time || 'so bald wie möglich'}`, '', 'Produkte:'];
+      cart.forEach((item, index) => {
+        lines.push(`${index + 1}. ${item.qty}× ${item.name}${Number(item.unitPrice || 0) ? ` — ${formatMoney(itemTotal(item))}` : ''}`);
+        if (item.meat) lines.push(`   Fleisch: ${item.meat}`);
+        if (item.size) lines.push(`   Größe: ${item.size}`);
+        if (Array.isArray(item.sauces) && item.sauces.length) lines.push(`   Saucen: ${item.sauces.join(', ')}`);
+        if (Array.isArray(item.ingredients) && item.ingredients.length) lines.push(`   Zutaten: ${item.ingredients.join(', ')}`);
+        if (Array.isArray(item.addons) && item.addons.length) lines.push(`   Extras: ${item.addons.join(', ')}`);
+      });
+      if (note) lines.push('', `Hinweis: ${note}`);
+      lines.push('', `Gesamtsumme: ${formatMoney(cart.reduce((sum, item) => sum + itemTotal(item), 0))}`);
+      return lines.join('\n');
+    };
+
+    const copyText = async text => {
+      if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+      const area = document.createElement('textarea');
+      area.value = text; area.style.position = 'fixed'; area.style.opacity = '0';
+      document.body.append(area); area.select(); document.execCommand('copy'); area.remove();
+    };
+
+    document.getElementById('checkoutForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const result = document.getElementById('orderResult');
+      if (!cart.length) {
+        result.textContent = 'Bitte zuerst mindestens ein Produkt in den Warenkorb legen.';
+        result.classList.add('show'); return;
+      }
+      const summary = buildOrderSummary();
+      result.replaceChildren();
+      const intro = document.createElement('strong');
+      intro.textContent = 'Deine Bestellung ist vorbereitet.';
+      const preview = document.createElement('div');
+      preview.className = 'order-summary'; preview.textContent = summary;
+      const copyButton = document.createElement('button');
+      copyButton.type = 'button'; copyButton.className = 'copy-order'; copyButton.textContent = 'Bestellung kopieren';
+      copyButton.addEventListener('click', async () => {
+        try { await copyText(summary); copyButton.textContent = '✓ Bestellung kopiert'; }
+        catch { copyButton.textContent = 'Kopieren nicht möglich'; }
+      });
+      result.append(intro, preview, copyButton);
+      result.classList.add('show');
+    });
+    renderCart();
+  </script>
+</body>
+</html>
