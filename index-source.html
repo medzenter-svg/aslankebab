@@ -217,6 +217,16 @@
     .pizza-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .pizza-card { overflow: hidden; border-radius: 27px; background: #321714; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 18px 50px rgba(0,0,0,.18); }
     .pizza-card img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+    .drink-grid .pizza-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      padding: 18px 24px;
+      box-sizing: border-box;
+      object-fit: contain;
+      object-position: center;
+      background: #fffdf8;
+    }
     .pizza-copy { padding: 24px; }
     .pizza-copy h3 { margin: 8px 0 9px; font: 500 28px/1 Georgia, serif; }
     .pizza-copy p { min-height: 40px; margin: 0; color: rgba(255,255,255,.58); font-size: 12px; }
@@ -633,7 +643,7 @@
           <div><div class="eyebrow">Kalt &amp; erfrischend</div><h2>Unsere<br><span style="color:var(--gold)">Getränke.</span></h2></div>
           <p>Originale Markengetränke in der abgebildeten Flasche oder Dose. Alle angegebenen Preise verstehen sich inklusive Pfand.</p>
         </div>
-        <div class="pizza-grid">
+        <div class="pizza-grid drink-grid">
           <article class="pizza-card reveal"><img src="assets/drink-fanta.webp" alt="Fanta Orange in der Originalflasche" loading="lazy"><div class="pizza-copy"><span class="dish-code">G1</span><h3>Fanta</h3><p>Orange · 1,0 l</p><div class="pizza-bottom"><span class="menu-price">3,50 €</span><button class="add-btn" type="button" data-product="Fanta 1,0 l" data-number="G1" data-kind="simple" data-price="3.50">Auswählen</button></div></div></article>
           <article class="pizza-card reveal"><img src="assets/drink-cola.webp" alt="Coca-Cola Original Taste in der Originalflasche" loading="lazy"><div class="pizza-copy"><span class="dish-code">G2</span><h3>Coca-Cola</h3><p>Original Taste · 1,0 l</p><div class="pizza-bottom"><span class="menu-price">3,50 €</span><button class="add-btn" type="button" data-product="Coca-Cola 1,0 l" data-number="G2" data-kind="simple" data-price="3.50">Auswählen</button></div></div></article>
           <article class="pizza-card reveal"><img src="assets/drink-cola-zero.webp" alt="Coca-Cola Zero Zucker in der Originalflasche" loading="lazy"><div class="pizza-copy"><span class="dish-code">G3</span><h3>Coca-Cola Zero</h3><p>Ohne Zucker · 1,0 l</p><div class="pizza-bottom"><span class="menu-price">3,50 €</span><button class="add-btn" type="button" data-product="Coca-Cola Zero 1,0 l" data-number="G3" data-kind="simple" data-price="3.50">Auswählen</button></div></div></article>
