@@ -214,6 +214,18 @@
 
     .pizza-menu { background: var(--ink); color: white; }
     .pizza-menu .section-head p { color: rgba(255,255,255,.58); }
+    #suessigkeiten { overflow: hidden; }
+    #suessigkeiten .container { position: relative; }
+    #suessigkeiten .section-head { position: relative; z-index: 1; }
+    .tea-decor {
+      position: absolute;
+      z-index: 0;
+      top: -100px;
+      right: 62px;
+      width: min(410px, 35vw);
+      pointer-events: none;
+      filter: drop-shadow(0 22px 32px rgba(0,0,0,.34));
+    }
     .pizza-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .pizza-card { overflow: hidden; border-radius: 27px; background: #321714; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 18px 50px rgba(0,0,0,.18); }
     .pizza-card img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
@@ -260,7 +272,7 @@
       aspect-ratio: 1 / 1;
       transform: translateX(-50%);
       background: url("assets/mint-scatter.webp") center top / contain no-repeat;
-      opacity: .22;
+      opacity: .44;
       pointer-events: none;
     }
     .burger-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -455,7 +467,8 @@
       .tageskarte-grid { grid-template-columns: 1fr; }
       .tageskarte-call { align-items: stretch; flex-direction: column; }
       .tageskarte-call .btn { width: 100%; }
-      .burger-menu::before { top: 28px; width: 135vw; opacity: .16; }
+      .burger-menu::before { top: 28px; width: 135vw; opacity: .32; }
+      .tea-decor { top: -72px; right: -8px; width: 180px; opacity: .9; }
       .durum-feature { min-height: 450px; }
       .durum-feature-copy { left: 24px; right: 24px; bottom: 24px; }
       .menu-list { padding: 10px 24px; }
@@ -720,6 +733,7 @@
 
     <section class="pizza-menu" id="suessigkeiten">
       <div class="container">
+        <img class="tea-decor" src="assets/turkish-tea-steaming.webp" alt="Zwei heiße türkische Teegläser mit feinem Dampf" loading="lazy">
         <div class="section-head reveal">
           <div><div class="eyebrow">Etwas Süßes</div><h2>Unsere<br><span style="color:var(--gold)">Süßigkeiten.</span></h2></div>
           <p>Tiramisu, Kuchen und Baklava – ein süßer Abschluss nach dem Essen.</p>
