@@ -855,6 +855,15 @@
           <label class="option-pill"><input type="checkbox" name="addon" value="A3 · Weichkäse nach griechischer Art"><span>A3 · Griechischer Käse</span></label>
         </div>
       </div>
+      <div class="option-group" id="sideOptions">
+        <h3>Beilagen wählen</h3>
+        <div class="option-list">
+          <label class="option-pill"><input type="checkbox" name="side" value="Reis"><span>Reis</span></label>
+          <label class="option-pill"><input type="checkbox" name="side" value="Ketchup"><span>Ketchup</span></label>
+          <label class="option-pill"><input type="checkbox" name="side" value="Mayonnaise"><span>Mayonnaise</span></label>
+          <label class="option-pill"><input type="checkbox" name="side" value="Senf"><span>Senf</span></label>
+        </div>
+      </div>
       <div class="option-group" id="falafelBurgerSauceOptions">
         <h3>Soße für den Falafel Burger</h3>
         <div class="option-list">
@@ -907,6 +916,7 @@
     const sauceOptions = document.getElementById('sauceOptions');
     const ingredientOptions = document.getElementById('ingredientOptions');
     const addonOptions = document.getElementById('addonOptions');
+    const sideOptions = document.getElementById('sideOptions');
     const pizzaSizeOptions = document.getElementById('pizzaSizeOptions');
     const falafelBurgerSauceOptions = document.getElementById('falafelBurgerSauceOptions');
     const burgerExtraOptions = document.getElementById('burgerExtraOptions');
@@ -996,6 +1006,7 @@
         if (Array.isArray(item.sauces) && item.sauces.length) details.push(item.sauces.join(', '));
         if (Array.isArray(item.ingredients) && item.ingredients.length) details.push(item.ingredients.join(', '));
         if (Array.isArray(item.addons) && item.addons.length) details.push(item.addons.join(', '));
+        if (Array.isArray(item.sides) && item.sides.length) details.push(item.sides.join(', '));
         if (item.size) details.push(item.size);
         if (Number(item.unitPrice || 0)) details.push(formatMoney(item.unitPrice));
         meta.textContent = details.length ? details.join(' · ') : 'Standardauswahl';
@@ -1036,7 +1047,7 @@
         priceLarge: Number(button.dataset.priceLarge || 0)
       };
       if (activeProduct.kind === 'sauce' || activeProduct.kind === 'addon') {
-        cart.push({ id: Date.now() + Math.random(), name: `${activeProduct.number} · ${activeProduct.name}`, meat: '', sauces: [], ingredients: [], addons: [], qty: 1 });
+        cart.push({ id: Date.now() + Math.random(), name: `${activeProduct.number} · ${activeProduct.name}`, meat: '', sauces: [], ingredients: [], addons: [], sides: [], qty: 1 });
         saveCart(); openCart(); return;
       }
       productForm.reset();
@@ -1047,6 +1058,7 @@
       const hasSauces = activeProduct.kind === 'meat' || activeProduct.kind === 'veg';
       const hasIngredients = activeProduct.kind === 'meat' || activeProduct.kind === 'veg';
       const hasAddons = activeProduct.kind === 'meat' || activeProduct.kind === 'veg' || activeProduct.kind === 'pizza' || activeProduct.kind === 'pizza-meat';
+      const hasSides = activeProduct.kind === 'meat' || activeProduct.kind === 'veg' || activeProduct.kind === 'burger' || ['17', '18', '19', '38', '39'].includes(activeProduct.number);
       const hasBurgerExtras = activeProduct.kind === 'burger';
       const hasFalafelBurgerSauce = activeProduct.kind === 'burger' && activeProduct.number === '56';
       meatOptions.hidden = !hasMeat;
@@ -1054,6 +1066,7 @@
       sauceOptions.hidden = !hasSauces;
       ingredientOptions.hidden = !hasIngredients;
       addonOptions.hidden = !hasAddons;
+      sideOptions.hidden = !hasSides;
       burgerExtraOptions.hidden = !hasBurgerExtras;
       falafelBurgerSauceOptions.hidden = !hasFalafelBurgerSauce;
       meatOptions.querySelectorAll('input').forEach(input => input.disabled = !hasMeat);
@@ -1061,6 +1074,7 @@
       sauceOptions.querySelectorAll('input').forEach(input => input.disabled = !hasSauces);
       ingredientOptions.querySelectorAll('input').forEach(input => input.disabled = !hasIngredients);
       addonOptions.querySelectorAll('input').forEach(input => input.disabled = !hasAddons);
+      sideOptions.querySelectorAll('input').forEach(input => input.disabled = !hasSides);
       burgerExtraOptions.querySelectorAll('input').forEach(input => input.disabled = !hasBurgerExtras);
       falafelBurgerSauceOptions.querySelectorAll('input').forEach(input => input.disabled = !hasFalafelBurgerSauce);
       productDialog.showModal();
@@ -1086,6 +1100,7 @@
         sauces: [...data.getAll('sauce').map(String), ...data.getAll('burgerSauce').map(String)],
         ingredients: data.getAll('ingredient').map(String),
         addons: data.getAll('addon').map(String),
+        sides: data.getAll('side').map(String),
         qty: Math.max(1, Number(document.getElementById('productQuantity').value) || 1)
       });
       saveCart(); productDialog.close(); openCart();
@@ -1105,6 +1120,7 @@
         if (Array.isArray(item.sauces) && item.sauces.length) lines.push(`   Saucen: ${item.sauces.join(', ')}`);
         if (Array.isArray(item.ingredients) && item.ingredients.length) lines.push(`   Zutaten: ${item.ingredients.join(', ')}`);
         if (Array.isArray(item.addons) && item.addons.length) lines.push(`   Extras: ${item.addons.join(', ')}`);
+        if (Array.isArray(item.sides) && item.sides.length) lines.push(`   Beilagen: ${item.sides.join(', ')}`);
       });
       if (note) lines.push('', `Hinweis: ${note}`);
       lines.push('', `Gesamtsumme: ${formatMoney(cart.reduce((sum, item) => sum + itemTotal(item), 0))}`);
