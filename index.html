@@ -230,8 +230,12 @@
     .pizza-card { overflow: hidden; border-radius: 27px; background: #321714; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 18px 50px rgba(0,0,0,.18); }
     .pizza-card img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
     #pizza .pizza-card img {
-      object-fit: cover;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
       object-position: center;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
     .drink-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
     .drink-grid .pizza-card {
@@ -1028,6 +1032,10 @@
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: .12 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('#pizza .pizza-card img').forEach(img => {
+      const source = img.getAttribute('src');
+      img.style.backgroundImage = `linear-gradient(rgba(255,248,235,.68), rgba(255,248,235,.68)), url("${source}")`;
+    });
 
     const cartDrawer = document.getElementById('cartDrawer');
     const cartOverlay = document.getElementById('cartOverlay');
