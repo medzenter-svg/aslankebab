@@ -560,9 +560,10 @@
           <article class="product-card reveal"><img src="assets/menu-36-boerek-spinat.webp" alt="Goldbrauner Börek mit Spinatfüllung" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 36</span><h3>Börek mit Spinat</h3><p>Blättriges Teiggebäck mit herzhafter Spinatfüllung.</p><div class="product-card-bottom"><span class="menu-price">4,00 €</span><button class="add-btn" type="button" data-product="Börek mit Spinat" data-number="36" data-kind="simple" data-price="4.00">Auswählen</button></div></div></article>
           <article class="product-card reveal"><img src="assets/menu-37-boerek-hackfleisch.webp" alt="Goldbrauner Börek mit Hackfleischfüllung" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 37</span><h3>Börek mit Hackfleisch</h3><p>Blättriges Teiggebäck mit würziger Hackfleischfüllung.</p><div class="product-card-bottom"><span class="menu-price">6,00 €</span><button class="add-btn" type="button" data-product="Börek mit Hackfleisch" data-number="37" data-kind="simple" data-price="6.00">Auswählen</button></div></div></article>
 
-          <div class="menu-category reveal"><h3>Pommes</h3><p>Goldgelb, knusprig und frisch zubereitet.</p></div>
+          <div class="menu-category reveal"><h3>Beilagen</h3><p>Pommes und frisch gebackenes Döner Brot.</p></div>
           <article class="product-card reveal"><img src="assets/menu-38-pommes-klein.webp" alt="Kleine Portion goldgelbe Pommes" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 38</span><h3>Pommes klein</h3><p>Kleine Portion knusprige, goldgelbe Pommes.</p><div class="product-card-bottom"><span class="menu-price">4,00 €</span><button class="add-btn" type="button" data-product="Pommes klein" data-number="38" data-kind="simple" data-price="4.00">Auswählen</button></div></div></article>
           <article class="product-card reveal"><img src="assets/menu-39-pommes-gross.webp" alt="Große Portion goldgelbe Pommes" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 39</span><h3>Pommes groß</h3><p>Große Portion knusprige, goldgelbe Pommes.</p><div class="product-card-bottom"><span class="menu-price">5,50 €</span><button class="add-btn" type="button" data-product="Pommes groß" data-number="39" data-kind="simple" data-price="5.50">Auswählen</button></div></div></article>
+          <article class="product-card reveal"><img src="assets/menu-b1-doener-brot.webp?v=brot2" alt="Zwei frisch zubereitete Döner Brote mit Sesam auf einem weißen Leinentuch" loading="lazy"><div class="product-card-copy"><span class="dish-code">B1</span><h3>Döner Brot</h3><p>Täglich frisch zubereitetes Döner Brot mit Sesam.</p><div class="product-card-bottom"><span class="menu-price">1,50 €</span><button class="add-btn" type="button" data-product="Döner Brot" data-number="B1" data-kind="simple" data-price="1.50">Auswählen</button></div></div></article>
 
           <div class="menu-category reveal"><h3>Pide</h3><p>Frisch gebackene türkische Teigschiffchen mit herzhaften Füllungen.</p></div>
           <article class="product-card reveal"><img src="assets/menu-40-pide-spinat.webp" alt="Pide mit frischer Spinatfüllung" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 40</span><h3>Pide Spinat</h3><p>Knusprig gebackenes Pide mit herzhafter Spinatfüllung.</p><div class="product-card-bottom"><span class="menu-price">8,50 €</span><button class="add-btn" type="button" data-product="Pide Spinat" data-number="40" data-kind="simple" data-price="8.50">Auswählen</button></div></div></article>
@@ -860,6 +861,7 @@
         <div class="option-list">
           <label class="option-pill"><input type="checkbox" name="side" value="Pommes"><span>Pommes</span></label>
           <label class="option-pill"><input type="checkbox" name="side" value="Reis"><span>Reis</span></label>
+          <label class="option-pill"><input type="checkbox" name="side" value="Döner Brot (+1,50 €)"><span>Döner Brot +1,50 €</span></label>
           <label class="option-pill"><input type="checkbox" name="side" value="Ketchup"><span>Ketchup</span></label>
           <label class="option-pill"><input type="checkbox" name="side" value="Mayonnaise"><span>Mayonnaise</span></label>
           <label class="option-pill"><input type="checkbox" name="side" value="Senf"><span>Senf</span></label>
@@ -940,6 +942,7 @@
       'Zigaretten Börek': '33', 'Börek mit Käse': '34', 'Börek mit Kartoffel': '35',
       'Börek mit Spinat': '36', 'Börek mit Hackfleisch': '37',
       'Pommes klein': '38', 'Pommes groß': '39',
+      'Döner Brot': 'B1',
       'Pide Spinat': '40', 'Pide Hackfleisch': '41', 'Pide Käse': '42',
       'Pide Sucuk': '43', 'Pide Salami': '44', 'Pide Döner': '45',
       'Gurkensalat': '46', 'Grüner Salat': '47', 'Gemischter Salat': '48',
@@ -961,7 +964,7 @@
       const savedCart = JSON.parse(localStorage.getItem('aslanKebabCart') || '[]');
       cart = Array.isArray(savedCart) ? savedCart.map(item => {
         const code = productCodes[item.name];
-        return code ? { ...item, name: `${code.startsWith('S') || code.startsWith('A') ? code : `Nr. ${code}`} · ${item.name}` } : item;
+        return code ? { ...item, name: `${['S', 'A', 'B'].some(prefix => code.startsWith(prefix)) ? code : `Nr. ${code}`} · ${item.name}` } : item;
       }) : [];
     } catch (_) { cart = []; }
 
@@ -970,8 +973,8 @@
       renderCart();
     }
     const formatMoney = value => `${Number(value || 0).toFixed(2).replace('.', ',')} €`;
-    const extraPrice = item => (item.addons || []).reduce((sum, addon) => {
-      const match = String(addon).match(/\+([0-9]+),([0-9]{2})\s*€/);
+    const extraPrice = item => [...(item.addons || []), ...(item.sides || [])].reduce((sum, extra) => {
+      const match = String(extra).match(/\+([0-9]+),([0-9]{2})\s*€/);
       return sum + (match ? Number(`${match[1]}.${match[2]}`) : 0);
     }, 0);
     const itemTotal = item => (Number(item.unitPrice || 0) + extraPrice(item)) * Number(item.qty || 1);
@@ -1012,7 +1015,7 @@
         if (Number(item.unitPrice || 0)) details.push(formatMoney(item.unitPrice));
         meta.textContent = details.length ? details.join(' · ') : 'Standardauswahl';
         info.append(title, meta);
-        const code = item.name.match(/(?:Nr\.\s*)?(\d{2}|S\d|A\d)/)?.[1];
+        const code = item.name.match(/(?:Nr\.\s*)?(\d{2}|[SAB]\d)/)?.[1];
         const sourceButton = code ? document.querySelector(`[data-number="${code}"]`) : null;
         const sourceImage = sourceButton?.closest('article')?.querySelector('img');
         if (sourceImage) {
