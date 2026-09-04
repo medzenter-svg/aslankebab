@@ -327,6 +327,20 @@
     .feature { display: flex; gap: 10px; align-items: center; font-size: 14px; font-weight: 700; }
     .check { width: 25px; height: 25px; display: grid; place-items: center; border-radius: 50%; color: var(--gold); border: 1px solid rgba(217,154,57,.4); }
 
+    .location { background: #151515; color: white; }
+    .location-grid { display: grid; grid-template-columns: .72fr 1.28fr; border-radius: 36px; overflow: hidden; background: #211110; box-shadow: 0 24px 70px rgba(0,0,0,.28); }
+    .location-info { padding: 62px 52px; display: flex; flex-direction: column; justify-content: center; }
+    .location-info h2 { margin: 14px 0 18px; font-size: clamp(44px, 5vw, 68px); letter-spacing: -.04em; }
+    .location-address { margin: 0 0 30px; color: rgba(255,255,255,.68); font-size: 16px; line-height: 1.7; }
+    .opening-hours { display: grid; gap: 13px; margin: 0 0 32px; }
+    .opening-row { display: grid; grid-template-columns: 92px 1fr; gap: 22px; font: 500 24px/1.2 Georgia, serif; }
+    .opening-row span:last-child { color: var(--gold); }
+    .location-actions { display: flex; flex-wrap: wrap; gap: 11px; }
+    .location-actions .btn { margin: 0; }
+    .location-actions .btn-secondary { border-color: rgba(255,255,255,.25); }
+    .map-frame { min-height: 520px; background: #eee; }
+    .map-frame iframe { display: block; width: 100%; height: 100%; min-height: 520px; border: 0; }
+
     .order { background: var(--paper); }
     .order-card { border-radius: 36px; overflow: hidden; display: grid; grid-template-columns: 1.2fr .8fr; background: var(--wine); color: white; box-shadow: var(--shadow); }
     .order-copy { padding: 70px; position: relative; }
@@ -359,7 +373,7 @@
       .hero-content { padding-top: 100px; }
       .quick-grid { grid-template-columns: 1fr; }
       .quick-item + .quick-item { border-left: 0; border-top: 1px solid #eadfcf; }
-      .section-head, .story-grid, .order-card { grid-template-columns: 1fr; }
+      .section-head, .story-grid, .location-grid, .order-card { grid-template-columns: 1fr; }
       .section-head p { margin-left: 0; }
       .menu-grid { grid-template-columns: 1fr; }
       .full-menu-layout { grid-template-columns: repeat(2, 1fr); }
@@ -376,6 +390,7 @@
       .story-art { min-height: 480px; }
       .story-art img { height: 450px; }
       .order-side { min-height: 320px; }
+      .map-frame, .map-frame iframe { min-height: 420px; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .footer-brand { grid-column: 1 / -1; }
       .floating-phone { width: 56px; height: 56px; right: 14px; bottom: 14px; justify-content: center; padding: 0; font-size: 0; }
@@ -417,6 +432,10 @@
       .cart-controls { margin-left: 81px; }
       .field-grid { grid-template-columns: 1fr; }
       .order-copy { padding: 45px 28px; }
+      .location-info { padding: 45px 28px; }
+      .opening-row { grid-template-columns: 78px 1fr; gap: 12px; font-size: 20px; }
+      .location-actions .btn { width: 100%; text-align: center; }
+      .map-frame, .map-frame iframe { min-height: 350px; }
       .footer-grid { grid-template-columns: 1fr; gap: 35px; }
       .footer-brand { grid-column: auto; }
       .copyright { flex-direction: column; }
@@ -440,7 +459,7 @@
           <a href="#getraenke">Getränke</a>
           <a href="#saucen">Saucen</a>
           <a href="#story">Unser Anspruch</a>
-          <a href="#kontakt">Kontakt</a>
+          <a href="#standort">Standort</a>
           <a href="#bestellen" class="nav-cta">Jetzt bestellen</a>
           <button class="cart-button" id="cartOpen" type="button">Warenkorb <span class="cart-count" id="cartCount">0</span></button>
         </div>
@@ -457,7 +476,7 @@
           <p class="hero-copy">Saftiges Fleisch vom Grill, knackiges Gemüse und hausgemachte Saucen – jeden Tag frisch, ehrlich und mit Leidenschaft zubereitet.</p>
           <div class="hero-actions">
             <a href="#speisekarte" class="btn btn-primary">Speisekarte entdecken <span>→</span></a>
-            <a href="#kontakt" class="btn btn-secondary">Standort &amp; Öffnungszeiten</a>
+            <a href="#standort" class="btn btn-secondary">Standort &amp; Öffnungszeiten</a>
           </div>
           <div class="hero-note">
             <div class="rating">★★★★★</div>
@@ -752,6 +771,29 @@
       </div>
     </section>
 
+    <section class="location" id="standort">
+      <div class="container">
+        <div class="location-grid reveal">
+          <div class="location-info">
+            <div class="eyebrow accent">Hier findest du uns</div>
+            <h2>Standort &amp; Öffnungszeiten</h2>
+            <p class="location-address"><strong>Aslan Kebab</strong><br>Leuchtenbergring 5/5<br>81677 München</p>
+            <div class="opening-hours" aria-label="Öffnungszeiten">
+              <div class="opening-row"><span>Mo – Fr</span><span>10:00 – 22:00</span></div>
+              <div class="opening-row"><span>Sa – So</span><span>12:00 – 22:00</span></div>
+            </div>
+            <div class="location-actions">
+              <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=Leuchtenbergring+5%2F5%2C+81677+M%C3%BCnchen" target="_blank" rel="noopener noreferrer">Route planen</a>
+              <a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=Leuchtenbergring+5%2F5%2C+81677+M%C3%BCnchen" target="_blank" rel="noopener noreferrer">Google Maps öffnen</a>
+            </div>
+          </div>
+          <div class="map-frame">
+            <iframe src="https://www.google.com/maps?q=Leuchtenbergring%205%2F5%2C%2081677%20M%C3%BCnchen&amp;output=embed" title="Karte: Aslan Kebab, Leuchtenbergring 5/5, München" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="order" id="bestellen">
       <div class="container">
         <div class="order-card reveal">
@@ -777,8 +819,8 @@
           <div class="logo"><span class="logo-mark"><img src="assets/aslan-avatar.webp" alt=""></span><span>ASLAN KEBAB<small>GRILL &amp; GENUSS</small></span></div>
           <p>Frisch gegrillt, ehrlich gewürzt und mit Liebe serviert. Dein Kebab-Moment – mitten in der Stadt.</p>
         </div>
-        <div><h4>Besuche uns</h4><ul><li>Adresse wird ergänzt</li><li>Telefon wird ergänzt</li><li>E-Mail wird ergänzt</li></ul></div>
-        <div><h4>Öffnungszeiten</h4><ul><li>Montag–Donnerstag: 11–23 Uhr</li><li>Freitag–Samstag: 11–24 Uhr</li><li>Sonntag: 12–22 Uhr</li></ul></div>
+        <div><h4>Besuche uns</h4><ul><li><a href="#standort">Leuchtenbergring 5/5<br>81677 München</a></li><li>Telefon wird ergänzt</li><li>E-Mail wird ergänzt</li></ul></div>
+        <div><h4>Öffnungszeiten</h4><ul><li>Mo–Fr: 10:00–22:00 Uhr</li><li>Sa–So: 12:00–22:00 Uhr</li></ul></div>
       </div>
       <div class="copyright"><span>© <span id="year"></span> Aslan Kebab. Alle Rechte vorbehalten.</span><span>Impressum · Datenschutz</span></div>
     </div>
