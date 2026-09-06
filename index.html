@@ -16,6 +16,12 @@
       --paper: #f4ead8;
       --white: #fffdf8;
       --muted: #755f59;
+      --burgundy-page: #230b0b;
+      --burgundy-section: #2d0f0e;
+      --burgundy-card: #3a1614;
+      --burgundy-card-deep: #31110f;
+      --text-light: #fff8ed;
+      --text-muted: #cbb7ad;
       --shadow: 0 24px 70px rgba(49, 17, 13, .16);
       --radius: 28px;
     }
@@ -480,6 +486,100 @@
     footer a { color: inherit; }
     .copyright { border-top: 1px solid rgba(255,255,255,.1); padding-top: 24px; display: flex; justify-content: space-between; gap: 20px; color: rgba(255,255,255,.38); font-size: 12px; }
 
+    /* Einheitliche dunkel-bordeauxfarbene Farbwelt */
+    body { background: var(--burgundy-page); color: var(--text-light); }
+    #highlights, .burger-menu, .toppings, .order { background: var(--burgundy-page); }
+    .full-menu, .tageskarte, .sauces { background: var(--burgundy-section); }
+    .pizza-menu, .story, .location { background: #1d0909; }
+    .accent { color: var(--gold); }
+    .quick-grid,
+    .product-card,
+    .menu-list,
+    .vegetarian-card,
+    .sauce-card,
+    .seasoning-card,
+    .topping-card,
+    .burger-card {
+      color: var(--text-light);
+      background: linear-gradient(145deg, var(--burgundy-card) 0%, var(--burgundy-card-deep) 100%);
+      border-color: rgba(255,255,255,.08);
+      box-shadow: 0 18px 48px rgba(0,0,0,.22);
+    }
+    .quick-item + .quick-item, .menu-line, .cart-head, .cart-item { border-color: rgba(255,255,255,.1); }
+    .quick-item span,
+    .section-head p,
+    .product-card p,
+    .menu-line p,
+    .vegetarian-card p,
+    .sauce-hero p,
+    .placeholder-copy,
+    .addon-heading p,
+    .topping-copy p,
+    .burger-copy p,
+    .menu-foot,
+    .cart-empty,
+    .cart-meta,
+    .field label,
+    .payment-placeholder span { color: var(--text-muted); }
+    .icon { color: var(--gold); background: rgba(217,154,57,.14); border: 1px solid rgba(217,154,57,.28); }
+    .menu-category, .meat-choice { background: #681c1a; border: 1px solid rgba(217,154,57,.2); }
+    .menu-price, .sauce-number { color: var(--gold); }
+    .sauce-number { background: rgba(217,154,57,.12); border: 1px solid rgba(217,154,57,.26); }
+    .veg-label { color: #9bd26d; }
+    .allergen-note { color: #c9afa5; }
+    .menu-foot .btn,
+    .product-card .add-btn,
+    .menu-list .add-btn,
+    .vegetarian-card .add-btn,
+    .sauce-card .add-btn,
+    .seasoning-card .add-btn,
+    .burger-card .add-btn { background: var(--gold); color: var(--ink); }
+    .menu-foot .btn:hover,
+    .product-card .add-btn:hover,
+    .menu-list .add-btn:hover,
+    .vegetarian-card .add-btn:hover,
+    .sauce-card .add-btn:hover,
+    .seasoning-card .add-btn:hover,
+    .burger-card .add-btn:hover { background: #ebb254; }
+    .location-grid { background: linear-gradient(145deg, #3a1513, #2a0d0c); border: 1px solid rgba(255,255,255,.08); }
+    .order-card { background: linear-gradient(135deg, #741f1c, #421311); }
+    .cart-drawer, .product-dialog, .legal-dialog { background: var(--burgundy-section); color: var(--text-light); }
+    .close-btn, .qty-btn, .remove-btn {
+      color: var(--text-light);
+      background: #471916;
+      border-color: rgba(255,255,255,.14);
+    }
+    .remove-btn { color: #ffb8aa; }
+    .checkout { border-color: rgba(255,255,255,.18); }
+    .field input,
+    .field select,
+    .field textarea,
+    .dialog-footer input,
+    .option-pill span {
+      background: #3b1513;
+      color: var(--text-light);
+      border-color: rgba(255,255,255,.14);
+    }
+    .field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,.42); }
+    .payment-placeholder { background: #451815; border-color: rgba(217,154,57,.44); }
+    .checkout-submit { background: var(--gold); color: var(--ink); }
+    .option-pill input:checked + span { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+
+    .legal-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px 16px; }
+    .legal-link { border: 0; padding: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+    .legal-link:hover { color: var(--gold); }
+    .legal-dialog { width: min(820px, calc(100% - 28px)); max-height: min(86vh, 900px); border: 1px solid rgba(217,154,57,.28); border-radius: 28px; padding: 0; box-shadow: 0 28px 90px rgba(0,0,0,.55); }
+    .legal-dialog::backdrop { background: rgba(16,4,4,.78); backdrop-filter: blur(5px); }
+    .legal-inner { padding: 34px; }
+    .legal-head { position: sticky; z-index: 2; top: -34px; display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin: -34px -34px 28px; padding: 30px 34px 22px; background: var(--burgundy-section); border-bottom: 1px solid rgba(255,255,255,.1); }
+    .legal-head h2 { margin-top: 8px; font-size: clamp(38px, 5vw, 58px); }
+    .legal-content { color: var(--text-muted); font-size: 14px; line-height: 1.75; }
+    .legal-content h3 { margin: 28px 0 7px; color: var(--text-light); font: 500 24px/1.2 Georgia, serif; }
+    .legal-content p { margin: 0 0 13px; }
+    .legal-content ul { margin: 6px 0 16px; padding-left: 22px; }
+    .legal-content strong { color: var(--text-light); }
+    .legal-missing { margin-top: 28px; padding: 16px 18px; border-radius: 16px; color: #ffe2a8; background: rgba(217,154,57,.1); border: 1px solid rgba(217,154,57,.28); }
+
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.visible { opacity: 1; transform: none; }
 
@@ -500,6 +600,7 @@
       .hero-content { padding-top: 100px; }
       .quick-grid { grid-template-columns: 1fr; }
       .quick-item + .quick-item { border-left: 0; border-top: 1px solid #eadfcf; }
+      .quick-item + .quick-item { border-top-color: rgba(255,255,255,.1); }
       .section-head, .story-grid, .location-grid, .order-card { grid-template-columns: 1fr; }
       .section-head p { margin-left: 0; }
       .menu-grid { grid-template-columns: 1fr; }
@@ -583,6 +684,9 @@
       .footer-grid { grid-template-columns: 1fr; gap: 35px; }
       .footer-brand { grid-column: auto; }
       .copyright { flex-direction: column; }
+      .legal-links { justify-content: flex-start; }
+      .legal-inner { padding: 24px; }
+      .legal-head { top: -24px; margin: -24px -24px 22px; padding: 24px; }
     }
   </style>
 </head>
@@ -991,11 +1095,88 @@
         <div><h4>Besuche uns</h4><ul><li><a href="#standort">Leuchtenbergring 5/5<br>81677 München</a></li><li><a href="tel:+498937455557">089 374 555 57</a></li><li><a href="tel:+4917630568120">0176 305 681 20</a></li><li>E-Mail wird ergänzt</li></ul></div>
         <div><h4>Öffnungszeiten</h4><ul><li>Mo–Fr: 10:00–22:00 Uhr</li><li>Sa–So: 12:00–22:00 Uhr</li></ul></div>
       </div>
-      <div class="copyright"><span>© <span id="year"></span> Aslan Kebab. Alle Rechte vorbehalten.</span><span>Impressum · Datenschutz</span></div>
+      <div class="copyright">
+        <span>© <span id="year"></span> Aslan Kebab. Alle Rechte vorbehalten.</span>
+        <span class="legal-links">
+          <button class="legal-link" type="button" data-legal-target="agbDialog">AGB</button>
+          <button class="legal-link" type="button" data-legal-target="impressumDialog">Impressum</button>
+          <span>Datenschutz wird ergänzt</span>
+        </span>
+      </div>
     </div>
   </footer>
 
   <a class="floating-phone" href="tel:+498937455557" aria-label="Aslan Kebab anrufen: 089 374 555 57"><b>☎</b> 089 374 555 57</a>
+
+  <dialog class="legal-dialog" id="agbDialog" aria-labelledby="agbTitle">
+    <div class="legal-inner">
+      <div class="legal-head">
+        <div><div class="eyebrow">Rechtliches</div><h2 id="agbTitle">Allgemeine Geschäftsbedingungen</h2></div>
+        <button class="close-btn legal-close" type="button" aria-label="AGB schließen">×</button>
+      </div>
+      <div class="legal-content">
+        <h3>1. Geltungsbereich</h3>
+        <p>Diese Allgemeinen Geschäftsbedingungen gelten für alle Verträge, Dienstleistungen, Tischreservierungen und Bestellungen – inklusive Abholung oder Lieferung, falls angeboten –, die zwischen dem Restaurant „Aslan Kebab“ (nachfolgend „Restaurant“) und dem Gast bzw. Kunden (nachfolgend „Kunde“) abgeschlossen werden.</p>
+
+        <h3>2. Vertragsschluss und Reservierungen</h3>
+        <p><strong>2.1.</strong> Eine Tischreservierung stellt eine unverbindliche Anfrage des Kunden dar. Der Vertrag kommt erst durch die Bestätigung des Restaurants – telefonisch, per E-Mail oder vor Ort – zustande.</p>
+        <p><strong>2.2.</strong> Bei Gruppenreservierungen ab 10 Personen oder Sonderveranstaltungen behält sich das Restaurant vor, eine Anzahlung oder die Angabe einer Kreditkarte als Sicherheit zu verlangen.</p>
+
+        <h3>3. Stornierungsbedingungen und No-Show-Gebühr</h3>
+        <p><strong>3.1.</strong> Reservierungen können bis zu 24 Stunden vor dem vereinbarten Termin kostenfrei storniert werden.</p>
+        <p><strong>3.2.</strong> Erscheint der Kunde nicht zum vereinbarten Termin („No-Show“) oder storniert er verspätet, ohne dass das Restaurant den Tisch anderweitig vergeben kann, behält sich das Restaurant das Recht vor, eine angemessene Aufwandsentschädigung in Höhe von 20,00 € pro Person in Rechnung zu stellen.</p>
+
+        <h3>4. Preise und Zahlungsbedingungen</h3>
+        <p><strong>4.1.</strong> Es gelten die Preise, die in den Speisekarten, auf der Website oder bei Sonderabsprachen ausgewiesen sind. Alle Preise verstehen sich inklusive der gesetzlichen Mehrwertsteuer.</p>
+        <p><strong>4.2.</strong> Die Zahlung erfolgt unmittelbar nach Erbringung der Dienstleistung vor Ort. Akzeptiert werden Bargeld sowie die gängigen elektronischen Zahlungsmittel, sofern nicht vorab schriftlich etwas anderes vereinbart wurde.</p>
+
+        <h3>5. Rücktritt des Restaurants</h3>
+        <p>Das Restaurant ist berechtigt, aus sachlich gerechtfertigtem Grund vom Vertrag zurückzutreten oder eine Reservierung zu stornieren, insbesondere wenn:</p>
+        <ul>
+          <li>höhere Gewalt oder andere vom Restaurant nicht zu vertretende Umstände die Erfüllung des Vertrages unmöglich machen,</li>
+          <li>Veranstaltungen oder Reservierungen unter irreführenden oder falschen Angaben wesentlicher Tatsachen gebucht werden oder</li>
+          <li>begründeter Anlass zu der Annahme besteht, dass die Inanspruchnahme der Dienstleistung den reibungslosen Geschäftsbetrieb, die Sicherheit oder das Ansehen des Restaurants in der Öffentlichkeit gefährden kann.</li>
+        </ul>
+
+        <h3>6. Haftung</h3>
+        <p><strong>6.1.</strong> Das Restaurant haftet für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit nach den gesetzlichen Bestimmungen.</p>
+        <p><strong>6.2.</strong> Für sonstige Schäden haftet das Restaurant nur bei Vorsatz oder grober Fahrlässigkeit.</p>
+        <p><strong>6.3.</strong> Für eingebrachte Gegenstände, Garderobe oder Wertgegenstände der Gäste wird keine Haftung übernommen, es sei denn, der Verlust oder die Beschädigung beruht auf einer vorsätzlichen oder grob fahrlässigen Pflichtverletzung des Restaurants.</p>
+
+        <h3>7. Datenschutz</h3>
+        <p>Die Erhebung, Verarbeitung und Nutzung personenbezogener Daten des Kunden erfolgt ausschließlich unter Beachtung der geltenden Datenschutzbestimmungen (DSGVO und BDSG). Detaillierte Informationen hierzu sind in der separaten Datenschutzerklärung des Restaurants einsehbar.</p>
+
+        <h3>8. Schlussbestimmungen</h3>
+        <p><strong>8.1.</strong> Es gilt das Recht der Bundesrepublik Deutschland.</p>
+        <p><strong>8.2.</strong> Sofern es sich beim Kunden um einen Kaufmann handelt, ist der Gerichtsstand München.</p>
+        <p><strong>8.3.</strong> Sollten einzelne Bestimmungen dieser AGB unwirksam oder undurchführbar sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen davon unberührt.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="legal-dialog" id="impressumDialog" aria-labelledby="impressumTitle">
+    <div class="legal-inner">
+      <div class="legal-head">
+        <div><div class="eyebrow">Rechtliches</div><h2 id="impressumTitle">Impressum</h2></div>
+        <button class="close-btn legal-close" type="button" aria-label="Impressum schließen">×</button>
+      </div>
+      <div class="legal-content">
+        <h3>Angaben gemäß § 5 DDG</h3>
+        <p><strong>Aslan Kebab</strong><br>Leuchtenbergring 5/5<br>81677 München</p>
+
+        <h3>Kontakt</h3>
+        <p>Telefon: <a href="tel:+498937455557">089 374 555 57</a><br>Mobil: <a href="tel:+4917630568120">0176 305 681 20</a><br>Website: <a href="https://medzenter-svg.github.io/aslankebab/">medzenter-svg.github.io/aslankebab/</a></p>
+
+        <h3>Aufsichtsbehörde</h3>
+        <p>Landeshauptstadt München<br>Kreisverwaltungsreferat (KVR)<br>Ruppertstraße 11<br>80337 München</p>
+
+        <h3>Verbraucherstreitbeilegung</h3>
+        <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+
+        <p class="legal-missing"><strong>Noch vor der endgültigen Veröffentlichung zu ergänzen:</strong><br>Name des Inhabers bzw. der Betreibergesellschaft, vertretungsberechtigte Person und E-Mail-Adresse; falls zutreffend außerdem Handelsregisterdaten und Umsatzsteuer-ID.</p>
+      </div>
+    </div>
+  </dialog>
 
   <div class="cart-overlay" id="cartOverlay"></div>
   <aside class="cart-drawer" id="cartDrawer" aria-label="Warenkorb" aria-hidden="true">
@@ -1115,6 +1296,15 @@
       toggle.textContent = '☰';
     }));
     document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('[data-legal-target]').forEach(button => {
+      button.addEventListener('click', () => document.getElementById(button.dataset.legalTarget)?.showModal());
+    });
+    document.querySelectorAll('.legal-dialog').forEach(dialog => {
+      dialog.querySelector('.legal-close')?.addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', event => {
+        if (event.target === dialog) dialog.close();
+      });
+    });
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: .12 });
