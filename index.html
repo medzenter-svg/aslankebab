@@ -107,11 +107,28 @@
     h1 em { display: block; color: var(--gold); font-weight: 400; }
     .hero-copy { max-width: 530px; font-size: 19px; color: rgba(255,255,255,.77); margin: 28px 0 34px; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .hero-phones {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 12px;
+      width: fit-content;
+      margin-top: 24px;
+      padding: 13px 15px;
+      border: 1px solid rgba(217,154,57,.48);
+      border-radius: 18px;
+      background: rgba(35,11,11,.76);
+      box-shadow: 0 14px 34px rgba(0,0,0,.24);
+      backdrop-filter: blur(9px);
+    }
+    .hero-phones > span { color: var(--gold); font-size: 11px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+    .hero-phones a { padding: 7px 11px; border-radius: 99px; color: white; background: rgba(255,255,255,.09); font-size: 14px; font-weight: 850; white-space: nowrap; }
+    .hero-phones a:hover { background: var(--gold); color: var(--ink); }
     .btn { min-height: 54px; padding: 0 25px; border-radius: 99px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-weight: 800; font-size: 14px; transition: transform .2s, background .2s; }
     .btn:hover { transform: translateY(-2px); }
     .btn-primary { background: var(--gold); color: var(--ink); }
     .btn-secondary { border: 1px solid rgba(255,255,255,.35); color: white; backdrop-filter: blur(8px); }
-    .hero-note { display: flex; gap: 16px; align-items: center; max-width: 590px; margin-top: 44px; font-size: 13px; color: rgba(255,255,255,.72); }
+    .hero-note { display: flex; gap: 16px; align-items: center; max-width: 590px; margin-top: 25px; font-size: 13px; color: rgba(255,255,255,.72); }
     .hero-note strong { display: block; color: white; font-size: 15px; }
     .rating { width: 36px; height: 36px; flex: 0 0 auto; display: grid; place-items: center; border: 1px solid rgba(217,154,57,.58); border-radius: 50%; color: var(--gold); font-size: 19px; font-weight: 900; }
 
@@ -700,6 +717,9 @@
       h1 { font-size: 61px; }
       .hero-copy { font-size: 16px; }
       .hero-actions .btn { width: 100%; }
+      .hero-phones { align-items: stretch; width: 100%; }
+      .hero-phones > span { width: 100%; }
+      .hero-phones a { flex: 1 1 210px; text-align: center; }
       .hero-note { gap: 13px; }
       .quick-info { margin-top: -25px; }
       .quick-item { padding: 22px; }
@@ -788,6 +808,11 @@
           <div class="hero-actions">
             <a href="#speisekarte" class="btn btn-primary">Speisekarte entdecken <span>→</span></a>
             <a href="#standort" class="btn btn-secondary">Standort &amp; Öffnungszeiten</a>
+          </div>
+          <div class="hero-phones" aria-label="Telefonnummern">
+            <span>Direkt anrufen</span>
+            <a href="tel:+498937455557">☎ Festnetz: 089 374 555 57</a>
+            <a href="tel:+4917630568120">☎ Mobil: 0176 305 681 20</a>
           </div>
           <div class="hero-note">
             <div class="rating">✓</div>
@@ -1110,18 +1135,18 @@
           <div class="location-info">
             <div class="eyebrow accent">Hier findest du uns</div>
             <h2>Standort &amp; Öffnungszeiten</h2>
-            <p class="location-address"><strong>Aslan Kebab</strong><br>Leuchtenbergring 5/5<br>81677 München</p>
+            <p class="location-address"><strong>Aslan Kebab</strong><br>Einsteinstraße 163<br>81677 München</p>
             <div class="opening-hours" aria-label="Öffnungszeiten">
               <div class="opening-row"><span>Mo – Fr</span><span>10:00 – 22:00</span></div>
               <div class="opening-row"><span>Sa – So</span><span>12:00 – 22:00</span></div>
             </div>
             <div class="location-actions">
-              <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=Leuchtenbergring+5%2F5%2C+81677+M%C3%BCnchen" target="_blank" rel="noopener noreferrer">Route planen</a>
-              <a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=Leuchtenbergring+5%2F5%2C+81677+M%C3%BCnchen" target="_blank" rel="noopener noreferrer">Google Maps öffnen</a>
+              <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=Einsteinstra%C3%9Fe+163%2C+81677+M%C3%BCnchen" target="_blank" rel="noopener noreferrer">Route planen</a>
+              <a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=Einsteinstra%C3%9Fe+163%2C+81677+M%C3%BCnchen" target="_blank" rel="noopener noreferrer">Google Maps öffnen</a>
             </div>
           </div>
           <div class="map-frame">
-            <iframe src="https://www.google.com/maps?q=Leuchtenbergring%205%2F5%2C%2081677%20M%C3%BCnchen&amp;output=embed" title="Karte: Aslan Kebab, Leuchtenbergring 5/5, München" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps?q=Einsteinstra%C3%9Fe%20163%2C%2081677%20M%C3%BCnchen&amp;output=embed" title="Karte: Aslan Kebab, Einsteinstraße 163, München" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
       </div>
@@ -1155,7 +1180,7 @@
           <div class="logo"><span class="logo-mark"><img src="assets/aslan-avatar.webp" alt=""></span><span>ASLAN KEBAB<small>GRILL &amp; GENUSS</small></span></div>
           <p>Frisch gegrillt, ehrlich gewürzt und mit Liebe serviert. Dein Kebab-Moment – mitten in der Stadt.</p>
         </div>
-        <div><h4>Besuche uns</h4><ul><li><a href="#standort">Leuchtenbergring 5/5<br>81677 München</a></li><li><a href="tel:+498937455557">089 374 555 57</a></li><li><a href="tel:+4917630568120">0176 305 681 20</a></li><li>E-Mail wird ergänzt</li></ul></div>
+        <div><h4>Besuche uns</h4><ul><li><a href="#standort">Einsteinstraße 163<br>81677 München</a></li><li><a href="tel:+498937455557">Festnetz: 089 374 555 57</a></li><li><a href="tel:+4917630568120">Mobil: 0176 305 681 20</a></li><li>E-Mail wird ergänzt</li></ul></div>
         <div><h4>Öffnungszeiten</h4><ul><li>Mo–Fr: 10:00–22:00 Uhr</li><li>Sa–So: 12:00–22:00 Uhr</li></ul></div>
       </div>
       <div class="copyright">
@@ -1225,7 +1250,7 @@
       </div>
       <div class="legal-content">
         <h3>Angaben gemäß § 5 DDG</h3>
-        <p><strong>Aslan Kebab</strong><br>Leuchtenbergring 5/5<br>81677 München</p>
+        <p><strong>Aslan Kebab</strong><br>Einsteinstraße 163<br>81677 München</p>
 
         <h3>Kontakt</h3>
         <p>Telefon: <a href="tel:+498937455557">089 374 555 57</a><br>Mobil: <a href="tel:+4917630568120">0176 305 681 20</a><br>Website: <a href="https://medzenter-svg.github.io/aslankebab/">medzenter-svg.github.io/aslankebab/</a></p>
