@@ -310,6 +310,7 @@
       aspect-ratio: 1 / 1;
       object-fit: contain;
       object-position: center;
+      background: #321714;
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
@@ -1314,11 +1315,6 @@
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: .12 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    document.querySelectorAll('#pizza .pizza-card img').forEach(img => {
-      const source = img.getAttribute('src');
-      img.style.backgroundImage = `linear-gradient(rgba(255,248,235,.68), rgba(255,248,235,.68)), url("${source}")`;
-    });
-
     const cartDrawer = document.getElementById('cartDrawer');
     const cartOverlay = document.getElementById('cartOverlay');
     const cartItems = document.getElementById('cartItems');
