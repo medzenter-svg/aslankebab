@@ -186,6 +186,8 @@
     .dish:nth-child(2) { transform: translateY(28px); }
     .dish img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; transition: transform .5s; }
     .dish:hover img { transform: scale(1.04); }
+    .dish img.falafel-teller-feature { object-fit: contain; object-position: center; transform: scale(.92); background: #050505; }
+    .dish:hover img.falafel-teller-feature { transform: scale(.96); }
     .dish::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 38%, rgba(24,7,5,.93)); }
     .dish-copy { position: absolute; z-index: 2; left: 28px; right: 28px; bottom: 25px; color: white; }
     .dish-tag { display: inline-block; color: var(--gold); text-transform: uppercase; font-size: 10px; font-weight: 850; letter-spacing: .16em; margin-bottom: 8px; }
@@ -760,7 +762,7 @@
             <div class="dish-copy"><span class="dish-tag">Gerollter Genuss</span><h3><span class="dish-code">Nr. 03</span>Drehspieß Dürüm</h3><p>Mit Hähnchen oder Kalb, frischem Salat und Soße.</p></div>
           </article>
           <article class="dish reveal">
-            <img src="assets/menu-13-falafel-teller.webp" alt="Falafel Teller mit Salat und Pommes" loading="lazy">
+            <img class="falafel-teller-feature" src="assets/menu-13-falafel-teller.webp" alt="Falafel Teller mit Salat und Pommes" loading="lazy">
             <span class="price">11,00 €</span>
             <div class="dish-copy"><span class="dish-tag">Vegetarischer Favorit</span><h3><span class="dish-code">Nr. 13</span>Falafel Teller</h3><p>Knusprige Falafel mit Salat und Pommes oder Couscous.</p></div>
           </article>
