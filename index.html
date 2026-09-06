@@ -202,6 +202,8 @@
     .full-menu-layout { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .product-card { overflow: hidden; border-radius: 27px; background: var(--white); border: 1px solid #eadfcf; box-shadow: 0 14px 42px rgba(49,17,13,.1); display: flex; flex-direction: column; }
     .product-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+    .bread-card { grid-column: span 2; }
+    .bread-card img { aspect-ratio: 2 / 1; object-position: center; }
     .product-card-copy { padding: 23px; display: flex; flex: 1; flex-direction: column; }
     .product-card h3 { margin: 9px 0; font: 500 27px/1 Georgia, serif; }
     .product-card p { min-height: 42px; margin: 0; color: var(--muted); font-size: 12px; }
@@ -652,6 +654,7 @@
       .features { grid-template-columns: 1fr; }
       .sauce-grid, .seasonings { grid-template-columns: 1fr; }
       .full-menu-layout { grid-template-columns: 1fr; }
+      .bread-card { grid-column: 1; }
       .topping-grid { grid-template-columns: 1fr 1fr; }
       .pizza-grid { grid-template-columns: 1fr; }
       .burger-grid { grid-template-columns: 1fr; }
@@ -832,7 +835,7 @@
           <div class="menu-category reveal"><h3>Beilagen</h3><p>Pommes und frisch gebackenes Döner Brot.</p></div>
           <article class="product-card reveal"><img src="assets/menu-38-pommes-klein.webp" alt="Kleine Portion goldgelbe Pommes" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 38</span><h3>Pommes klein</h3><p>Kleine Portion knusprige, goldgelbe Pommes.</p><div class="product-card-bottom"><span class="menu-price">4,00 €</span><button class="add-btn" type="button" data-product="Pommes klein" data-number="38" data-kind="simple" data-price="4.00">Auswählen</button></div></div></article>
           <article class="product-card reveal"><img src="assets/menu-39-pommes-gross.webp" alt="Große Portion goldgelbe Pommes" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 39</span><h3>Pommes groß</h3><p>Große Portion knusprige, goldgelbe Pommes.</p><div class="product-card-bottom"><span class="menu-price">5,50 €</span><button class="add-btn" type="button" data-product="Pommes groß" data-number="39" data-kind="simple" data-price="5.50">Auswählen</button></div></div></article>
-          <article class="product-card reveal"><img src="assets/menu-b1-doener-brot.webp?v=brot2" alt="Zwei frisch zubereitete Döner Brote mit Sesam auf einem weißen Leinentuch" loading="lazy"><div class="product-card-copy"><span class="dish-code">B1</span><h3>Döner Brot</h3><p>Täglich frisch zubereitetes Döner Brot mit Sesam.</p><div class="product-card-bottom"><span class="menu-price">1,50 €</span><button class="add-btn" type="button" data-product="Döner Brot" data-number="B1" data-kind="simple" data-price="1.50">Auswählen</button></div></div></article>
+          <article class="product-card bread-card reveal"><img src="assets/menu-b1-doener-brot-wide.webp" alt="Drei große, frisch zubereitete Döner Brote mit Sesam auf einem weißen Leinentuch mit etwas Mehl" loading="lazy"><div class="product-card-copy"><span class="dish-code">B1</span><h3>Döner Brot</h3><p>Täglich frisch zubereitetes Döner Brot mit Sesam.</p><div class="product-card-bottom"><span class="menu-price">1,50 €</span><button class="add-btn" type="button" data-product="Döner Brot" data-number="B1" data-kind="simple" data-price="1.50">Auswählen</button></div></div></article>
 
           <div class="menu-category reveal"><h3>Pide</h3><p>Frisch gebackene türkische Teigschiffchen mit herzhaften Füllungen.</p></div>
           <article class="product-card reveal"><img src="assets/menu-40-pide-spinat.webp" alt="Pide mit frischer Spinatfüllung" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 40</span><h3>Pide Spinat</h3><p>Knusprig gebackenes Pide mit herzhafter Spinatfüllung.</p><div class="product-card-bottom"><span class="menu-price">8,50 €</span><button class="add-btn" type="button" data-product="Pide Spinat" data-number="40" data-kind="simple" data-price="8.50">Auswählen</button></div></div></article>
