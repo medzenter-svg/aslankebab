@@ -203,7 +203,8 @@
     .product-card { overflow: hidden; border-radius: 27px; background: var(--white); border: 1px solid #eadfcf; box-shadow: 0 14px 42px rgba(49,17,13,.1); display: flex; flex-direction: column; }
     .product-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
     .bread-card { grid-column: span 2; }
-    .bread-card img { aspect-ratio: 2 / 1; object-position: center; }
+    /* Two columns plus the grid gap: this ratio keeps B1 level with cards 38/39. */
+    .bread-card img { aspect-ratio: 2.07 / 1; object-position: center; }
     .product-card-copy { padding: 23px; display: flex; flex: 1; flex-direction: column; }
     .product-card h3 { margin: 9px 0; font: 500 27px/1 Georgia, serif; }
     .product-card p { min-height: 42px; margin: 0; color: var(--muted); font-size: 12px; }
@@ -492,10 +493,66 @@
     .copyright { border-top: 1px solid rgba(255,255,255,.1); padding-top: 24px; display: flex; justify-content: space-between; gap: 20px; color: rgba(255,255,255,.38); font-size: 12px; }
 
     /* Einheitliche dunkel-bordeauxfarbene Farbwelt */
-    body { background: var(--burgundy-page); color: var(--text-light); }
-    #highlights, .burger-menu, .toppings, .order { background: var(--burgundy-page); }
-    .full-menu, .tageskarte, .sauces { background: var(--burgundy-section); }
-    .pizza-menu, .story, .location { background: #1d0909; }
+    body { background: var(--burgundy-section); color: var(--text-light); }
+    #highlights,
+    .full-menu,
+    .burger-menu,
+    .tageskarte,
+    .toppings,
+    .sauces,
+    .pizza-menu,
+    .story,
+    .location,
+    .order { background: var(--burgundy-section); }
+
+    /* Continuous, subtle food accents behind every product row. */
+    #highlights { position: relative; isolation: isolate; overflow: hidden; }
+    #highlights > .container,
+    .burger-menu > .container { position: relative; z-index: 1; }
+    #highlights::before {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      background: url("assets/red-green-chili-scatter.webp") center top / min(1600px, 100vw) auto repeat-y;
+      opacity: .4;
+      filter: saturate(1.1) drop-shadow(0 18px 26px rgba(0,0,0,.3));
+      pointer-events: none;
+    }
+    .full-menu::before,
+    .tageskarte::before,
+    #pizza::before,
+    #getraenke::before,
+    .toppings::before,
+    .sauces::before {
+      top: 0;
+      bottom: 0;
+      height: auto;
+      aspect-ratio: auto;
+      background-position: center top;
+      background-size: 100% auto;
+      background-repeat: repeat-y;
+    }
+    .full-menu::before { opacity: .27; }
+    .tageskarte::before { opacity: .32; }
+    #pizza::before { opacity: .56; }
+    #getraenke::before { opacity: .38; }
+    .toppings::before { opacity: .28; }
+    .sauces::before { opacity: .42; }
+    .burger-menu { overflow: hidden; }
+    .burger-menu::before {
+      z-index: 0;
+      top: 0;
+      bottom: 0;
+      width: min(1180px, 100vw);
+      aspect-ratio: auto;
+      background-image: url("assets/parsley-scatter.webp");
+      background-position: center top;
+      background-size: min(800px, 82vw) auto;
+      background-repeat: repeat-y;
+      opacity: .28;
+      filter: saturate(1.18) drop-shadow(0 15px 22px rgba(0,0,0,.24));
+    }
     .accent { color: var(--gold); }
     .quick-grid,
     .product-card,
