@@ -124,6 +124,10 @@
     .hero-phones > span { color: var(--gold); font-size: 11px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
     .hero-phones a { padding: 7px 11px; border-radius: 99px; color: white; background: rgba(255,255,255,.09); font-size: 14px; font-weight: 850; white-space: nowrap; }
     .hero-phones a:hover { background: var(--gold); color: var(--ink); }
+    .hero-phones .whatsapp-link,
+    .order-copy .phone-actions .whatsapp-link { background: #1f9d55; color: white; }
+    .hero-phones .whatsapp-link:hover,
+    .order-copy .phone-actions .whatsapp-link:hover { background: #25b864; color: white; }
     .btn { min-height: 54px; padding: 0 25px; border-radius: 99px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-weight: 800; font-size: 14px; transition: transform .2s, background .2s; }
     .btn:hover { transform: translateY(-2px); }
     .btn-primary { background: var(--gold); color: var(--ink); }
@@ -812,7 +816,7 @@
           <div class="hero-phones" aria-label="Telefonnummern">
             <span>Direkt anrufen</span>
             <a href="tel:+498937455557">☎ Festnetz: 089 374 555 57</a>
-            <a href="tel:+4917630568120">☎ Mobil: 0176 305 681 20</a>
+            <a class="whatsapp-link" href="https://wa.me/4917630568120" target="_blank" rel="noopener noreferrer">WhatsApp: 0176 305 681 20</a>
           </div>
           <div class="hero-note">
             <div class="rating">✓</div>
@@ -918,7 +922,7 @@
           <div class="menu-category reveal"><h3>Beilagen</h3><p>Pommes und frisch gebackenes Döner Brot.</p></div>
           <article class="product-card reveal"><img src="assets/menu-38-pommes-klein.webp" alt="Kleine Portion goldgelbe Pommes" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 38</span><h3>Pommes klein</h3><p>Kleine Portion knusprige, goldgelbe Pommes.</p><div class="product-card-bottom"><span class="menu-price">4,00 €</span><button class="add-btn" type="button" data-product="Pommes klein" data-number="38" data-kind="simple" data-price="4.00">Auswählen</button></div></div></article>
           <article class="product-card reveal"><img src="assets/menu-39-pommes-gross.webp" alt="Große Portion goldgelbe Pommes" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 39</span><h3>Pommes groß</h3><p>Große Portion knusprige, goldgelbe Pommes.</p><div class="product-card-bottom"><span class="menu-price">5,50 €</span><button class="add-btn" type="button" data-product="Pommes groß" data-number="39" data-kind="simple" data-price="5.50">Auswählen</button></div></div></article>
-          <article class="product-card bread-card reveal"><img src="assets/menu-b1-doener-brot-wide.webp" alt="Drei große, frisch zubereitete Döner Brote mit Sesam auf einem weißen Leinentuch mit etwas Mehl" loading="lazy"><div class="product-card-copy"><span class="dish-code">B1</span><h3>Döner Brot</h3><p>Täglich frisch zubereitetes Döner Brot mit Sesam.</p><div class="product-card-bottom"><span class="menu-price">1,50 €</span><button class="add-btn" type="button" data-product="Döner Brot" data-number="B1" data-kind="simple" data-price="1.50">Auswählen</button></div></div></article>
+          <article class="product-card bread-card reveal"><img src="assets/menu-b1-doener-brot-wide.webp" alt="Drei große, frisch zubereitete Döner Brote mit Sesam auf einem weißen Leinentuch mit etwas Mehl" loading="lazy"><div class="product-card-copy"><span class="dish-code">B1</span><h3>Döner Brot</h3><p>Täglich frisch zubereitetes Döner Brot mit Sesam.</p><div class="product-card-bottom"><span class="menu-price">1,00 €</span><button class="add-btn" type="button" data-product="Döner Brot" data-number="B1" data-kind="simple" data-price="1.00">Auswählen</button></div></div></article>
 
           <div class="menu-category reveal"><h3>Pide</h3><p>Frisch gebackene türkische Teigschiffchen mit herzhaften Füllungen.</p></div>
           <article class="product-card reveal"><img src="assets/menu-40-pide-spinat.webp" alt="Pide mit frischer Spinatfüllung" loading="lazy"><div class="product-card-copy"><span class="dish-code">Nr. 40</span><h3>Pide Spinat</h3><p>Knusprig gebackenes Pide mit herzhafter Spinatfüllung.</p><div class="product-card-bottom"><span class="menu-price">8,50 €</span><button class="add-btn" type="button" data-product="Pide Spinat" data-number="40" data-kind="simple" data-price="8.50">Auswählen</button></div></div></article>
@@ -1110,7 +1114,7 @@
           <article class="sauce-card reveal"><img src="assets/sauce-3-joghurt-kraeuter.webp" alt="Sehr hellgrüne Joghurt-Kräuter-Sauce in einer hohen quadratischen Keramikschale" loading="lazy"><div class="sauce-card-body"><span class="sauce-number">S3</span><h3>Joghurt-Kräuter</h3><p class="placeholder-copy">Beschreibung folgt.<br>Geschmack wird ergänzt.<br>Schärfegrad wird ergänzt.</p><button class="add-btn" type="button" data-product="Joghurt-Kräuter" data-number="S3" data-kind="sauce">Auswählen</button></div></article>
           <article class="sauce-card reveal"><img src="assets/sauce-4.webp" alt="Helle Joghurtsauce in einer hohen quadratischen Keramikschale" loading="lazy"><div class="sauce-card-body"><span class="sauce-number">S4</span><h3>Joghurt</h3><p class="placeholder-copy">Beschreibung folgt.<br>Geschmack wird ergänzt.<br>Schärfegrad wird ergänzt.</p><button class="add-btn" type="button" data-product="Joghurt" data-number="S4" data-kind="sauce">Auswählen</button></div></article>
           <article class="sauce-card reveal"><img src="assets/sauce-5.webp" alt="Dunkelrote Aslan Spezial Sauce in einer hohen quadratischen Keramikschale" loading="lazy"><div class="sauce-card-body"><span class="sauce-number">S5</span><h3>Aslan Spezial</h3><p class="placeholder-copy">Beschreibung folgt.<br>Geschmack wird ergänzt.<br>Schärfegrad wird ergänzt.</p><button class="add-btn" type="button" data-product="Aslan Spezial" data-number="S5" data-kind="sauce">Auswählen</button></div></article>
-          <article class="sauce-card reveal"><img src="assets/sauce-6.webp" alt="Helle orange Sauce 6 in einer hohen quadratischen Keramikschale" loading="lazy"><div class="sauce-card-body"><span class="sauce-number">S6</span><h3>Sauce 6</h3><p class="placeholder-copy">Beschreibung folgt.<br>Geschmack wird ergänzt.<br>Schärfegrad wird ergänzt.</p><button class="add-btn" type="button" data-product="Sauce 6" data-number="S6" data-kind="sauce">Auswählen</button></div></article>
+          <article class="sauce-card reveal"><img src="assets/sauce-6.webp" alt="Helle orange Cocktail Sauce in einer hohen quadratischen Keramikschale" loading="lazy"><div class="sauce-card-body"><span class="sauce-number">S6</span><h3>Cocktail Sauce</h3><p class="placeholder-copy">Cremig, mild und fein abgestimmt.<br>Passt besonders gut zu Kebab, Burgern und Pommes.</p><button class="add-btn" type="button" data-product="Cocktail Sauce" data-number="S6" data-kind="sauce">Auswählen</button></div></article>
         </div>
         <div class="addon-heading reveal">
           <div class="eyebrow accent">Extras</div>
@@ -1163,7 +1167,7 @@
               <div><strong>Direkt telefonisch bestellen</strong><span>Einfach Nummer auswählen und anrufen.</span></div>
               <div class="phone-actions">
                 <a href="tel:+498937455557" class="btn">☎ 089 374 555 57</a>
-                <a href="tel:+4917630568120" class="btn">☎ 0176 305 681 20</a>
+                <a href="https://wa.me/4917630568120" class="btn whatsapp-link" target="_blank" rel="noopener noreferrer">WhatsApp: 0176 305 681 20</a>
               </div>
             </div>
           </div>
@@ -1180,7 +1184,7 @@
           <div class="logo"><span class="logo-mark"><img src="assets/aslan-avatar.webp" alt=""></span><span>ASLAN KEBAB<small>GRILL &amp; GENUSS</small></span></div>
           <p>Frisch gegrillt, ehrlich gewürzt und mit Liebe serviert. Dein Kebab-Moment – mitten in der Stadt.</p>
         </div>
-        <div><h4>Besuche uns</h4><ul><li><a href="#standort">Einsteinstraße 163<br>81677 München</a></li><li><a href="tel:+498937455557">Festnetz: 089 374 555 57</a></li><li><a href="tel:+4917630568120">Mobil: 0176 305 681 20</a></li><li>E-Mail wird ergänzt</li></ul></div>
+        <div><h4>Besuche uns</h4><ul><li><a href="#standort">Einsteinstraße 163<br>81677 München</a></li><li><a href="tel:+498937455557">Festnetz: 089 374 555 57</a></li><li><a href="https://wa.me/4917630568120" target="_blank" rel="noopener noreferrer">WhatsApp: 0176 305 681 20</a></li><li>E-Mail wird ergänzt</li></ul></div>
         <div><h4>Öffnungszeiten</h4><ul><li>Mo–Fr: 10:00–22:00 Uhr</li><li>Sa–So: 12:00–22:00 Uhr</li></ul></div>
       </div>
       <div class="copyright">
@@ -1253,7 +1257,7 @@
         <p><strong>Aslan Kebab</strong><br>Einsteinstraße 163<br>81677 München</p>
 
         <h3>Kontakt</h3>
-        <p>Telefon: <a href="tel:+498937455557">089 374 555 57</a><br>Mobil: <a href="tel:+4917630568120">0176 305 681 20</a><br>Website: <a href="https://medzenter-svg.github.io/aslankebab/">medzenter-svg.github.io/aslankebab/</a></p>
+        <p>Telefon: <a href="tel:+498937455557">089 374 555 57</a><br>WhatsApp: <a href="https://wa.me/4917630568120" target="_blank" rel="noopener noreferrer">0176 305 681 20</a><br>Website: <a href="https://medzenter-svg.github.io/aslankebab/">medzenter-svg.github.io/aslankebab/</a></p>
 
         <h3>Aufsichtsbehörde</h3>
         <p>Landeshauptstadt München<br>Kreisverwaltungsreferat (KVR)<br>Ruppertstraße 11<br>80337 München</p>
@@ -1341,7 +1345,7 @@
         <div class="option-list">
           <label class="option-pill"><input type="checkbox" name="side" value="Pommes"><span>Pommes</span></label>
           <label class="option-pill"><input type="checkbox" name="side" value="Reis"><span>Reis</span></label>
-          <label class="option-pill"><input type="checkbox" name="side" value="Döner Brot (+1,50 €)"><span>Döner Brot +1,50 €</span></label>
+          <label class="option-pill"><input type="checkbox" name="side" value="Döner Brot (+1,00 €)"><span>Döner Brot +1,00 €</span></label>
           <label class="option-pill"><input type="checkbox" name="side" value="Ketchup"><span>Ketchup</span></label>
           <label class="option-pill"><input type="checkbox" name="side" value="Mayonnaise"><span>Mayonnaise</span></label>
           <label class="option-pill"><input type="checkbox" name="side" value="Senf"><span>Senf</span></label>
