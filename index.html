@@ -296,7 +296,7 @@
     .addon-heading { margin: 68px 0 24px; }
     .addon-heading h2 { margin: 12px 0 10px; font-size: clamp(38px, 5vw, 58px); }
     .addon-heading p { margin: 0; color: var(--muted); }
-    .seasonings { margin-top: 70px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .seasonings { margin-top: 70px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
     .seasoning-card { border-radius: 30px; overflow: hidden; background: var(--white); box-shadow: 0 15px 45px rgba(49,17,13,.11); }
     .seasoning-card img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
     .seasoning-copy { padding: 28px; }
@@ -692,6 +692,7 @@
       .vegetarian-grid { grid-template-columns: 1fr; }
       .durum-feature { min-height: 540px; }
       .sauce-grid { grid-template-columns: 1fr 1fr; }
+      .seasonings { grid-template-columns: 1fr 1fr; }
       .topping-grid { grid-template-columns: repeat(3, 1fr); }
       .pizza-grid { grid-template-columns: 1fr 1fr; }
       .burger-grid { grid-template-columns: 1fr 1fr; }
@@ -1127,8 +1128,9 @@
           <article class="sauce-card reveal"><img src="assets/addon-greek-cheese.webp" alt="Weißer Weichkäse nach griechischer Art in einer hohen quadratischen Keramikschale" loading="lazy"><div class="sauce-card-body"><span class="sauce-number">A3</span><h3>Weichkäse nach griechischer Art</h3><p class="placeholder-copy">Als Extra auswählbar.<br>Beschreibung folgt.<br>Preis wird ergänzt.</p><button class="add-btn" type="button" data-product="Weichkäse nach griechischer Art" data-number="A3" data-kind="addon">Auswählen</button></div></article>
         </div>
         <div class="seasonings">
-          <article class="seasoning-card reveal"><img src="assets/red-seasoning.webp" alt="Bordeauxrote, trockene Gewürzmischung" loading="lazy"><div class="seasoning-copy"><h3>Rote Gewürzmischung</h3><p class="placeholder-copy">Beschreibung folgt.<br>Zutaten werden ergänzt.<br>Geschmacksprofil wird ergänzt.</p></div></article>
-          <article class="seasoning-card reveal"><img src="assets/green-seasoning.webp" alt="Grüne Kräuter-Gewürzmischung" loading="lazy"><div class="seasoning-copy"><h3>Grüne Kräutermischung</h3><p class="placeholder-copy">Beschreibung folgt.<br>Zutaten werden ergänzt.<br>Geschmacksprofil wird ergänzt.</p></div></article>
+          <article class="seasoning-card reveal"><img src="assets/spicy-herb-mix.webp" alt="Scharfpulver mit roten Chiliflocken und Saaten in einer rustikalen Keramikschale" loading="lazy"><div class="seasoning-copy"><h3>Scharfpulver</h3><p class="placeholder-copy">Feurig-aromatische Gewürzmischung aus roten Chiliflocken und ausgewählten Kräutern.</p></div></article>
+          <article class="seasoning-card reveal"><img src="assets/red-seasoning.webp" alt="Dunkelroter Sumak in einer rustikalen Keramikschale" loading="lazy"><div class="seasoning-copy"><h3>Sumak</h3><p class="placeholder-copy">Fruchtig-säuerliches Gewürz mit fein-herbem Aroma.</p></div></article>
+          <article class="seasoning-card reveal"><img src="assets/green-seasoning.webp" alt="Getrockneter grüner Oregano in einer rustikalen Keramikschale" loading="lazy"><div class="seasoning-copy"><h3>Oregano</h3><p class="placeholder-copy">Aromatisch-würzige Kräuter mit mediterranem Geschmack.</p></div></article>
         </div>
       </div>
     </section>
